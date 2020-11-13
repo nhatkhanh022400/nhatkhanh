@@ -28,3 +28,53 @@
 
 
 
+*Ngày 4 đi thực tập : Import database vào mysql
+
+
+#Chạy mysql
+-docker start: chay docker
+-docker ps: coi trong docker co nhung gi
+-docker ps -a: coi tat ca nhung file da cai vao docker
+-docker exec -it mysqlCon bash
+-docker exec -it mysqlCon mysql -uroot -p
+
+#Import database lên mysql
+-cd /mnt/c/Users/P
+-PC/     Public/
+-docker cp /mnt/c/Users/PC/Downloads/crm-local-min.sql mysqlCon:/home: copy crm-local-min.sql đến mysqlCon:/home
+-docker exec -it mysqlCon bash: mở server mysql
+-mysql -uroot -p crm < /home/crm-local-min.sql: lấy crm-local-min trong home bỏ qua database crm
+-docker exec -it mysqlCon mysql -uroot -p: vào thẳng mysql
+-mysql -uroot -p: đăng nhập mysql 
+
+
+
+code:
+root@KhanhLapTop:~# docker cp C:\Users\PC\Downloads\crm-local-min.sql mysqlCon:/home
+copying between containers is not supported
+root@KhanhLapTop:~# cd /mnt/c/Users/P
+PC/     Public/
+root@KhanhLapTop:~# docker cp /mnt/c/Users/PC/Downloads/crm-local-min.sql mysqlCon:/home
+root@KhanhLapTop:~# docker exec -it mysqlCon mysql -uroot -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+root@KhanhLapTop:~# docker exec -it mysqlCon bash
+bash-4.2# mysql -uroot -p crm < /home/crm-local-min.sql
+Enter password:
+bash-4.2# show crm;
+bash: show: command not found
+bash-4.2# mysql -uroot -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 76
+Server version: 5.7.32 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+
+
+
