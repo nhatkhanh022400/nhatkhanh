@@ -9,15 +9,15 @@
 -git config --global user.email "nhatkhanh0204@gmail.com": đặt tên gmail
 -git branch <ten nhanh> : tạo branch
 -git add file :thêm vào file
--git commit -m "tren them":
+-git commit -m "tren them": 
 -git push : đưa dữ liệu lên github.
--git pull : lay du lieu tu github bo vao linux bashshell
+-git pull : lấy dữ liệu từ github bỏ vao linux bashshell
 -git clone <source>: lấy source trên github
 
 
 *Ngày 2 đi thực tập: Tiếp tục học về git
 
--sudo -i chuyen tu quyen user sang root
+-sudo -i chuyển từ quyền user sang root
 -sudo apt list --install | grep mysql : list những package đang chạy ra (grep là những thứ muốn tìm)
 -git merge : chuyển dữ liệu từ 1 nhánh sang main
 -git checkout : chuyển đổi giữa các nhánh trên github
