@@ -77,4 +77,110 @@ owners.
 
 
 
+------------------Tuần 2 thực tập-------------------
+
+
+*Ngày 5 đi thực tập: Học về dockerfile
+
+
+*Bước 1: Thiết lập 
+-Xác định các phụ thuộc ứng dụng.
+
+-Tạo một thư mục cho dự án bằng lệnh :
+    $ mkdir composetest
+    $ cd composetest
+-Tạo một tệp được gọi app.py trong thư mục dự án của bạn và dán tệp này vào: 
+    $ touch app.py
+-Sau đó cho dữ liệu vào app.py bằng lệnh:
+    $ vim app.py
+-Những dữ liệu thêm vào app.py
+      import time
+
+      import redis
+      from flask import Flask
+
+      app = Flask(__name__)
+      cache = redis.Redis(host='redis', port=6379)
+
+      def get_hit_count():
+          retries = 5
+          while True:
+              try:
+                  return cache.incr('hits')
+              except redis.exceptions.ConnectionError as exc:
+                  if retries == 0:
+                     raise exc
+                  retries -= 1
+                  time.sleep(0.5)
+
+      @app.route('/')
+      def hello():
+          count = get_hit_count()
+          return 'Hello World! I have been seen {} times.\n'.format(count)   
+-Tạo một tệp khác được gọi requirements.txt trong thư mục composetest và dán tệp này vào:  
+      flask
+      redis 
+
+
+*Bước 2: Tạo Dockerfile
+
+-Tạo thêm 1 tệp tên Dockerfile trong thư mục composetest:
+  
+  Trong tệp Dockerfile ta thêm dữ liệu:
+    FROM python:3.7-alpine
+    WORKDIR /code
+    ENV FLASK_APP=app.py
+    ENV FLASK_RUN_HOST=0.0.0.0
+    RUN apk add --no-cache gcc musl-dev linux-headers
+    COPY requirements.txt requirements.txt
+    RUN pip install -r requirements.txt
+    EXPOSE 5000
+    COPY . .
+    CMD ["flask", "run"]
+  
+  Các lệnh trên có nghĩa là
+    Xây dựng hình ảnh bắt đầu bằng hình ảnh Python 3.7.
+    Đặt thư mục làm việc thành /code.
+    Đặt các biến môi trường được sử dụng bởi flasklệnh.
+    Cài đặt gcc và các phụ thuộc khác
+    Sao chép requirements.txtvà cài đặt các phụ thuộc Python.
+    Thêm siêu dữ liệu vào hình ảnh để mô tả rằng vùng chứa đang lắng nghe trên cổng 5000
+    Sao chép thư mục hiện tại .trong dự án vào workdir .trong hình ảnh.
+    Đặt lệnh mặc định cho vùng chứa thành flask run.
+
+
+*Bước 3: Xác định các dịch vụ trong tệp Soạn
+
+-Tạo một tệp được gọi docker-compose.yml trong thư mục composetest và dán như sau:
+    version: "3.4"
+    services:
+      web:
+        build: .
+        ports:
+          - "5000:5000"
+      redis:
+        image: "redis:alpine"
+
+    Các lệnh trên có nghĩa:
+     version 3.4 Là ta chọn docker-compose phiên bản 3.4
+     build . Là ta xây dựng trên docker-compose
+     ports:
+          - "5000:5000" : Là các webdịch vụ sử dụng một hình ảnh được xây dựng từ Dockerfiletrong thư mục hiện hành. Sau đó, nó liên kết vùng chứa và máy chủ với cổng tiếp xúc 5000
+     image: "redis:alpine" Là các redis dịch vụ sử dụng một công Redis hình ảnh kéo từ registry Docker Hub.
+
+
+*Bước 4: Xây dựng và chạy ứng dụng đã Soạn 
+
+-Từ thư mục composetest, khởi động ứng dụng bằng cách chạy các lệnh 
+     $docker-compose build
+     $docker-compose up
+-Sau đó lên trên 1 trình duyệt web gõ localhost:5000 nếu nó chạy ra    Hello World! I have been seen 1 times. thì ta thành công  
+-Ngoài ra ta còn có thể gõ lệnh $docker image ls để kiểm tra các image đã cài trong docker
+
+
+
+
+
+
+
 
