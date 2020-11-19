@@ -182,6 +182,173 @@ owners.
 
 
 
+-Tạo 1 thư mục tên symfony-docker
+-Bên trong thư mục symfony-docker tạo thêm 3 thư mục build, mysql, symfony và tệp docker-compose.yml
+ 
+ *Định cấu hình vùng chứa chi nginx:
+ -Mở tệp docker-compose.yml sau đó mở tệp bằng lệnh vim docker-compose.yml và thêm vào trong tệp dữ liệu:
+          version: '3'
+
+          services:
+            nginx:
+                build:
+                        context: .
+                        dockerfile: Dockerfile-nginx
+                volumes:
+                        - ./symfony/:/var/www/symfony/
+                ports:
+                        - 8001:80
+                networks:
+                        - symfony
+            networks:
+          symfony:
+  -dockerfile cho biết tệp cấu hình sẽ được sử dụng để tạo vùng chứa và chúng tôi sẽ tạo tiếp theo.
+  -volumes sẽ thiết lập rằng thư mục cục bộ của chúng ta được gọi symfonysẽ được liên kết với /var/www/symfonythư mục của vùng chứa.
+  -ports thực hiện ánh xạ giữa cổng 80 của vùng chứa và cổng 8001 mà chúng tôi sẽ sử dụng để truy cập thông qua trình duyệt.
+  -Và cuối cùng là networksthiết lập một mạng lưới cho toàn bộ dự án để tất cả các container có thể giao tiếp với nhau.
+
+-Tiếp theo,tạo tệp Dockerfile-nginx trong thư mục symfony-docker và thêm dữ liệu vào :
+          FROM nginx:latest
+          RUN rm -rf /etc/nginx/conf.d/default.conf
+          COPY ./build/nginx/default.conf /etc/nginx/conf.d
+
+          CMD [ "/bin/bash", "-c", "nginx -g 'daemon off;'" ]
+        -Trong dòng 1 , xác định hình ảnh Nginx mà ta muốn sử dụng bằng cách sử dụng chỉ thị FROM.
+        -Trong dòng 2, sử dụng COPY phương pháp để sao chép nội dung của default.conf tệp dự án (nơi cấu hình máy chủ mặc định mà Nginx sẽ sử dụng) nằm trong /etc/nginx/conf.dthư mục của vùng chứa.
+
+-Trong thư mục build tạo thêm thư mục nginx, trong thư mục nginx tạo 1 tệp tên default.conf và cho dữ liệu vào:
+        server {
+        listen 80;
+        root /var/www/symfony/public;
+
+        location / {
+            try_files $uri /index.php$is_args$args;
+        }
+
+         location ~ ^/index\.php(/|$) {
+            fastcgi_pass php:9000;
+            fastcgi_split_path_info ^(.+\.php)(/.*)$;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param DOCUMENT_ROOT $realpath_root;
+            internal;
+        }
+        location ~ \.php$ {
+            return 404;
+        }
+            error_log /dev/stdout info;
+            access_log /var/log/nginx/project_access.log;
+        }
+
+-Chạy lệnh docker-compose up --build để set up Dockerfile-Nginx
+
+
+*Định cấu hình vùng chứa cho PHP
+- Mở tệp docker-compose.yml và thêm dữ liệu vào:
+    version: '3'
+
+    services:
+        nginx:
+                build:
+                        context: .
+                        dockerfile: Dockerfile-nginx
+                volumes:
+                        - ./symfony/:/var/www/symfony/
+                ports:
+                        - 8001:80
+                networks:
+                        - symfony
+        php:
+                build:
+                        context: .
+                        dockerfile: Dockerfile-php
+                environment:
+                        APP_ENV: dev
+                        DATABASE_URL: mysql://root:root@mysql:3306/symfony_db?serverVersion=5.7
+                volumes:
+                        - ./symfony/:/var/www/symfony/
+                networks:
+                        - symfony
+                depends_on:
+                        - mysql
+    
+    networks:  
+        symfony:
+
+        -Bên trong, environmentchúng ta có thể khai báo các biến môi trường mà chúng ta muốn dự án Symfony của mình đọc và tải sau này.
+        -networks cũng được tạo thành từ một phần tử duy nhất: symfonycho phép vùng chứa này và vùng chứa của Nginx giao tiếp.
+        -Cuối cùng, volumescó cùng giá trị với vùng chứa Nginx, để symfonythư mục của dự án của chúng ta được liên kết với /var/www/symfonythư mục của vùng chứa.
+
+-Tạo 1 tệp ở thư mục symfony-docker và thêm dữ liệu vào:
+        FROM php:fpm-stretch
+
+        RUN apt-get update && apt-get install -y
+
+        RUN apt-get update && apt-get install -y --no-install-recommends \
+              git \
+              zlib1g-dev \
+              libxml2-dev \
+              libzip-dev \
+        && docker-php-ext-install \
+              zip \
+              intl \
+              mysqli \
+              pdo pdo_mysql
+
+        RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+        COPY symfony/ /var/www/symfony
+        WORKDIR /var/www/symfony/
+- Chạy lệnh docker-compose up --build để set up Dockerfile-php
+
+
+*Định cấu hình vùng chứa cho MySQL:
+
+- Mở tệp docker-compose.yml và thêm dữ liệu:
+    version: '3'
+
+    services:
+        nginx:
+                build:
+                        context: .
+                        dockerfile: Dockerfile-nginx
+                volumes:
+                        - ./symfony/:/var/www/symfony/
+                ports:
+                        - 8001:80
+                networks:
+                        - symfony
+        php:
+                build:
+                        context: .
+                        dockerfile: Dockerfile-php
+                environment:
+                        APP_ENV: dev
+                        DATABASE_URL: mysql://root:root@mysql:3306/symfony_db?serverVersion=5.7
+                volumes:
+                        - ./symfony/:/var/www/symfony/
+                networks:
+                        - symfony
+                depends_on:
+                        - mysql
+        mysql:
+                 image: mysql
+                 command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--default-authentication-plugin=mysql_native_password']
+                 environment:
+                         MYSQL_ROOT_PASSWORD: root
+                 ports:
+                        - 3066:3066
+                 volumes:
+                        - ./mysql:/var/lib/mysql
+                 networks:
+                        - symfony
+    networks:
+        symfony:
+
+- Chạy lệnh docker-compose up --build để set up Dockerfile-mysql        
+
+                              
+                            
+
 
 
 
