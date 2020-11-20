@@ -364,7 +364,13 @@ owners.
 
 - Sau khi cài xong chạy lệnh docker-compose up để chạy mysql, php, Nginx
 - Check thử chạy thành công chưa bằng cách lên trình duyệt web gõ localhost:8001
-- Để  thêm DATABASE_URLbiến môi trường vào cấu hình vùng chứa PHP ta vào php container và gõ lệnh bin/console doctrine:database:create  
+- Để  thêm DATABASE_URLbiến môi trường vào cấu hình vùng chứa PHP ta vào php container và gõ lệnh bin/console doctrine:database:create
+
+
+
+
+
+*************Ngày 8 đi thực tập: ****************
         
 
                               
