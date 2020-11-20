@@ -336,7 +336,10 @@ owners.
                  image: mysql
                  command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--default-authentication-plugin=mysql_native_password']
                  environment:
-                         MYSQL_ROOT_PASSWORD: root
+                        MYSQL_DATABASE: symfony_db
+                        MYSQL_USER: root
+                        MYSQL_PASSWORD: nhatkhanh123
+                        MYSQL_ROOT_PASSWORD: root
                  ports:
                         - 3066:3066
                  volumes:
@@ -346,7 +349,23 @@ owners.
     networks:
         symfony:
 
-- Chạy lệnh docker-compose up --build để set up Dockerfile-mysql        
+- Chạy lệnh docker-compose up --build để set up Dockerfile-mysql  
+
+
+
+
+************Ngày 7 đi thực tập: Cài symfony**************
+
+- Khởi chạy docker symfony php bằng lệnh docker exec -it  symfony-docker_php_1 bash
+- Cài các source của symfony trong php container
+        curl -sS https://get.symfony.com/cli/installer | bash
+        mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+        symfony new symfony --dir=/var/www/symfony
+
+- Sau khi cài xong chạy lệnh docker-compose up để chạy mysql, php, Nginx
+- Check thử chạy thành công chưa bằng cách lên trình duyệt web gõ localhost:8001
+- Để  thêm DATABASE_URLbiến môi trường vào cấu hình vùng chứa PHP ta vào php container và gõ lệnh bin/console doctrine:database:create  
+        
 
                               
                             
