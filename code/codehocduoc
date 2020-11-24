@@ -364,9 +364,117 @@ owners.
 
 - Sau khi cài xong chạy lệnh docker-compose up để chạy mysql, php, Nginx
 - Check thử chạy thành công chưa bằng cách lên trình duyệt web gõ localhost:8001
-- Để  thêm DATABASE_URLbiến môi trường vào cấu hình vùng chứa PHP ta vào php container và gõ lệnh bin/console doctrine:database:create  
+- Để  thêm DATABASE_URLbiến môi trường vào cấu hình vùng chứa PHP ta vào php container và gõ lệnh bin/console doctrine:database:create
+
+
+
+
+
+*************Ngày 8 đi thực tập: Ngồi ôn lại các kiến thức đã học ngoài ra còn tham khảo thêm các kiến thức về symfony ****************
         
 
+
+----------------------------Tuần 3 thực tập-----------------------------
+
+
+******************Ngày 9 đi thực tập: Tạo 1 docker symfony trong thư mục symfony*********************
+
+- Tạo 1 repositories mới trên Github
+- Cài đặt git trên window 
+   link hướng dẫn: https://o7planning.org/vi/11707/huong-dan-cai-dat-va-cau-hinh-git-tren-windows
+- Dùng git đưa dữ liệu trong symfony lên Github
+
+        + Mở Git Bash để chạy lệnh
+        + Đưa đường dẫn mặc định trên git bash về đúng đường dẫn thư mục đồ án
+        + Gõ lệnh git init: Để khởi tạo thư mục cục bộ dưới dạng kho lưu trữ Git
+        + Gõ lệnh git add . :Để thêm tệp vào kho lưu trữ cục bộ mới 
+        + Gõ lệnh git commit -m "initial commit" : cam kết các tệp mà  đã sắp xếp trong kho lưu trữ của mình
+        + Sao chép URL HTTPS của repository mới trên Github
+        + Gõ lệnh git remove add origin remote repository URL
+                  git remove -v 
+                  Để trong dấu nhắc Lệnh, hãy thêm URL cho kho lưu trữ từ xa nơi kho lưu trữ cục bộ  sẽ được đẩy.
+        + Gõ lệnh git push -f origin master: Để đẩy các thay đổi trong kho lưu trữ cục bộ lên GitHub.
+
+- Tạo 1 thư mục mới tên symfony-project trong thư mục symfony-project copy hết thư mục symfony ở thư mực symfony-docker bỏ qua
+- Trong thư mục symfony ta tạo 3 file docker-compose.yml, Dockerfile-php, Dockerfile-nginx
+- Trong file docker-compose.yml ta gõ 
+   
+   version: '3'
+
+   services:
+        nginx:
+                build:
+                        context: .
+                        dockerfile: Dockerfile-nginx
+                volumes:
+                        - ./:/var/www/symfony/
+                ports:
+                        - 8004:80
+                networks:
+                        - symfony
+        php:
+                build:
+                        context: .
+                        dockerfile: Dockerfile-php
+                environment:
+                        APP_ENV: dev
+                        DATABASE_URL: mysql://root:root@mysql:3306/symfony_db?serverVersion=5.7 
+                expose: 
+                        - 8004
+                volumes:
+                        - ./:/var/www/symfony/
+                networks:
+                        - symfony
+                depends_on:
+                        - mysql          
+        mysql:
+                image: mysql
+
+                command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--default-authentication-plugin=mysql_native_password']
+                environment:
+                        MYSQL_ROOT_PASSWORD: root
+                ports:
+                        - 3306:3306
+                volumes:
+                        - ./mysql:/var/lib/mysql
+                networks:
+                        - symfony  
+
+   networks: 
+        symfony:
+
+- Trong file Dockerfile-php ta gõ 
+        
+        FROM nginx:latest
+        RUN rm -rf /etc/nginx/conf.d/default.conf
+        COPY ./build/nginx/default.conf /etc/nginx/conf.d/
+
+        CMD [ "/bin/bash", "-c", "nginx -g 'daemon off;'" ]
+- Trong file Dockerfile-nginx ta gõ
+        FROM php:fpm-stretch
+
+        RUN apt-get update && apt-get install -y
+
+        RUN apt-get update && apt-get install -y --no-install-recommends \
+                git \
+                zlib1g-dev \
+                libxml2-dev \
+                libzip-dev \
+             && docker-php-ext-install \
+                zip \
+                intl \
+                mysqli \
+                pdo pdo_mysql
+
+        RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+        COPY ./ /var/www/symfony
+        WORKDIR /var/www/symfony/
+
+- Sau đó gõ lệnh docker exec -it symfony_php_1 bash ta vô được trong phph sau đó gõ lệnh composer install để cài đặt  
+- Cuối cùng gõ php bin/console cache:clear rồi lên ping thử trên trình duyệt web là localhost:8004 là xong      
+
+
+        
                               
                             
 
