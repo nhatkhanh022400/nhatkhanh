@@ -471,7 +471,23 @@ owners.
         WORKDIR /var/www/symfony/
 
 - Sau đó gõ lệnh docker exec -it symfony_php_1 bash ta vô được trong phph sau đó gõ lệnh composer install để cài đặt  
-- Cuối cùng gõ php bin/console cache:clear rồi lên ping thử trên trình duyệt web là localhost:8004 là xong      
+- Cuối cùng gõ php bin/console cache:clear rồi lên ping thử trên trình duyệt web là localhost:8004 là xong
+
+
+
+***************Ngày 10 đi thực tập: ****************
+
+- Tạo 1 account trên bitbucket.org 
+- Lấy source được cung cấp bỏ vào account bitbucket mới tạo 
+- Vào powershell tạo 1 thư mục tên bitbucket
+- Dùng lệnh git clone https://nhatkhanh022400@bitbucket.org/fimplus/hd-crmv2.git để kéo source trên bitbucket.org vào thư mục Bitbucket 
+- Từ source vừa tạo ta vào thư mục hd-crmv2
+- docker-compose up -d --build --force-recreate --no-deps mongo: Lệnh build lại 1 project
+- Trong thư mục hd-crmv2 tạo 3 file tên docker-compose.yml, Dockerfile-php, Dockerfile-nginx
+- 
+
+
+
 
 
         
