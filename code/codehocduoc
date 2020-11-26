@@ -484,8 +484,125 @@ owners.
 - Từ source vừa tạo ta vào thư mục hd-crmv2
 - docker-compose up -d --build --force-recreate --no-deps mongo: Lệnh build lại 1 project
 - Trong thư mục hd-crmv2 tạo 3 file tên docker-compose.yml, Dockerfile-php, Dockerfile-nginx
-- 
+- Trong file docker-compose.yml ta gõ:
+        version: '3'
 
+        services: 
+                nginx:
+                        build: 
+                                context: .
+                                dockerfile: Dockerfile-nginx
+                        volumes: 
+                                - ./:/var/www/hd-crmv2/
+                        ports: 
+                                - 8080:80
+                        networks: 
+                                - symfony
+                php:
+                        build: 
+                                context: .
+                                dockerfile: Dockerfile-php
+                        environment: 
+                                APP_ENV: prod
+                                DATABASE_URL: mysql://crm_sand:TZmtrsM5QEvngUKZ@mysql:3306/crm?serverVersion=5.7
+                        expose: 
+                                - 8080
+                        volumes: 
+                                - ./:/var/www/hd-crmv2/
+                        networks: 
+                                - symfony
+                        depends_on: 
+                                - mysql
+                                - mongo
+                mongo:
+                        container_name: mongodb
+                        image: mongo:3.4
+                        environment:
+                                - MONGO_INITDB_DATABASE=settings
+                                #- MONGO_INITDB_ROOT_USERNAME=api_platform
+                                #- MONGO_INITDB_ROOT_PASSWORD=123456
+                        ports:
+                                - "27017:27017"
+                        volumes: 
+                                - ./mongo:/var/lib/mongo
+                        networks: 
+                                - symfony 
+                mysql:
+                        image: mysql
+                        command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password']
+                        environment: 
+                                MYSQL_DATABASE: crm
+                                MYSQL_USER: crm_sand
+                                MYSQL_PASSWORD: TZmtrsM5QEvngUKZ
+                                MYSQL_ROOT_PASSWORD: ZH9rwW8s^\nP
+                        ports: 
+                                - 3306:3306
+                        volumes: 
+                                - ./mysql:/var/lib/mysql
+                        networks: 
+                                 - symfony  
+        networks: 
+                symfony:
+
+- Trong thư mục Dockerfile-php ta gõ
+        FROM php:7.1-fpm
+
+        RUN apt-get update && apt-get install -y
+
+        RUN apt-get update && apt-get install -y --no-install-recommends \
+                git \
+                zlib1g-dev \
+                libxml2-dev \
+                libzip-dev \  
+                librabbitmq-dev \
+                procps \
+                vim \  
+             && docker-php-ext-install \
+                zip \
+                intl \
+                mysqli \
+                pdo pdo_mysql\ 
+                bcmath \
+                sockets \
+             && pecl install mongodb amqp \  
+             && docker-php-ext-enable mongodb amqp \
+             && usermod -u 1000 www-data
+
+        RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+        COPY ./ /var/www/hd-crmv2
+        WORKDIR /var/www/hd-crmv2/
+
+- Trong thư mục Dockerfile-nginx gõ:
+        FROM nginx:latest
+        COPY ./docker_build/nginx/nginx.conf /etc/nginx/nginx.conf
+        COPY ./docker_build/nginx/default.conf /etc/nginx/conf.d/
+
+- Dùng lệnh docker-compose up -d --build để build 4 container php, nginx, mysql, mongodb
+ 
+
+
+
+
+*************************Ngày 11 đi thực tập: Tiếp tục công việc ngày hôm qua**************************
+
+
+- Trong thư mục hd-crmv2 ta vào thư mục app/config/ và thêm vào 2 file mới do công ty cung cấp là local.php và parameters_local.php
+- Sau đó ra lại thư mục hd-crmv2 gõ lệnh docker exec -it hd-crmv2_mysql_1 bash để vào mysql
+- Sau khi đã vào mysql gõ lệnh mysql -ucrm -p để đăng nhập vào mysql 
+- Khi đăng nhập thành công gõ lệnh SHOW DATABASES; để kiểm tra có những database ngoài
+- Ta thấy có 2 database là crm với  information_schema
+- Ta dùng lệnh use crm; để chọn crm databases để làm việc
+- Lấy dữ liệu ở file crm-local-min.sql do công ty cung cấp
+- Ta thoát khỏi mysql bằng lệnh exit
+- Đến thư mục hd-crmv2 gõ lệnh cp /C:/Users/PC/Downloads/crm-local-min.sql hs-crmv2_mysql_1:/home để copy file crm-local-min.sql bỏ vào thư mục home trong mysql
+- Vào lại mysql ta chọn databases crm 
+- Gõ lệnh source < home/crm-local-min.sql để import file vào databases
+- Sau khi import xong ta ra lại thư mục hd-crmv2
+- Gõ lệnh docker exec -it hd-crmv2_php_1 bash để vào trong php 
+- Mở this PC vào đường dẫn C:\Users\PC\Bitbucket\hd-crmv2\app\cache\prod\doctrine thêm vào thư mục orm do công ty cung cấp
+- Vào php gõ lệnh compose install cho nó cài Đặt
+- Sau khi cài đặt xong gõ lệnh php app/console cache:clear
+- Rồi lên trình duyệt gõ localhost:8080 để check coi thử đã chạy chưa
 
 
 
