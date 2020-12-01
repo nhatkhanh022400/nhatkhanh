@@ -632,6 +632,28 @@ owners.
 
 
 
+-------------------------------Tuần 4 thực tập---------------------------------
+
+
+
+
+******************Ngày 14 đi thực tập:Tìm hiểu Dockerfile, Docker image, Docker container có mối quan hệ thế nào************************
+
+- Để tạo ra 1 docker container hoàn chỉnh ta cần làm các như sau
+        + Tạo 1 thư mục chứ project đang làm
+        + Tạo 1 Dockerfile bên trong có các lệnh như FROM,RUN, COPY, ADD,....
+        + Sau khi tạo xong Dockerfile ta build docker image sử dụng các lệnh trong Dockerfile để tạo
+        + Sau khi tạo Docker image xong ta khởi chạy docker bằng docker image vừa tạo ta sẽ được docker container của docker image đó
+- Link tham khảo:
+        https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+        https://cuongquach.com/tim-hieu-dockerfile-build-docker-image.html#Dockerfile_la_gi
+        https://codelearn.io/sharing/docker-co-ban-cho-lap-trinh-vien
+        https://blog.cloud365.vn/container/tim-hieu-docker-phan-4/
+        https://blog.cloud-ace.vn/compute/thuc-hanh-co-ban-voi-docker-phan-3-dockerfile-tao-ra-images/
+        https://www.youtube.com/watch?v=9Gf4vRYSkK8&t=929s
+        https://www.youtube.com/watch?v=xtnyU3tg4Nk        
+
+
 
         
                               
