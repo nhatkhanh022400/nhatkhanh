@@ -670,6 +670,76 @@ owners.
         https://www.youtube.com/watch?v=tjyiUPvDFKY&t=126s
         
 
+***************Ngày 16 thực tập: Tìm hiểu CI CD*****************
+
+- CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần. Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể.   
+- Một kịch bản CI bắt đầu bằng việc developer commit code lên repository (github chẳng hạn). Bất kỳ thay đổi nào cũng sẽ trigger một vòng đời CI. Các bước trong một kịch bản CI thường như sau:
+
+        Đầu tiên, developer commit code lên repo.
+        CI server giám sát repo và kiểm tra xem liệu có thay đổi nào trên repo hay không (liên tục, chẳng hạn mỗi phút 1 lần)
+        Ngay khi commit xảy ra, CI server phát hiện repo có thay đổi, nên nó nhận code mới nhất từ repo và sau đó build, chạy unit và integration test
+        CI server sẽ sinh ra các feedback và gửi đến các member của project
+        CI server tiếp tục chờ thay đổi ở repo   
+- Lợi ích của CI 
+        Giảm thiểu rủi ro nhờ việc phát hiện lỗi và fix sớm, tăng chất lượng phần mềm nhờ việc tự động test và inspect (đây cũng là một trong những lợi ích của CI, code được inspect tự động dựa theo config đã cài đặt, đảm bảo coding style, chẳng hạn một function chỉ được dài không quá 10 dòng code ...)
+        Giảm thiểu những quy trình thủ công lặp đi lặp lại (build css, js, migrate, test...), thay vì đó là build tự động, chạy test tự động
+        Sinh ra phần mềm có thể deploy ở bất kì thời gian, địa điểm
+
+- CD là Continuous Delivery. Nó hoạt động bằng cách triển khai tất cả thay đổi về code (đã được build và test) đến môi trường testing hoặc staging. Continuous Delivery cho phép developer tự động hóa phần testing bên cạnh việc sử dụng unit test, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai cho khách hàng (production). Những bài test này bao gồm UI testing, load testing, integration testing, API testing... Nó tự động hoàn toàn quy trình release phần mềm.
+- Continuous Delivery được thực hiện bằng cách sử dụng Deployment Pipeline
+        Deployment Pipeline chia quy trình chuyển giao phần mềm thành các giai đoạn. Mỗi giai đoạn có mục tiêu xác minh chất lượng của các tính năng mới từ một góc độ khác nhau để kiểm định chức năng và tránh lỗi ảnh hưởng đến người dùng. Pipeline sẽ cung cấp phản hồi cho nhóm trong việc cung cấp tính năng mới. Ở góc độ trừu tượng hơn, deployment pipeline là quy trình để chuyển phần mềm từ version control đến tay người dùng. Mỗi thay đổi đến phần mềm sẽ đi qua một quy trình phức tạp để được phát hành.
+        Bình thường sẽ có 5 giai đoạn: Delivery team, Version control, Build and Unit tests, Automated Acceptance tests, Release
+- Vậy nếu kết hợp CI và CD lại ta sẽ được CI/CD là CI/CD là một bộ đôi công việc, bao gồm CI (Continuous Integration) và CD (Continuous Delivery), ý nói là quá trình tích hợp (integration) thường xuyên, nhanh chóng hơn khi code cũng như thường xuyên cập nhật phiên bản mới (delivery).
+- Sau đây là Quy trình CI/CD thông thường
+        + Bước 1: [Manual] Khởi tạo repository và có branch default là master và dev. Cài đặt trên Gitlab 9.
+        + Bước 2: [Manual] Trừ owner ra, thì các coder sẽ push code tính năng lên branch dev
+        + Bước 3: [Auto] Hệ thống tự động thực hiện test source code, nếu PASS thì sẽ deploy tự động (rsync) code lên server beta.
+        + Bước 4: [Manual] Tester/QA sẽ vào hệ thống beta để làm UAT (User Acceptance Testing) và confirm là mọi thứ OK.
+        + Bước 5: [Manual] Coder hoặc owner sẽ vào tạo Merge Request, và merge từ branch dev sang branch master.
+        + Bước 6: [Manual] Owner sẽ accept merge request.
+        + Bước 7: [Auto] Hệ thống sẽ tự động thực hiện test source code, nếu PASS sẽ enable tính năng cho phép deploy lên production server.
+        + Bước 8: [Manual] Owner review là merge request OK, test OK. Tiến hành nhấn nút để deploy các thay đổi lên môi trường production.
+        + Bước 9: [Manual] Tester/QA sẽ vào hệ thống production để làm UAT và confirm mọi thứ OK. Nếu không OK, Owner có thể nhấn nút Deploy phiên bản master trước đó để rollback hệ thống về trạng thái stable trước đó.
+        + Bước 10: [Manual] Thắp nhang và hy vọng khách hàng không chửi rủa hoặc email complain.
+- Trong quá trình CI/CD người ta thường dùng circle ci để build project và dùng gitlab để quản lý sourcecode
+        Bản chất Circle CI là sử dụng docker, trong cấu hình Circle CI ta sẽ chỉ định các docker image sẽ sử dụng và các job, trong các job lại có các step, trong các step là cụ thể các command. Ngoài ra còn có cấu hình filter giúp ta linh hoạt điều chỉnh sao cho chỉ run các job khi có merge/push vào 1 số branch nhất định vân vân.    
+        Về Gitlab không cần nói dài dòng, cũng như một hệ thống git thông thường (như github..), bạn có thể tìm hiểu thêm về git và Gitlab để team có thể cùng làm việc và quản lý sourcecode trên Gitlab.    
+- Mô tả quá trình run 1 job trên Circle CI:
+
+        + Developer chỉ cần push hoặc merge vào 1 branch, Circle CI tự động biết event đó và khởi động lên job đã được cài đặt tương ứng.
+        + Ban đầu Circle CI pull docker image về và run lên trên môi trường cloud của nó
+        + Tiếp theo nó chạy các step đã được cài đặt trong docker container, thông thường step đầu tiên luôn là checkout tức là git checkout lấy source về (mặc định lưu trong thư mục ~/project)
+        + Các step tiếp theo được chạy tùy vào độ sáng tạo của bạn, ví dụ job để build thì thường là npm install rồi npm run abcxyz hay job để deploy thì có thể là aws s3 sync hay serverless deploy...
+        + Sau khi tất cả các step đã chạy xong, job kết thúc. Nếu exit code của job là error thì mặc định ta sẽ nhận được mail thông báo failed nữa.
+
+- Những ưa điểm và nhược điểm của CI/CD
+        + Ưa điểm:
+                Tốc độ khai triển nhanh hơn 
+                Kiểm tra và phân tích nhanh hơn
+                Thay đổi mã nhỏ hơn
+                Cách ly lỗi tốt hơn và nhanh hơn
+                Tăng độ bao phủ mã
+                Tự động triển khai để sản xuất 
+                Không bao giờ gửi mã bị hỏng
+                Quá trình được lặp lại
+                Thời gian giải quyết nhanh hơn
+                Backlog nhỏ hơn
+                Cải thiện sự hài lòng của khách hàng
+                Rất nhiều công cụ nguồn mở sẵn
+        + Nhược điểm:
+                Bộ kỹ năm mới nên yêu cầu các nhà phát triển phải học liên tục
+                Quá trình tự động hóa không dễ một chút nào
+                Đòi hổi nhà đầu tư trả trước đầu tư lớn 
+                Các hệ thống kế thừa hiếm khi hỗ trợ CI/CD
+                Mức độ đòi hỏi yêu cầu cao trong quá trình đảm bảo chất lượng 
+- Link tham khảo:
+        + https://topdev.vn/blog/trien-khai-ci-cd-voi-gitlab/
+        + https://viblo.asia/p/ci-cd-va-devops-07LKXYXDZV4
+        + https://kipalog.com/posts/Nhung-dieu-ban-can-biet-ve-mo-hinh-CI-CD-va-trien-khai-co-ban-voi-CircleCI
+        + https://kipalog.com/posts/Gioi-thieu-CI-va-ap-dung-thuc-te-tool-Circle-CI 
+        + https://viblo.asia/p/tim-hieu-ve-jenkins-va-cicd-eW65GbDxlDO  
+        + https://timviec365.vn/blog/ci-cd-la-gi-new8173.html#uu-diem-cua-cicd-la-gi 
+            
 
 
         
