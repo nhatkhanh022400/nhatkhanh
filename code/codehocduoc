@@ -739,6 +739,54 @@ owners.
         + https://kipalog.com/posts/Gioi-thieu-CI-va-ap-dung-thuc-te-tool-Circle-CI 
         + https://viblo.asia/p/tim-hieu-ve-jenkins-va-cicd-eW65GbDxlDO  
         + https://timviec365.vn/blog/ci-cd-la-gi-new8173.html#uu-diem-cua-cicd-la-gi 
+
+
+
+****************************Ngày 17 thực tập: Tạo 1 Github Pages bằng CI/CD***************************
+
+- Tạo 1 githubpage bằng github
+- Đầu tiên ta tạo thêm 1 repository trong github để chứa mã nguồn
+- Tạo một file README để mô tả sơ qua về Repository 
+- Tạo một file README để mô tả sơ qua về Repository của bạn.
+- Tạo file “index.html”.
+- Nhập nội dung file - vì file có phần mở rộng là html, nên nội dung file sẽ được viết bằng ngôn ngữ html.ở đây mới khởi đầu nên chỉ gõ hello world thôi.
+- Sau khi làm xong nhấn vào setting trên thanh công cụ.
+- Đổi tên repository thành định dạng như sau “any-name.github.io”. Trong bài viết này mình để là “huytm.github.io”.
+- Kéo xuống một chút bạn sẽ thấy thông báo như sau là thành công rồi đó nếu nó hiện Your side is published at https://huytm.github.io/
+- Truy cập url mà đã lấy được để xem thành quả github page sẽ hiện chữ hello world
+
+
+
+
+
+
+
+
+
+ 
+
+ ------------------------------------Tuần 5 thực tập---------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+ **************************Ngày 18 đi thực tập **************************************************
+
+
+
+
+
+
+
             
 
 
