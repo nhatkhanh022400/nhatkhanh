@@ -754,6 +754,8 @@ owners.
 - Đổi tên repository thành định dạng như sau “any-name.github.io”. Trong bài viết này mình để là “huytm.github.io”.
 - Kéo xuống một chút bạn sẽ thấy thông báo như sau là thành công rồi đó nếu nó hiện Your side is published at https://huytm.github.io/
 - Truy cập url mà đã lấy được để xem thành quả github page sẽ hiện chữ hello world
+- Link tham khaor:
+        + https://blog.cloud365.vn/other/huong-dan-su-dung-Jekyll-Part1-Github-pages/
 
 
 
@@ -779,7 +781,55 @@ owners.
 
 
 
- **************************Ngày 18 đi thực tập **************************************************
+ **************************Ngày 18 đi thực tập: Tạo 1 website bằng hugo ********************************
+
+ - Cài hugo bằng lệnh apt-get install hugo
+ - Sau đó di chuyển đến thư mục cần làm ở đây mình làm trong thư mục staticweb với đường dẫn /githubpage/staticweb
+ - Sau khi đã vào thư mục ta khởi chạy hugo bằng lệnh hugo new site quickstart 
+ - Sau khi khởi chạy xong ta thấy hugo tạo ra thư mục quickstart bên trong thư mục staticweb
+ - Vào thư mục quickstart bằng lệnh cd quickstart
+ - Gõ lệnh git init để khởi tạo kho lưu trữ Git trong /root/githubpage/staticweb/quickstart/.git/
+ - Tiếp theo gõ lệnh  git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke để clone source github vào
+ - Gõ lệnh  echo 'theme = "ananke"' >> config.toml để  đưa các tài liểu vào file config.toml
+ - Trong thư mục quickstart ta có 7 thư mục gồm : archetypes,content,data,layouts,resources,static,themes và 1 file config.toml
+ - Gõ lệnh hugo new posts/my-first-post.md sẽ hiện đường dẫn /root/githubpage/staticweb/quickstart/content/posts/my-first-post.md created
+ - Theo đường dẫn ta đến file my-first-post.md và bên trong file này ta gõ 
+        title: "My Hugo"
+        date: 2020-12-08T14:59:25+07:00
+        draft: true
+- Sau khi xong rồi ta khởi chạy hugo server để import lên localhost bằng lệnh hugo server -D
+- Sau khi chạy sẽ có 1 bảng hiện lên
+                           | EN  
+        -------------------+-----
+        Pages            | 10  
+        Paginator pages  |  0  
+        Non-page files   |  0  
+        Static files     |  6  
+        Processed images |  0  
+        Aliases          |  1  
+        Sitemaps         |  1  
+        Cleaned          |  0  
+
+        Built in 25 ms
+        Watching for changes in /root/githubpage/staticweb/quickstart/{archetypes,content,data,layouts,static,themes}
+        Watching for config changes in /root/githubpage/staticweb/quickstart/config.toml
+        Environment: "development"
+        Serving pages from memory
+        Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+        Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+        Press Ctrl+C to stop
+- Sau đó lên trình duyệt web gõ localhost:1313 ta ra được hugo ta vừa tạo
+- Link tham khảo : https://gohugo.io/getting-started/quick-start/
+
+
+
+
+*************************Ngày 19 đi thực tập****************************
+
+
+
+
+ - 
 
 
 
