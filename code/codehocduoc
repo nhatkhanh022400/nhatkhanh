@@ -824,7 +824,25 @@ owners.
 
 
 
-*************************Ngày 19 đi thực tập****************************
+*************************Ngày 19 đi thực tập: Import Hugo vừa tạo vào Github Pages****************************
+
+- Tạo 1 repo trên github tên là nhatkhanh022400.github.io
+- Vào thư mục vừa tạo hugo
+- Trong thư mục này ta gõ lệnh git init: để khởi tạo git
+- Gõ lệnh git remote add origin https://github.com/nhatkhanh022400/nhatkhanh022400.github.io.git: để liên kết repo nguồn tạo trên github với repo trên máy.
+- Gõ lệnh git add . và git commit -m'update': để check lại những thứ trong hugo
+- Gõ lệnh git push -u origin master : để push trên branch master
+- Gõ lệnh git submodule add https://github.com/nhatkhanh022400/nhatkhanh022400.github.io public : để Submodule cho phép chúng ta nhúng một repo vào trong repo chính của mình
+- Giờ lên github ta sẽ thấy các dữ liệu trong hugo đã được chuyển lên branch master trong github
+- Giờ ta tạo 1 thư mục bất kỳ rồi gõ lệnh git init và git clone https://github.com/nhatkhanh022400/nhatkhanh022400.github.io để kéo source treeb github về
+- Vào trong thư mục nhatkhanh022400.github.io trong thư mục đó gõ code . để mở visual code
+- Giờ ta gõ git branch -r để hiện tất cả các branch có trong github
+- Gõ lệnh git checkout master để vào branch master
+- Gõ lệnh git pull origin master --allow-unrelated-histories để  pull tất cả những gì có trong branch master lên branch origin main
+- Lên lại github vào phần action tạo 1 github action tên hugo.yml
+- Link tham khảo : https://lab.skywirex.com/dua-site-tao-boi-hugo-len-github-com/
+
+
 
 
 
