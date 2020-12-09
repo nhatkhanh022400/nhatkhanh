@@ -739,6 +739,137 @@ owners.
         + https://kipalog.com/posts/Gioi-thieu-CI-va-ap-dung-thuc-te-tool-Circle-CI 
         + https://viblo.asia/p/tim-hieu-ve-jenkins-va-cicd-eW65GbDxlDO  
         + https://timviec365.vn/blog/ci-cd-la-gi-new8173.html#uu-diem-cua-cicd-la-gi 
+
+
+
+
+
+
+****************************Ngày 17 thực tập: Tạo 1 Github Pages bằng CI/CD***************************
+
+- Tạo 1 githubpage bằng github
+- Đầu tiên ta tạo thêm 1 repository trong github để chứa mã nguồn
+- Tạo một file README để mô tả sơ qua về Repository 
+- Tạo một file README để mô tả sơ qua về Repository của bạn.
+- Tạo file “index.html”.
+- Nhập nội dung file - vì file có phần mở rộng là html, nên nội dung file sẽ được viết bằng ngôn ngữ html.ở đây mới khởi đầu nên chỉ gõ hello world thôi.
+- Sau khi làm xong nhấn vào setting trên thanh công cụ.
+- Đổi tên repository thành định dạng như sau “any-name.github.io”. Trong bài viết này mình để là “huytm.github.io”.
+- Kéo xuống một chút bạn sẽ thấy thông báo như sau là thành công rồi đó nếu nó hiện Your side is published at https://huytm.github.io/
+- Truy cập url mà đã lấy được để xem thành quả github page sẽ hiện chữ hello world
+- Link tham khaor:
+        + https://blog.cloud365.vn/other/huong-dan-su-dung-Jekyll-Part1-Github-pages/
+
+
+
+
+
+
+
+
+
+ 
+
+ ------------------------------------Tuần 5 thực tập---------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+ **************************Ngày 18 đi thực tập: Tạo 1 website bằng hugo ********************************
+
+ - Cài hugo bằng lệnh apt-get install hugo
+ - Sau đó di chuyển đến thư mục cần làm ở đây mình làm trong thư mục staticweb với đường dẫn /githubpage/staticweb
+ - Sau khi đã vào thư mục ta khởi chạy hugo bằng lệnh hugo new site quickstart 
+ - Sau khi khởi chạy xong ta thấy hugo tạo ra thư mục quickstart bên trong thư mục staticweb
+ - Vào thư mục quickstart bằng lệnh cd quickstart
+ - Gõ lệnh git init để khởi tạo kho lưu trữ Git trong /root/githubpage/staticweb/quickstart/.git/
+ - Tiếp theo gõ lệnh  git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke để clone source github vào
+ - Gõ lệnh  echo 'theme = "ananke"' >> config.toml để  đưa các tài liểu vào file config.toml
+ - Trong thư mục quickstart ta có 7 thư mục gồm : archetypes,content,data,layouts,resources,static,themes và 1 file config.toml
+ - Gõ lệnh hugo new posts/my-first-post.md sẽ hiện đường dẫn /root/githubpage/staticweb/quickstart/content/posts/my-first-post.md created
+ - Theo đường dẫn ta đến file my-first-post.md và bên trong file này ta gõ 
+        title: "My Hugo"
+        date: 2020-12-08T14:59:25+07:00
+        draft: true
+- Sau khi xong rồi ta khởi chạy hugo server để import lên localhost bằng lệnh hugo server -D
+- Sau khi chạy sẽ có 1 bảng hiện lên
+                           | EN  
+        -------------------+-----
+        Pages            | 10  
+        Paginator pages  |  0  
+        Non-page files   |  0  
+        Static files     |  6  
+        Processed images |  0  
+        Aliases          |  1  
+        Sitemaps         |  1  
+        Cleaned          |  0  
+
+        Built in 25 ms
+        Watching for changes in /root/githubpage/staticweb/quickstart/{archetypes,content,data,layouts,static,themes}
+        Watching for config changes in /root/githubpage/staticweb/quickstart/config.toml
+        Environment: "development"
+        Serving pages from memory
+        Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+        Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+        Press Ctrl+C to stop
+- Sau đó lên trình duyệt web gõ localhost:1313 ta ra được hugo ta vừa tạo
+- Link tham khảo : https://gohugo.io/getting-started/quick-start/
+
+
+
+
+*************************Ngày 19 đi thực tập: Import Hugo vừa tạo vào Github Pages****************************
+
+- Tạo 1 repo trên github tên là nhatkhanh022400.github.io
+- Vào thư mục vừa tạo hugo
+- Trong thư mục này ta gõ lệnh git init: để khởi tạo git
+- Gõ lệnh git remote add origin https://github.com/nhatkhanh022400/nhatkhanh022400.github.io.git: để liên kết repo nguồn tạo trên github với repo trên máy.
+- Gõ lệnh git add . và git commit -m'update': để check lại những thứ trong hugo
+- Gõ lệnh git push -u origin master : để push trên branch master
+- Gõ lệnh git submodule add https://github.com/nhatkhanh022400/nhatkhanh022400.github.io public : để Submodule cho phép chúng ta nhúng một repo vào trong repo chính của mình
+- Giờ lên github ta sẽ thấy các dữ liệu trong hugo đã được chuyển lên branch master trong github
+- Giờ ta tạo 1 thư mục bất kỳ rồi gõ lệnh git init và git clone https://github.com/nhatkhanh022400/nhatkhanh022400.github.io để kéo source treeb github về
+- Vào trong thư mục nhatkhanh022400.github.io trong thư mục đó gõ code . để mở visual code
+- Giờ ta gõ git branch -r để hiện tất cả các branch có trong github
+- Gõ lệnh git checkout master để vào branch master
+- Gõ lệnh git pull origin master --allow-unrelated-histories để  pull tất cả những gì có trong branch master lên branch origin main
+- Lên lại github vào phần action tạo 1 github action tên hugo.yml
+- Link tham khảo : https://lab.skywirex.com/dua-site-tao-boi-hugo-len-github-com/
+
+
+
+
+
+
+ - 
+
+
+
+
+
+
+
+            
+
+
+        
+                              
+                            
+
+
+
+
+
+
             
 
 
