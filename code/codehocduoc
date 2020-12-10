@@ -958,6 +958,7 @@ jobs:
 - Gõ git add đường dẫn thay đổi
 - Gõ git commit -m'tên muốn đặt cho thay đổi'
 - Gõ git push để đưa lên github
+- Lệnh git push origin -d tên branch giúp xóa 1 branch bất kỳ trên github
 - Lên trình duyệt gõ nhatkhanh022400.github.io để thấy những thay đổi được update lên githubpage
 
 
