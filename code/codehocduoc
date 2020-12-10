@@ -848,6 +848,121 @@ owners.
 
 
 
+********************Ngày 20 đi thực tập: Từ Github build thành 1 Github Pages********************************
+
+- Trong hugo.yml ta thêm các option sau:
+
+
+
+
+name: github pages
+
+on:
+  push:
+    branches:
+      - main  # Set a branch name to trigger deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.68.3'
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
+
+- Sau khi thêm hugo.yml ta vào setting kéo xuống phần github page chỉnh branch từ main thành gh-pages
+- Sau đó lên trang web nhatkhanh.github.io để chạy thử github pages 
+- Trong phần này có phát sinh nhiều lỗi như chọn không đúng branch để chạy hoặc để các file trong hugo không đúng branch cần làm dẫn đến khi khởi chạy github pages không được
+- Lưu ý thêm trong hướng dẫn có nói về branch master nhưng những cái gì có về master phải chuyển thành main hết vì github giờ đã đổi tên master thành main
+
+
+
+
+***************************Ngày 21 đi thực tập : Làm github pages trên local***************************
+
+
+
+- Đầu tiên do đang ở quyền root nên ta nên ta chuyển về quyền user cho dễ thực hiện
+- Sau khi ra quyền user ta thực hiện copy tất cả các thư mục đã làm trong root bỏ ra user bằng lệnh sudo cp -r /root/githubpage .
+- Lệnh trên có nghĩa là copy tất cả thư mực githubpage trong root bỏ ra ngoài thư mục hiện đang đứng
+- Sau khi copy xong gõ lệnh ls -l để kiểm tra quyền cấp phép ta thấy tất cả những gì copy ra từ githubpage vẫn đang ở quyền root
+- Vì vậy ta cần phải chuyển từ quyền root sang quyền user để làm việc ở đây user tên là nhatkhanh@KhanhLapTop
+- Ta chuyển từ root sang user bằng lệnh sudo chown -R nhatkhanh:nhatkhanh githubpage nếu không có -R thì chỉ mình githubpage được chuyển còn nếu thêm -R thì tất cả các file có trong githubpage đều được chuyển
+- Sau ta truy cập vào thư mục dự án ở đây là thư mucj quickstart theo đường dẫn /home/nhatkhanh/githubpage/staticweb/quickstart
+- Sau đó gõ lệnh hugo để build githubpages ta thấy nó hiện 1 bảng như sau:
+                        | EN  
+        -------------------+-----
+        Pages            | 10  
+        Paginator pages  |  0  
+        Non-page files   |  0  
+        Static files     |  6  
+        Processed images |  0  
+        Aliases          |  1  
+        Sitemaps         |  1  
+        Cleaned          |  0  
+
+        Total in 41 ms
+- Xuất hiện bảng này có nghĩa là nó đã build thành công nhưng trong github action có ghi là build trên thư mục nên ta cần gõ lệnh hugo -b file://$(pwd)/public để build trong thư mục public
+- Sau khi gõ xong nó sẽ hiện 1 bảng
+                           | EN  
+        -------------------+-----
+          Pages            | 10  
+          Paginator pages  |  0  
+          Non-page files   |  0  
+          Static files     |  6  
+          Processed images |  0  
+          Aliases          |  1  
+          Sitemaps         |  1  
+          Cleaned          |  0  
+
+        Total in 41 ms
+- Vậy là ta đã build thành công 1 githubpage
+- Gõ code . để mở visual code
+- Trong visual code gõ touch .gitignore để tạo file .gitignore
+- Trong file .gitignore ta gõ public/
+- Vào content/posts/my-first-post.md bổ sung thêm nội dung
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper purus elit, nec molestie purus sollicitudin et. Suspendisse in tortor eget metus suscipit dignissim. Integer tincidunt mi mollis, scelerisque nisl non, ultrices justo. Vestibulum aliquam sem nulla, quis consequat est scelerisque a. Vivamus at tincidunt leo. Sed et mattis magna. Maecenas suscipit, enim eget hendrerit imperdiet, mi risus elementum arcu, quis ornare felis ex vel erat.
+
+        Etiam sit amet diam diam. Suspendisse potenti. Nulla ut tincidunt sem, id porta ante. Nam ligula nibh, tempor vel magna sed, dictum vehicula leo. Vivamus viverra condimentum quam nec finibus. Fusce congue in nulla vitae finibus. Proin posuere tincidunt turpis, non mattis enim consectetur eu. In eget posuere elit, vel tincidunt lectus. Sed nec porttitor turpis. Proin convallis volutpat elit eu sagittis. Nam nisl risus, euismod sit amet semper pretium, aliquam vitae lorem. Vestibulum venenatis ultricies enim, bibendum rutrum lacus. Mauris leo quam, consectetur eget interdum ut, porta vitae felis. Cras nec dapibus risus. Duis in finibus urna, at consequat elit.
+
+        Morbi mollis feugiat eros in egestas. Nulla risus felis, porta vel dapibus eu, imperdiet a odio. Praesent posuere enim id nunc commodo iaculis. Nunc auctor nisl ut tellus pharetra, eu molestie sapien laoreet. Pellentesque convallis in nisi eget finibus. Nullam et arcu vel erat imperdiet accumsan id hendrerit libero. Donec non dui laoreet, fermentum quam finibus, convallis tortor. Quisque dignissim non lectus tincidunt pharetra. Duis ullamcorper vulputate elementum.
+
+        Nullam in sapien placerat, accumsan magna tincidunt, vehicula metus. Aliquam fermentum vel ipsum nec pharetra. Maecenas vestibulum sed lorem quis hendrerit. Mauris laoreet dolor quis erat sollicitudin consequat. Cras pulvinar ornare erat, sed efficitur arcu. Pellentesque tincidunt hendrerit nisl sed egestas. Donec non leo a ligula consectetur lacinia ut nec lectus. Donec et lorem mattis nisi laoreet bibendum et sed ligula. Nam ac nibh id arcu placerat scelerisque at sit amet metus. Mauris lobortis mauris lectus, ornare venenatis arcu lobortis ac.
+
+        Etiam lacinia purus sit amet nisl pellentesque congue. Ut libero elit, pulvinar et risus a, porta laoreet purus. Nullam dolor tortor, tempus imperdiet nisl non, pharetra hendrerit felis. Vestibulum ut mattis dui. Integer eget urna id sem laoreet aliquet non nec neque. Duis non vestibulum risus. Nulla in lectus in quam semper iaculis in sit amet urna. Vestibulum venenatis tellus ut nisi semper, non tincidunt quam laoreet. Integer in est ullamcorper, mattis velit sed, facilisis turpis. Pellentesque venenatis ante ut faucibus auctor. Duis a urna id ex facilisis interdum eget quis lorem. Sed mi massa, semper vel faucibus id, molestie vitae dui. Mauris fermentum sit amet urna nec molestie. Morbi nec nunc quis mauris ultrices pulvinar vitae eget nunc. Mauris ullamcorper nunc eget dolor tristique pretium.
+
+- Lệnh git reset --hard là reset những cài đặt git lại
+- Sau khi làm xong gõ lệnh hugo -b file://$(pwd)/public để build lại những sửa chữa
+- Sau đó gõ git status coi những thay đổi
+- Gõ git add đường dẫn thay đổi
+- Gõ git commit -m'tên muốn đặt cho thay đổi'
+- Gõ git push để đưa lên github
+- Lên trình duyệt gõ nhatkhanh022400.github.io để thấy những thay đổi được update lên githubpage
+
+
+
+
+
+
+
+
+
 
 
  - 
