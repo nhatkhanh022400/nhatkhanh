@@ -1018,15 +1018,15 @@ jobs:
 - Thông thường khi 1 doanh nghiệp áp dụng CI/CD vào 1 dự áp của họ ta thường thấy có 6 bước 
         + Lint code
         + Build image
-        + Unit test
+        + Test code
         + Push image
         + Continuous Delivery
         + Continuous Deployment
-- Ngoài 6 bước này ta vẫn có thẻe thêm các bước khác vào do trong quá trình làm có nhiều phát sinh        
+- Ngoài 6 bước này ta vẫn có thể thêm các bước khác vào do trong quá trình làm có nhiều phát sinh        
 - Đầu tiên là về Lint code ta hiểu đơn giản đây là quá trình mà thành viên trong dự án có thể làm code của mình sau đó add code và commit nó lên branch của repositories 
   team(ở đây có thể đưa lên github,gitlab,bitbucket.....)
 - Sau khi commit lên repository rồi ta sẽ đóng gói các source code của từng thành viên để tiến hành unit test quá trình này gọi là build images
-- Tiếp theo là unit test đúng với tên gọi của mình đây là 1 quá trình kiểm tra thử coi những source code được commit lên có vấn đề gì không     
+- Tiếp theo là Test code đúng với tên gọi của mình đây là 1 quá trình kiểm tra thử coi những source code được commit lên có vấn đề gì không
         + Những vẫn đề có thể phát sinh trong lúc các thành viên commit lên git repo như
         ~ Vấn đề đầu tiên team gặp phải là conflict code. Team dành nhiều thời gian để giải quyết các conflict giữa việc đẩy code của các thành viên làm như thế nào 
           cho code chạy đủ
@@ -1037,6 +1037,17 @@ jobs:
         + Nêu ta input vào source code 1 phép tính đơn giản như 1 + 1 thì chắc chắn kết quả output trả ra bằng 2 thì mới được coi là quá trình unit test thành công
         + Trong quá trình unit test CI server sẽ gửi các feedback lại cho các developer để họ có thể biết được những gì đang diễn ra
         + Nếu trong quas trình test xảy ra lỗi thì developer phải build lại để fix lỗi 
+- Đầu tiên unit test. Đây là phần test được chạy đầu tiên, thường là bởi các lập trình viên, dùng để test các function hoặc class. Khi những function hoặc class này
+  cần truy cập đến các tài nguyên bên ngoài, thì những tài nguyên đó thường được fake như là các “mock” hay “stub”.
+- Tiếp theo là Integration testsl à bước tiếp theo từ unit tests. Integration tests đảm bảo các module tạo nên ứng dụng hoạt động mượt mà với nhau. Lý tưởng nhất 
+  là integration tests được chạy trong môi trường tương tự với môi trường production. 
+- Sau cùng là System tests. Test toàn bộ hệ thống trong một môi trường càng giống với môi trường production càng tốt. 
+- Ngoài việc có một bộ tests chất lượng, thì môi trường chúng chạy trên đó cũng quan trọng không kém. Những yếu tố sau đây là rất cần thiết:
+        + Môi trường sạch sẽ. Sạch sẽ ở đây nghĩa là môi trường được reset trước mỗi lần chạy test để đảm bảo các lần test không ảnh hưởng lẫn nhau. Các công nghệ như virtual
+          machine hay snapshot có thể giúp thực hiện điều này.
+        + Môi trường tương đồng. Môi trường chạy test phải gần giống với môi trường production.
+        + Trường hợp lý tưởng thì môi trường có thể được tạo lập và huỷ bỏ nhanh chóng theo yêu cầu. Đưa những môi trường chạy code lên Cloud là một ý tưởng hay trong trường
+          hợp này.      
 - Sau khi đóng gói và unit test tất cả những source code cần thêm vào ta sẽ đẩy những source đó lên git repository bước này được gọi là push image
 - Sau khi đã đưa lên việc tiếp theo sẽ là deploy những source code vừa đưa lên đó
 - Để deploy được ta thực 2 bước là Continuous Delivery và Continuous Deployment, hai bước này chính là CD
@@ -1047,9 +1058,45 @@ jobs:
         + Tiếp theo là Continuous Deployment là  giúp việc deploy ứng dụng có thể được diễn ra trong bất cứ thời điểm nào và sau đó thậm chí là tự động release một
           phiên bản mới trên môi trường test hoặc production nếu như bản build (gồm các mã lệnh được bạn gửi lên server) của bạn vượt qua được tất cả các test case.
         + Ở đây có thể hiểu là bước tiếp theo của Continuous Delivery là deploy luôn vào production
+- Khi production đã hoàn thiện, tiếp theo là giai đoạn triển khai thực tế. Việc kiểm tra sản phẩm sẽ không dừng lại ở giai đoạn này. Chúng ta vẫn sẽ nhận được thông báo 
+  lỗi ở bất kỳ giai đoạn nào qua DevOps pipeline cho đến khi nó được xử lý đúng
+- Trong môi trường sản xuất, khi sản phẩm được chuyển giao và triển khai thành công. Tiếp theo bắt đầu quy trình cải tiến sản phẩm theo nhu cầu người dùng.
+- Để đảm bảo sản phẩm hoạt động ổn định và thu thập thông tin hữu ích để cải tiến, chúng tôi tiếp tục theo dõi, gửi phản hồi vào DevOps pipeline.
+- Chính vòng lặp vô hạn này đã mang đến cho DevOps sự trực quan vô hạn
+- Các công cụ CI/CD
+        + Jenkins
+                ~ Nhắc tới DevOps chắc chắn sẽ luôn đề cập đến Jenkins. Là một phần mềm tự động hóa, Jenkins cung cấp cho người dùng một công cụ mạnh mẽ để xây dựng,
+                  thử nghiệm và triển khai sản phẩm. Công cụ nguồn mở này còn có nhiều tiện ích bổ trợ để lựa chọn, làm cho nó dễ dàng phù hợp với hầu hết mọi hoạt động.
+                ~ Ở đây chúng ta đang tập trung vào các dự án mã nguồn mở, nên sẽ phải nhắc đến Jenkins với sự hỗ trợ từ Apache Maven. Một công cụ quản lý dự án được 
+                  sử dụng nhiều bởi Java developer.
+                ~ Với sự hậu thuẫn từ các đại gia công nghệ như Microsoft, Redhat (hiện thuộc sở hữu của IBM) và CloudBees, Jenkins là một công cụ hữu ích hàng đầu 
+                  cho cộng đồng mã nguồn mở và hiện đang được sử dụng miễn phí.
+        + CircleCI
+                ~ Công cụ CI này giúp người dùng quản lý mã của họ từ thời điểm bắt đầu đến khi kết thúc trong nhiều môi trường khác nhau. CircleCI cho phép các developer 
+                  tạo ra Workflows để kiểm soát tốt hơn pipeline của họ. Cùng với tích hợp VCS, kiểm tra tự động và thông báo khi xây dựng bị lỗi.
+                ~ Với các tùy chọn cho SaaS hoặc tự lưu trữ on-prem, CircleCI cung cấp một giải pháp mạnh mẽ giúp tự động hóa DevOps pipeline của bạn. Tính năng Orbs 
+                  cùng với các nhà cung cấp dịch vụ thứ 3 cũng được ra mắt. Để đơn giản hóa quá trình tích hợp các dịch vụ bổ sung như giám sát các lỗ hổng nguồn mở
+        + Travis CI
+                ~ Dịch vụ CI phổ biến này được xây dựng dành cho người dùng GitHub. Được yêu thích để phục vụ cho việc thử nghiệm các dự án nguồn mở trở thành cinch. 
+                  Travis CI giúp dễ dàng kiểm soát testing các pull request. Được viết bằng Ruby, Travis CI đang hiện có dưới dạng dịch vụ SaaS.
+                ~ Mặc dù họ cung cấp dịch vụ miễn phí để làm việc với các dự án có nguồn mở, nhưng sẽ có một tùy chọn chi phí để sử dụng chúng cho các dự án theo yêu 
+                  cầu nếu cần. Nếu bạn chủ yếu làm việc trong môi trường GitHub, thì đây là một lựa chọn tốt để bắt đầu
+        + Bitbucket
+                ~ Nổi tiếng từ lâu với các dịch vụ Git, Bitbucket nhanh chóng nổi tiếng là một sản phẩm CD cung cấp cho người dùng các tùy chọn on-prem mạnh mẽ.
+                ~ Các tính năng như quản lý quyền truy cập, cung cấp cho quản trị viên các điều khiển hữu ích. Để đảm bảo chỉ những người cho phép mới có thể thay đổi
+                  mã của bạn. Gần đây, họ cũng đã giới thiệu Pipes, một cách mới giúp dễ dàng tích hợp các dịch vụ của bên thứ 3 vào môi trường Bitbucket của bạn. Và tránh 
+                  những rắc rối thông thường khi sửa đổi cấu hình API.
+        + CloudBees
+                ~ Danh sách các công cụ CI/CD pipeline này không thể hoàn thành mà không có tên một trong những công cụ đi đầu của lĩnh vực này.
+                ~ Giải pháp CD của CloudBees giúp dễ dàng tích hợp với Kubernetes và Docker. Cung cấp các điều khiển bảo mật và quản trị. Hiện đang có sẵn cho SaaS hoặc 
+                  triển khai on-prem. Và có các công cụ cải thiện khả năng hiển thị trên sản phẩm trong quy trình pipeline.
+        + Docker
+                ~ Về cơ bản công cụ này như container. Công nghệ đã nổi lên trong vài năm qua vì khả năng di chuyển phần mềm liên tục từ môi trường này sang môi trường 
+                  thử nghiệm khác. Và giải quyết được hầu hết các vấn đề tương thích mà chúng ta thường gặp phải.
+                ~ Với Docker, thật dễ dàng để làm cho hình ảnh mới, nhẹ hoặc chạy chúng để thử nghiệm. Nếu bạn sử dụng Docker, thì công cụ Kubernetes – mã nguồn mở Google 
+                  là rất cần thiết để quản lý container của bạn.         
+
         
-
-
                                 
                             
 
