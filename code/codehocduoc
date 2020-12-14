@@ -1017,14 +1017,15 @@ jobs:
 - Như những gì bữa giờ được thực hành làm ta cos thể tạo được 1 githubpage trên server nhưng trong thực tế việc áp dụng CI/CD vào doanh nghiệp nó rất khác biệt
 - Thông thường khi 1 doanh nghiệp áp dụng CI/CD vào 1 dự áp của họ ta thường thấy có 6 bước 
         + Lint code
-        + Unit test
         + Build image
+        + Unit test
         + Push image
         + Continuous Delivery
         + Continuous Deployment
 - Ngoài 6 bước này ta vẫn có thẻe thêm các bước khác vào do trong quá trình làm có nhiều phát sinh        
 - Đầu tiên là về Lint code ta hiểu đơn giản đây là quá trình mà thành viên trong dự án có thể làm code của mình sau đó add code và commit nó nên git repositories
   (ở đây có thể đưa lên github,gitlab,bitbucket.....)
+- Sau khi commit lên repository rồi ta sẽ đóng gói các source code của từng thành viên để tiến hành unit test quá trình này gọi là build images
 - Tiếp theo là unit test đúng với tên gọi của mình đây là 1 quá trình kiểm tra thử coi những source code được commit lên có vấn đề gì không     
         + Những vẫn đề có thể phát sinh trong lúc các thành viên commit lên git repo như
         ~ Vấn đề đầu tiên team gặp phải là conflict code. Team dành nhiều thời gian để giải quyết các conflict giữa việc đẩy code của các thành viên làm như thế nào 
@@ -1035,8 +1036,6 @@ jobs:
           không như mong muốn
         + Nêu ta input vào source code 1 phép tính đơn giản như 1 + 1 thì chắc chắn kết quả output trả ra bằng 2 thì mới được coi là quá trình unit test thành công
         + Trong quá trình unit test CI server sẽ gửi các feedback lại cho các developer để họ có thể biết được những gì đang diễn ra
-- Nên việc unit test lại các source code được commit lên là việc rất cần thiết để phát hiện ra các lỗi mà sửa chữa 1 cách sớm nhất tránh việc khi làm xong hết rồi 
-  khởi chạy lại phát sinh lỗi lúc đó việc sửa chữa cực kì khó khăn
 - Tiếp đến chúng ta sẽ Build image bước này là sau khi đã commit và unit test xong mà không còn lỗi gì nữa ta sẽ thực hiện đóng gói các source code muốn đưa lên git 
   repo
 - Sau khi đóng gói tất cả những source code cần thêm vào ta sẽ đẩy những source đó lên git repository bước này được gọi là push image
