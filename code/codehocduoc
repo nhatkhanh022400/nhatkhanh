@@ -1009,9 +1009,9 @@ jobs:
 
 
 
-
-
 ********************************Ngày 22 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
+
+
 
 
 - Như những gì bữa giờ được thực hành làm ta cos thể tạo được 1 githubpage trên server nhưng trong thực tế việc áp dụng CI/CD vào doanh nghiệp nó rất khác biệt
@@ -1043,10 +1043,10 @@ jobs:
         + Đầu tiên là về Continuous Delivery tập quán của việc đảm bảo mã lệnh của từng lập trình viên tham gia vào dự án có thể deploy ở bất cứ thời điểm nào. Tuy 
           nhiên điều này không có nghĩa là nó có thể đảm bảo ứng dụng có thể được deploy một cách an toàn trên môi trường production vì thông thường sẽ có sự khác 
           biệt trong cách cấu hình ứng dụng giữa môi trường production và test
-        + Ở đây có thể  hiểu là Coutinuous Delivery là tích hợp tất cả những gì thay đổi vào server và luôn ở tình trạng sẵn sàng để deploy
+        + Ở đây có thể  hiểu là Coutinuous Delivery là tích hợp tất cả những gì thay đổi vào production và luôn ở tình trạng sẵn sàng để deploy
         + Tiếp theo là Continuous Deployment là  giúp việc deploy ứng dụng có thể được diễn ra trong bất cứ thời điểm nào và sau đó thậm chí là tự động release một
           phiên bản mới trên môi trường test hoặc production nếu như bản build (gồm các mã lệnh được bạn gửi lên server) của bạn vượt qua được tất cả các test case.
-        + Ở đây có thể hiểu là bước tiếp theo của Continuous Delivery là deploy luôn vào server
+        + Ở đây có thể hiểu là bước tiếp theo của Continuous Delivery là deploy luôn vào production
         
 
 
