@@ -998,8 +998,47 @@ jobs:
             
 
 
-        
-                              
+-----------------------Ngày 22 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế------------------------------
+
+
+- Như những gì bữa giờ được thực hành làm ta cos thể tạo được 1 githubpage trên server nhưng trong thực tế việc áp dụng CI/CD vào doanh nghiệp nó rất khác biệt
+- Thông thường khi 1 doanh nghiệp áp dụng CI/CD vào 1 dự áp của họ ta thường thấy có 6 bước 
+        + Lint code
+        + Unit test
+        + Build image
+        + Push image
+        + Continuous Delivery
+        + Continuous Deployment
+- Ngoài 6 bước này ta vẫn có thẻe thêm các bước khác vào do trong quá trình làm có nhiều phát sinh        
+- Đầu tiên là về Lint code ta hiểu đơn giản đây là quá trình mà thành viên trong dự án có thể làm code của mình sau đó add code và commit nó nên git repositories
+  (ở đây có thể đưa lên github,gitlab,bitbucket.....)
+- Tiếp theo là unit test đúng với tên gọi của mình đây là 1 quá trình kiểm tra thử coi những source code được commit lên có vấn đề gì không     
+        + Những vẫn đề có thể phát sinh trong lúc các thành viên commit lên git repo như
+        ~ Vấn đề đầu tiên team gặp phải là conflict code. Team dành nhiều thời gian để giải quyết các conflict giữa việc đẩy code của các thành viên làm như thế nào 
+          cho code chạy đủ
+        ~ Thứ hai, sự khác biệt giữa các môi trường từ production, staging, test, dev khác nhau một trời một vực.  Người thì dùng hệ điều hành Linux, Ubuntu, người 
+          thì lại dùng Window với Mac khi đưa code lên thì rất loạn.
+        + Ngoài ra ta cũng kiểm tra thử code chạy có được như ý muốn không có nhiều trường hợp unit test kiêm tra không thấy lỗi những khi chạy lại cho 1 kết quả 
+          không như mong muốn
+        + Nêu ta input vào source code 1 phép tính đơn giản như 1 + 1 thì chắc chắn kết quả output trả ra bằng 2 thì mới được coi là quá trình unit test thành công
+        + Trong quá trình unit test CI server sẽ gửi các feedback lại cho các developer để họ có thể biết được những gì đang diễn ra
+- Nên việc unit test lại các source code được commit lên là việc rất cần thiết để phát hiện ra các lỗi mà sửa chữa 1 cách sớm nhất tránh việc khi làm xong hết rồi 
+  khởi chạy lại phát sinh lỗi lúc đó việc sửa chữa cực kì khó khăn
+- Tiếp đến chúng ta sẽ Build image bước này là sau khi đã commit và unit test xong mà không còn lỗi gì nữa ta sẽ thực hiện đóng gói các source code muốn đưa lên git 
+  repo
+- Sau khi đóng gói tất cả những source code cần thêm vào ta sẽ đẩy những source đó lên git repository bước này được gọi là push image
+- Sau khi đã đưa lên việc tiếp theo sẽ là deploy những source code vừa đưa lên đó
+- Để deploy được ta thực 2 bước là Continuous Delivery và Continuous Deployment, hai bước này chính là CD
+        + Đầu tiên là về Continuous Delivery tập quán của việc đảm bảo mã lệnh của từng lập trình viên tham gia vào dự án có thể deploy ở bất cứ thời điểm nào. Tuy 
+          nhiên điều này không có nghĩa là nó có thể đảm bảo ứng dụng có thể được deploy một cách an toàn trên môi trường production vì thông thường sẽ có sự khác 
+          biệt trong cách cấu hình ứng dụng giữa môi trường production và test
+        + Ở đây có thể  hiểu là Coutinuous Delivery là tích hợp tất cả những gì thay đổi vào server và luôn ở tình trạng sẵn sàng để deploy
+        + Tiếp theo là Continuous Deployment là  giúp việc deploy ứng dụng có thể được diễn ra trong bất cứ thời điểm nào và sau đó thậm chí là tự động release một
+          phiên bản mới trên môi trường test hoặc production nếu như bản build (gồm các mã lệnh được bạn gửi lên server) của bạn vượt qua được tất cả các test case.
+        + Ở đây có thể hiểu là bước tiếp theo của Continuous Delivery là deploy luôn vào server
+
+
+                                
                             
 
 
