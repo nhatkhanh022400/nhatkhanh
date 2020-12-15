@@ -1009,9 +1009,34 @@ jobs:
 
 
 
-********************************Ngày 22 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
+********************************Ngày 22 + 23 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
+ 
 
 
+
+_____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI THỰC TẾ _____________________________________________________
+
+
+* Đầu tiên là về khái niệm CI/CD 
+
+- CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần. 
+  Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể. Cả team nhận thấy rằng cách tiếp cận này giảm thiểu vấn đề tích hợp và cho 
+  phép phát triển phần mềm nhanh hơn.
+- CD ở đây ta có 2 khái niệm là Continuous Delivery và Continuous Deployment
+        + Continuous Delivery bằng cách triển khai tất cả thay đổi về code (đã được build và test) đến môi trường testing hoặc staging. Continuous Delivery cho phép 
+          developer tự động hóa phần testing bên cạnh việc sử dụng unit test, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai cho khách hàng (production)
+        + Continuous Deployment (cũng viết tắt là CD ) lại là kỹ thuật để triển khai code lên môi trường production một cách tự động, và cũng nên là mục tiêu của hầu hết
+          công ty.
+- Vậy khi kết hợp 2 khái niệm này lại ta được 1 khái niệm CI/CD là là quá trình tích hợp (integration) thường xuyên, nhanh chóng hơn khi code cũng như thường xuyên cập 
+  nhật phiên bản mới (delivery).
+
+* Các giai đoạn của CI/CD
+
+- Các giai đoạn của CI/CD gồm : Những yêu cầu được đề ra => xây dựng => kiểm tra => khai triển 
+- Ngoài ra giai đoạn CI/CD còn chạy liên tục vì vậy khi các developer có thể cập nhật liên tục trong khi lưu trữ ban đầu còn các bước tiếp theo sẽ được thực hiện tự động
+  hóa. Nhờ sự tự động hóa, chu trình chuyển từ giai đoạn này sang giai đoạn khác được cập nhật liên tục
+
+* CI/CD được áp dụng vào thực tế ở đây là ở doanh nghiệp
 
 
 - Như những gì bữa giờ được thực hành làm ta cos thể tạo được 1 githubpage trên server nhưng trong thực tế việc áp dụng CI/CD vào doanh nghiệp nó rất khác biệt
@@ -1063,7 +1088,9 @@ jobs:
 - Trong môi trường sản xuất, khi sản phẩm được chuyển giao và triển khai thành công. Tiếp theo bắt đầu quy trình cải tiến sản phẩm theo nhu cầu người dùng.
 - Để đảm bảo sản phẩm hoạt động ổn định và thu thập thông tin hữu ích để cải tiến, chúng tôi tiếp tục theo dõi, gửi phản hồi vào DevOps pipeline.
 - Chính vòng lặp vô hạn này đã mang đến cho DevOps sự trực quan vô hạn
-- Các công cụ CI/CD
+
+* Các công cụ CI/CD
+        
         + Jenkins
                 ~ Nhắc tới DevOps chắc chắn sẽ luôn đề cập đến Jenkins. Là một phần mềm tự động hóa, Jenkins cung cấp cho người dùng một công cụ mạnh mẽ để xây dựng,
                   thử nghiệm và triển khai sản phẩm. Công cụ nguồn mở này còn có nhiều tiện ích bổ trợ để lựa chọn, làm cho nó dễ dàng phù hợp với hầu hết mọi hoạt động.
@@ -1094,9 +1121,22 @@ jobs:
                 ~ Về cơ bản công cụ này như container. Công nghệ đã nổi lên trong vài năm qua vì khả năng di chuyển phần mềm liên tục từ môi trường này sang môi trường 
                   thử nghiệm khác. Và giải quyết được hầu hết các vấn đề tương thích mà chúng ta thường gặp phải.
                 ~ Với Docker, thật dễ dàng để làm cho hình ảnh mới, nhẹ hoặc chạy chúng để thử nghiệm. Nếu bạn sử dụng Docker, thì công cụ Kubernetes – mã nguồn mở Google 
-                  là rất cần thiết để quản lý container của bạn.         
+                  là rất cần thiết để quản lý container của bạn.
 
-        
+* Lợi ích của CI/CD cho doanh nghiệp 
+
+- Giảm rủi ro : Khi bạn phát triển mã của mình thường xuyên hơn nó sẽ giảm rủi ro cho dự án bạn đang thực hiện vì bạn có thể dễ dàng phát hiện lỗi. Thậm chí bạn có thể sửa 
+  sửa lỗi dễ dàng hơn. Điều này giúp tăng tốc độ làm việc cũng như sản xuất các thiệt bị trong doanh nghiệp
+- Thân thiện với người dùng: Khi bạn có CI được tích hợp với CD, việc chia sẻ code trở nên dễ dàng và dễ thấy hơn. Nó tăng cường sự hợp tác của các thành viên trong nhóm và 
+  do đó giao tiếp tốt hợn giữa các team với nhau
+- Vòng tuần hoàn làm việc nhanh hơn: Khi việc phát hành code trở nên thường xuyên, khoảng cách giữa code trong sản xuất và code trong phát triển trở nên nhỏ hơn nhiều. Ngay cả
+  một thay đổi nhỏ cũng có thể được đẩy vào sản xuất trong thời gian ngắn và do đó việc lặp lại code nhanh hơn
+- Giảm các quá trình thủ công : Vì toàn bộ quá trình được tự động hóa bởi CI/CD, nổ lực thủ công để  tích hợp các công cụ và kiểm tra sẽ giảm và do đó cung cấp một dòng code 
+  trơn tru cho các môi trường khác nhau
+- Phản hồi nhanh hơn: Việc thiết lập CI/CD không chỉ giúp các developer mà còn giúp ban quản lý quyết định và hành động các thay đổi trong sản xuất. Khi quá trình phát hành trở
+  nên nhanh hơn nhiều, người quản lý sẽ dễ dàng nhìn thấy những thay đổi và đưa ra quyết định kinh doanh nhanh chóng
+
+
                                 
                             
 
