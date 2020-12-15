@@ -165,7 +165,8 @@ owners.
      version 3.4 Là ta chọn docker-compose phiên bản 3.4
      build . Là ta xây dựng trên docker-compose
      ports:
-          - "5000:5000" : Là các webdịch vụ sử dụng một hình ảnh được xây dựng từ Dockerfiletrong thư mục hiện hành. Sau đó, nó liên kết vùng chứa và máy chủ với cổng tiếp xúc 5000
+          - "5000:5000" : Là các webdịch vụ sử dụng một hình ảnh được xây dựng từ Dockerfiletrong thư mục hiện hành. Sau đó, nó liên kết vùng chứa và máy chủ 
+                          với cổng tiếp xúc 5000
      image: "redis:alpine" Là các redis dịch vụ sử dụng một công Redis hình ảnh kéo từ registry Docker Hub.
 
 
@@ -214,8 +215,8 @@ owners.
 
           CMD [ "/bin/bash", "-c", "nginx -g 'daemon off;'" ]
         -Trong dòng 1 , xác định hình ảnh Nginx mà ta muốn sử dụng bằng cách sử dụng chỉ thị FROM.
-        -Trong dòng 2, sử dụng COPY phương pháp để sao chép nội dung của default.conf tệp dự án (nơi cấu hình máy chủ mặc định mà Nginx sẽ sử dụng) nằm trong /etc/nginx/conf.d
-         thư mục của vùng chứa.
+        -Trong dòng 2, sử dụng COPY phương pháp để sao chép nội dung của default.conf tệp dự án (nơi cấu hình máy chủ mặc định mà Nginx sẽ sử dụng) nằm trong
+         /etc/nginx/conf.d thư mục của vùng chứa.
 
 -Trong thư mục build tạo thêm thư mục nginx, trong thư mục nginx tạo 1 tệp tên default.conf và cho dữ liệu vào:
         server {
@@ -673,10 +674,10 @@ owners.
 
 ***************Ngày 16 thực tập: Tìm hiểu CI CD*****************
 
-- CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần.
-  Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể.   
-- Một kịch bản CI bắt đầu bằng việc developer commit code lên repository (github chẳng hạn). Bất kỳ thay đổi nào cũng sẽ trigger một vòng đời CI. Các bước trong một kịch
-  bản CI thường như sau:
+- CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất 
+  một lần.Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể.   
+- Một kịch bản CI bắt đầu bằng việc developer commit code lên repository (github chẳng hạn). Bất kỳ thay đổi nào cũng sẽ trigger một vòng đời CI. Các bước trong 
+  một kịch bản CI thường như sau:
 
         Đầu tiên, developer commit code lên repo.
         CI server giám sát repo và kiểm tra xem liệu có thay đổi nào trên repo hay không (liên tục, chẳng hạn mỗi phút 1 lần)
@@ -684,21 +685,22 @@ owners.
         CI server sẽ sinh ra các feedback và gửi đến các member của project
         CI server tiếp tục chờ thay đổi ở repo   
 - Lợi ích của CI 
-        Giảm thiểu rủi ro nhờ việc phát hiện lỗi và fix sớm, tăng chất lượng phần mềm nhờ việc tự động test và inspect (đây cũng là một trong những lợi ích của CI, code 
-        được inspect tự động dựa theo config đã cài đặt, đảm bảo coding style, chẳng hạn một function chỉ được dài không quá 10 dòng code ...)
+        Giảm thiểu rủi ro nhờ việc phát hiện lỗi và fix sớm, tăng chất lượng phần mềm nhờ việc tự động test và inspect (đây cũng là một trong những lợi ích của CI, 
+        code được inspect tự động dựa theo config đã cài đặt, đảm bảo coding style, chẳng hạn một function chỉ được dài không quá 10 dòng code ...)
         Giảm thiểu những quy trình thủ công lặp đi lặp lại (build css, js, migrate, test...), thay vì đó là build tự động, chạy test tự động
         Sinh ra phần mềm có thể deploy ở bất kì thời gian, địa điểm
 
-- CD là Continuous Delivery. Nó hoạt động bằng cách triển khai tất cả thay đổi về code (đã được build và test) đến môi trường testing hoặc staging. Continuous Delivery cho 
-  phép developer tự động hóa phần testing bên cạnh việc sử dụng unit test, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai cho khách hàng (production). Những bài 
-  test này bao gồm UI testing, load testing, integration testing, API testing... Nó tự động hoàn toàn quy trình release phần mềm.
+- CD là Continuous Delivery. Nó hoạt động bằng cách triển khai tất cả thay đổi về code (đã được build và test) đến môi trường testing hoặc staging. Continuous 
+  Delivery cho phép developer tự động hóa phần testing bên cạnh việc sử dụng unit test, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai cho khách hàng 
+  (production). Những bài test này bao gồm UI testing, load testing, integration testing, API testing... Nó tự động hoàn toàn quy trình release phần mềm.
 - Continuous Delivery được thực hiện bằng cách sử dụng Deployment Pipeline
-        Deployment Pipeline chia quy trình chuyển giao phần mềm thành các giai đoạn. Mỗi giai đoạn có mục tiêu xác minh chất lượng của các tính năng mới từ một góc độ khác 
-        nhau để kiểm định chức năng và tránh lỗi ảnh hưởng đến người dùng. Pipeline sẽ cung cấp phản hồi cho nhóm trong việc cung cấp tính năng mới. Ở góc độ trừu tượng hơn, 
-        deployment pipeline là quy trình để chuyển phần mềm từ version control đến tay người dùng. Mỗi thay đổi đến phần mềm sẽ đi qua một quy trình phức tạp để được phát hành.
+        Deployment Pipeline chia quy trình chuyển giao phần mềm thành các giai đoạn. Mỗi giai đoạn có mục tiêu xác minh chất lượng của các tính năng mới từ một góc 
+        độ khác nhau để kiểm định chức năng và tránh lỗi ảnh hưởng đến người dùng. Pipeline sẽ cung cấp phản hồi cho nhóm trong việc cung cấp tính năng mới. Ở góc độ 
+        trừu tượng hơn, deployment pipeline là quy trình để chuyển phần mềm từ version control đến tay người dùng. Mỗi thay đổi đến phần mềm sẽ đi qua một quy trình
+        phức tạp để được phát hành.
         Bình thường sẽ có 5 giai đoạn: Delivery team, Version control, Build and Unit tests, Automated Acceptance tests, Release
-- Vậy nếu kết hợp CI và CD lại ta sẽ được CI/CD là CI/CD là một bộ đôi công việc, bao gồm CI (Continuous Integration) và CD (Continuous Delivery), ý nói là quá trình tích hợp 
-  (integration) thường xuyên, nhanh chóng hơn khi code cũng như thường xuyên cập nhật phiên bản mới (delivery).
+- Vậy nếu kết hợp CI và CD lại ta sẽ được CI/CD là CI/CD là một bộ đôi công việc, bao gồm CI (Continuous Integration) và CD (Continuous Delivery), ý nói là quá trình
+  tích hợp (integration) thường xuyên, nhanh chóng hơn khi code cũng như thường xuyên cập nhật phiên bản mới (delivery).
 - Sau đây là Quy trình CI/CD thông thường
         + Bước 1: [Manual] Khởi tạo repository và có branch default là master và dev. Cài đặt trên Gitlab 9.
         + Bước 2: [Manual] Trừ owner ra, thì các coder sẽ push code tính năng lên branch dev
@@ -708,20 +710,23 @@ owners.
         + Bước 6: [Manual] Owner sẽ accept merge request.
         + Bước 7: [Auto] Hệ thống sẽ tự động thực hiện test source code, nếu PASS sẽ enable tính năng cho phép deploy lên production server.
         + Bước 8: [Manual] Owner review là merge request OK, test OK. Tiến hành nhấn nút để deploy các thay đổi lên môi trường production.
-        + Bước 9: [Manual] Tester/QA sẽ vào hệ thống production để làm UAT và confirm mọi thứ OK. Nếu không OK, Owner có thể nhấn nút Deploy phiên bản master trước đó để rollback
-                 hệ thống về trạng thái stable trước đó.
+        + Bước 9: [Manual] Tester/QA sẽ vào hệ thống production để làm UAT và confirm mọi thứ OK. Nếu không OK, Owner có thể nhấn nút Deploy phiên bản master trước 
+                  đó để rollback hệ thống về trạng thái stable trước đó.
         + Bước 10: [Manual] Thắp nhang và hy vọng khách hàng không chửi rủa hoặc email complain.
 - Trong quá trình CI/CD người ta thường dùng circle ci để build project và dùng gitlab để quản lý sourcecode
-        Bản chất Circle CI là sử dụng docker, trong cấu hình Circle CI ta sẽ chỉ định các docker image sẽ sử dụng và các job, trong các job lại có các step, trong các step là cụ 
-        thể các command. Ngoài ra còn có cấu hình filter giúp ta linh hoạt điều chỉnh sao cho chỉ run các job khi có merge/push vào 1 số branch nhất định vân vân.    
-        Về Gitlab không cần nói dài dòng, cũng như một hệ thống git thông thường (như github..), bạn có thể tìm hiểu thêm về git và Gitlab để team có thể cùng làm việc và quản lý 
-        sourcecode trên Gitlab.    
+        Bản chất Circle CI là sử dụng docker, trong cấu hình Circle CI ta sẽ chỉ định các docker image sẽ sử dụng và các job, trong các job lại có các step, trong 
+        các step là cụ thể các command. Ngoài ra còn có cấu hình filter giúp ta linh hoạt điều chỉnh sao cho chỉ run các job khi có merge/push vào 1 số branch nhất 
+        định vân vân.    
+        Về Gitlab không cần nói dài dòng, cũng như một hệ thống git thông thường (như github..), bạn có thể tìm hiểu thêm về git và Gitlab để team có thể cùng làm 
+        việc và quản lý sourcecode trên Gitlab.    
 - Mô tả quá trình run 1 job trên Circle CI:
 
         + Developer chỉ cần push hoặc merge vào 1 branch, Circle CI tự động biết event đó và khởi động lên job đã được cài đặt tương ứng.
         + Ban đầu Circle CI pull docker image về và run lên trên môi trường cloud của nó
-        + Tiếp theo nó chạy các step đã được cài đặt trong docker container, thông thường step đầu tiên luôn là checkout tức là git checkout lấy source về (mặc định lưu trong thư mục ~/project)
-        + Các step tiếp theo được chạy tùy vào độ sáng tạo của bạn, ví dụ job để build thì thường là npm install rồi npm run abcxyz hay job để deploy thì có thể là aws s3 sync hay serverless deploy...
+        + Tiếp theo nó chạy các step đã được cài đặt trong docker container, thông thường step đầu tiên luôn là checkout tức là git checkout lấy source về (mặc định 
+          lưu trong thư mục ~/project)
+        + Các step tiếp theo được chạy tùy vào độ sáng tạo của bạn, ví dụ job để build thì thường là npm install rồi npm run abcxyz hay job để deploy thì có thể là 
+          aws s3 sync hay serverless deploy...
         + Sau khi tất cả các step đã chạy xong, job kết thúc. Nếu exit code của job là error thì mặc định ta sẽ nhận được mail thông báo failed nữa.
 
 - Những ưa điểm và nhược điểm của CI/CD
@@ -906,7 +911,8 @@ jobs:
 
 - Sau khi thêm hugo.yml ta vào setting kéo xuống phần github page chỉnh branch từ main thành gh-pages
 - Sau đó lên trang web nhatkhanh.github.io để chạy thử github pages 
-- Trong phần này có phát sinh nhiều lỗi như chọn không đúng branch để chạy hoặc để các file trong hugo không đúng branch cần làm dẫn đến khi khởi chạy github pages không được
+- Trong phần này có phát sinh nhiều lỗi như chọn không đúng branch để chạy hoặc để các file trong hugo không đúng branch cần làm dẫn đến khi khởi chạy github pages
+  không được
 - Lưu ý thêm trong hướng dẫn có nói về branch master nhưng những cái gì có về master phải chuyển thành main hết vì github giờ đã đổi tên master thành main
 
 
@@ -921,7 +927,8 @@ jobs:
 - Lệnh trên có nghĩa là copy tất cả thư mực githubpage trong root bỏ ra ngoài thư mục hiện đang đứng
 - Sau khi copy xong gõ lệnh ls -l để kiểm tra quyền cấp phép ta thấy tất cả những gì copy ra từ githubpage vẫn đang ở quyền root
 - Vì vậy ta cần phải chuyển từ quyền root sang quyền user để làm việc ở đây user tên là nhatkhanh@KhanhLapTop
-- Ta chuyển từ root sang user bằng lệnh sudo chown -R nhatkhanh:nhatkhanh githubpage nếu không có -R thì chỉ mình githubpage được chuyển còn nếu thêm -R thì tất cả các file có trong githubpage đều được chuyển
+- Ta chuyển từ root sang user bằng lệnh sudo chown -R nhatkhanh:nhatkhanh githubpage nếu không có -R thì chỉ mình githubpage được chuyển còn nếu thêm -R thì tất cả
+  các file có trong githubpage đều được chuyển
 - Sau ta truy cập vào thư mục dự án ở đây là thư mucj quickstart theo đường dẫn /home/nhatkhanh/githubpage/staticweb/quickstart
 - Sau đó gõ lệnh hugo để build githubpages ta thấy nó hiện 1 bảng như sau:
                         | EN  
@@ -936,7 +943,8 @@ jobs:
         Cleaned          |  0  
 
         Total in 41 ms
-- Xuất hiện bảng này có nghĩa là nó đã build thành công nhưng trong github action có ghi là build trên thư mục nên ta cần gõ lệnh hugo -b file://$(pwd)/public để build trong thư mục public
+- Xuất hiện bảng này có nghĩa là nó đã build thành công nhưng trong github action có ghi là build trên thư mục nên ta cần gõ lệnh hugo -b file://$(pwd)/public để 
+  build trong thư mục public
 - Sau khi gõ xong nó sẽ hiện 1 bảng
                            | EN  
         -------------------+-----
@@ -956,8 +964,8 @@ jobs:
 - Trong file .gitignore ta gõ public/
 - Vào content/posts/my-first-post.md bổ sung thêm nội dung
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent semper purus elit, nec molestie purus sollicitudin et. Suspendisse in tortor eget metus 
-        suscipit dignissim. Integer tincidunt mi mollis, scelerisque nisl non, ultrices justo. Vestibulum aliquam sem nulla, quis consequat est scelerisque a. Vivamus
-        at tincidunt leo. Sed et mattis magna. Maecenas suscipit, enim eget hendrerit imperdiet, mi risus elementum arcu, quis ornare felis ex vel erat.
+        suscipit dignissim. Integer tincidunt mi mollis, scelerisque nisl non, ultrices justo. Vestibulum aliquam sem nulla, quis consequat est scelerisque a. 
+        Vivamus at tincidunt leo. Sed et mattis magna. Maecenas suscipit, enim eget hendrerit imperdiet, mi risus elementum arcu, quis ornare felis ex vel erat.
 
         Etiam sit amet diam diam. Suspendisse potenti. Nulla ut tincidunt sem, id porta ante. Nam ligula nibh, tempor vel magna sed, dictum vehicula leo. Vivamus 
         viverra condimentum quam nec finibus. Fusce congue in nulla vitae finibus. Proin posuere tincidunt turpis, non mattis enim consectetur eu. In eget posuere 
@@ -966,19 +974,20 @@ jobs:
         risus. Duis in finibus urna, at consequat elit.
 
         Morbi mollis feugiat eros in egestas. Nulla risus felis, porta vel dapibus eu, imperdiet a odio. Praesent posuere enim id nunc commodo iaculis. Nunc auctor
-        nisl ut tellus pharetra, eu molestie sapien laoreet. Pellentesque convallis in nisi eget finibus. Nullam et arcu vel erat imperdiet accumsan id hendrerit libero. 
-        Donec non dui laoreet, fermentum quam finibus, convallis tortor. Quisque dignissim non lectus tincidunt pharetra. Duis ullamcorper vulputate elementum.
+        nisl ut tellus pharetra, eu molestie sapien laoreet. Pellentesque convallis in nisi eget finibus. Nullam et arcu vel erat imperdiet accumsan id hendrerit 
+        libero. Donec non dui laoreet, fermentum quam finibus, convallis tortor. Quisque dignissim non lectus tincidunt pharetra. Duis ullamcorper vulputate elementum.
 
-        Nullam in sapien placerat, accumsan magna tincidunt, vehicula metus. Aliquam fermentum vel ipsum nec pharetra. Maecenas vestibulum sed lorem quis hendrerit. Mauris 
-        laoreet dolor quis erat sollicitudin consequat. Cras pulvinar ornare erat, sed efficitur arcu. Pellentesque tincidunt hendrerit nisl sed egestas. Donec non leo a 
-        ligula consectetur lacinia ut nec lectus. Donec et lorem mattis nisi laoreet bibendum et sed ligula. Nam ac nibh id arcu placerat scelerisque at sit amet metus. Mauris 
-        lobortis mauris lectus, ornare venenatis arcu lobortis ac.
+        Nullam in sapien placerat, accumsan magna tincidunt, vehicula metus. Aliquam fermentum vel ipsum nec pharetra. Maecenas vestibulum sed lorem quis hendrerit. 
+        Mauris laoreet dolor quis erat sollicitudin consequat. Cras pulvinar ornare erat, sed efficitur arcu. Pellentesque tincidunt hendrerit nisl sed egestas. 
+        Donec non leo a ligula consectetur lacinia ut nec lectus. Donec et lorem mattis nisi laoreet bibendum et sed ligula. Nam ac nibh id arcu placerat scelerisque 
+        at sit amet metus. Mauris lobortis mauris lectus, ornare venenatis arcu lobortis ac.
 
-        Etiam lacinia purus sit amet nisl pellentesque congue. Ut libero elit, pulvinar et risus a, porta laoreet purus. Nullam dolor tortor, tempus imperdiet nisl non, pharetra 
-        hendrerit felis. Vestibulum ut mattis dui. Integer eget urna id sem laoreet aliquet non nec neque. Duis non vestibulum risus. Nulla in lectus in quam semper iaculis in 
-        sit amet urna. Vestibulum venenatis tellus ut nisi semper, non tincidunt quam laoreet. Integer in est ullamcorper, mattis velit sed, facilisis turpis. Pellentesque venenatis 
-        ante ut faucibus auctor. Duis a urna id ex facilisis interdum eget quis lorem. Sed mi massa, semper vel faucibus id, molestie vitae dui. Mauris fermentum sit amet urna nec 
-        molestie. Morbi nec nunc quis mauris ultrices pulvinar vitae eget nunc. Mauris ullamcorper nunc eget dolor tristique pretium.
+        Etiam lacinia purus sit amet nisl pellentesque congue. Ut libero elit, pulvinar et risus a, porta laoreet purus. Nullam dolor tortor, tempus imperdiet nisl 
+        non, pharetra hendrerit felis. Vestibulum ut mattis dui. Integer eget urna id sem laoreet aliquet non nec neque. Duis non vestibulum risus. Nulla in lectus 
+        in quam semper iaculis in sit amet urna. Vestibulum venenatis tellus ut nisi semper, non tincidunt quam laoreet. Integer in est ullamcorper, mattis velit sed, 
+        facilisis turpis. Pellentesque venenatis ante ut faucibus auctor. Duis a urna id ex facilisis interdum eget quis lorem. Sed mi massa, semper vel faucibus id
+        molestie vitae dui. Mauris fermentum sit amet urna nec molestie. Morbi nec nunc quis mauris ultrices pulvinar vitae eget nunc. Mauris ullamcorper nunc eget 
+        dolor tristique pretium.
 
 - Lệnh git reset --hard là reset những cài đặt git lại
 - Sau khi làm xong gõ lệnh hugo -b file://$(pwd)/public để build lại những sửa chữa
@@ -1053,16 +1062,16 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - CD ở đây ta có 2 khái niệm là Continuous Delivery và Continuous Deployment
         + Continuous Delivery bằng cách triển khai tất cả thay đổi về code (đã được build và test) đến môi trường testing hoặc staging. Continuous Delivery cho phép 
           developer tự động hóa phần testing bên cạnh việc sử dụng unit test, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai cho khách hàng (production)
-        + Continuous Deployment (cũng viết tắt là CD ) lại là kỹ thuật để triển khai code lên môi trường production một cách tự động, và cũng nên là mục tiêu của hầu hết
-          công ty.
-- Vậy khi kết hợp 2 khái niệm này lại ta được 1 khái niệm CI/CD là là quá trình tích hợp (integration) thường xuyên, nhanh chóng hơn khi code cũng như thường xuyên cập 
-  nhật phiên bản mới (delivery).
+        + Continuous Deployment (cũng viết tắt là CD ) lại là kỹ thuật để triển khai code lên môi trường production một cách tự động, và cũng nên là mục tiêu của hầu
+          hết công ty.
+- Vậy khi kết hợp 2 khái niệm này lại ta được 1 khái niệm CI/CD là là quá trình tích hợp (integration) thường xuyên, nhanh chóng hơn khi code cũng như thường xuyên 
+ cập nhật phiên bản mới (delivery).
 
 * Các giai đoạn của CI/CD
 
 - Các giai đoạn của CI/CD gồm : Những yêu cầu được đề ra => xây dựng => kiểm tra => khai triển 
-- Ngoài ra giai đoạn CI/CD còn chạy liên tục vì vậy khi các developer có thể cập nhật liên tục trong khi lưu trữ ban đầu còn các bước tiếp theo sẽ được thực hiện tự động
-  hóa. Nhờ sự tự động hóa, chu trình chuyển từ giai đoạn này sang giai đoạn khác được cập nhật liên tục
+- Ngoài ra giai đoạn CI/CD còn chạy liên tục vì vậy khi các developer có thể cập nhật liên tục trong khi lưu trữ ban đầu còn các bước tiếp theo sẽ được thực hiện tự 
+  động hóa. Nhờ sự tự động hóa, chu trình chuyển từ giai đoạn này sang giai đoạn khác được cập nhật liên tục
 
 * CI/CD được áp dụng vào thực tế ở đây là ở doanh nghiệp
 
@@ -1076,8 +1085,8 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + Continuous Delivery
         + Continuous Deployment
 - Ngoài 6 bước này ta vẫn có thể thêm các bước khác vào do trong quá trình làm có nhiều phát sinh        
-- Đầu tiên là về Lint code ta hiểu đơn giản đây là quá trình mà thành viên trong dự án có thể làm code của mình sau đó add code và commit nó lên branch của repositories 
-  team(ở đây có thể đưa lên github,gitlab,bitbucket.....)
+- Đầu tiên là về Lint code ta hiểu đơn giản đây là quá trình mà thành viên trong dự án có thể làm code của mình sau đó add code và commit nó lên branch của 
+  repositories team(ở đây có thể đưa lên github,gitlab,bitbucket.....)
 - Sau khi commit lên repository rồi ta sẽ đóng gói các source code của từng thành viên để tiến hành unit test quá trình này gọi là build images
 - Tiếp theo là Test code đúng với tên gọi của mình đây là 1 quá trình kiểm tra thử coi những source code được commit lên có vấn đề gì không
         + Những vẫn đề có thể phát sinh trong lúc các thành viên commit lên git repo như
@@ -1096,11 +1105,11 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
   là integration tests được chạy trong môi trường tương tự với môi trường production. 
 - Sau cùng là System tests. Test toàn bộ hệ thống trong một môi trường càng giống với môi trường production càng tốt. 
 - Ngoài việc có một bộ tests chất lượng, thì môi trường chúng chạy trên đó cũng quan trọng không kém. Những yếu tố sau đây là rất cần thiết:
-        + Môi trường sạch sẽ. Sạch sẽ ở đây nghĩa là môi trường được reset trước mỗi lần chạy test để đảm bảo các lần test không ảnh hưởng lẫn nhau. Các công nghệ như virtual
-          machine hay snapshot có thể giúp thực hiện điều này.
+        + Môi trường sạch sẽ. Sạch sẽ ở đây nghĩa là môi trường được reset trước mỗi lần chạy test để đảm bảo các lần test không ảnh hưởng lẫn nhau. Các công nghệ như
+          virtual machine hay snapshot có thể giúp thực hiện điều này.
         + Môi trường tương đồng. Môi trường chạy test phải gần giống với môi trường production.
-        + Trường hợp lý tưởng thì môi trường có thể được tạo lập và huỷ bỏ nhanh chóng theo yêu cầu. Đưa những môi trường chạy code lên Cloud là một ý tưởng hay trong trường
-          hợp này.      
+        + Trường hợp lý tưởng thì môi trường có thể được tạo lập và huỷ bỏ nhanh chóng theo yêu cầu. Đưa những môi trường chạy code lên Cloud là một ý tưởng hay trong 
+          trường hợp này.      
 - Sau khi đóng gói và unit test tất cả những source code cần thêm vào ta sẽ đẩy những source đó lên git repository bước này được gọi là push image
 - Sau khi đã đưa lên việc tiếp theo sẽ là deploy những source code vừa đưa lên đó
 - Để deploy được ta thực 2 bước là Continuous Delivery và Continuous Deployment, hai bước này chính là CD
@@ -1111,8 +1120,8 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + Tiếp theo là Continuous Deployment là  giúp việc deploy ứng dụng có thể được diễn ra trong bất cứ thời điểm nào và sau đó thậm chí là tự động release một
           phiên bản mới trên môi trường test hoặc production nếu như bản build (gồm các mã lệnh được bạn gửi lên server) của bạn vượt qua được tất cả các test case.
         + Ở đây có thể hiểu là bước tiếp theo của Continuous Delivery là deploy luôn vào production
-- Khi production đã hoàn thiện, tiếp theo là giai đoạn triển khai thực tế. Việc kiểm tra sản phẩm sẽ không dừng lại ở giai đoạn này. Chúng ta vẫn sẽ nhận được thông báo 
-  lỗi ở bất kỳ giai đoạn nào qua DevOps pipeline cho đến khi nó được xử lý đúng
+- Khi production đã hoàn thiện, tiếp theo là giai đoạn triển khai thực tế. Việc kiểm tra sản phẩm sẽ không dừng lại ở giai đoạn này. Chúng ta vẫn sẽ nhận được thông 
+  báo lỗi ở bất kỳ giai đoạn nào qua DevOps pipeline cho đến khi nó được xử lý đúng
 - Trong môi trường sản xuất, khi sản phẩm được chuyển giao và triển khai thành công. Tiếp theo bắt đầu quy trình cải tiến sản phẩm theo nhu cầu người dùng.
 - Để đảm bảo sản phẩm hoạt động ổn định và thu thập thông tin hữu ích để cải tiến, chúng tôi tiếp tục theo dõi, gửi phản hồi vào DevOps pipeline.
 - Chính vòng lặp vô hạn này đã mang đến cho DevOps sự trực quan vô hạn
@@ -1139,8 +1148,8 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + Bitbucket
                 ~ Nổi tiếng từ lâu với các dịch vụ Git, Bitbucket nhanh chóng nổi tiếng là một sản phẩm CD cung cấp cho người dùng các tùy chọn on-prem mạnh mẽ.
                 ~ Các tính năng như quản lý quyền truy cập, cung cấp cho quản trị viên các điều khiển hữu ích. Để đảm bảo chỉ những người cho phép mới có thể thay đổi
-                  mã của bạn. Gần đây, họ cũng đã giới thiệu Pipes, một cách mới giúp dễ dàng tích hợp các dịch vụ của bên thứ 3 vào môi trường Bitbucket của bạn. Và tránh 
-                  những rắc rối thông thường khi sửa đổi cấu hình API.
+                  mã của bạn. Gần đây, họ cũng đã giới thiệu Pipes, một cách mới giúp dễ dàng tích hợp các dịch vụ của bên thứ 3 vào môi trường Bitbucket của bạn. Và
+                  tránh những rắc rối thông thường khi sửa đổi cấu hình API.
         + CloudBees
                 ~ Danh sách các công cụ CI/CD pipeline này không thể hoàn thành mà không có tên một trong những công cụ đi đầu của lĩnh vực này.
                 ~ Giải pháp CD của CloudBees giúp dễ dàng tích hợp với Kubernetes và Docker. Cung cấp các điều khiển bảo mật và quản trị. Hiện đang có sẵn cho SaaS hoặc 
@@ -1153,38 +1162,38 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 
 * Lợi ích của CI/CD cho doanh nghiệp 
 
-- Giảm rủi ro : Khi bạn phát triển mã của mình thường xuyên hơn nó sẽ giảm rủi ro cho dự án bạn đang thực hiện vì bạn có thể dễ dàng phát hiện lỗi. Thậm chí bạn có thể sửa 
-  sửa lỗi dễ dàng hơn. Điều này giúp tăng tốc độ làm việc cũng như sản xuất các thiệt bị trong doanh nghiệp
-- Thân thiện với người dùng: Khi bạn có CI được tích hợp với CD, việc chia sẻ code trở nên dễ dàng và dễ thấy hơn. Nó tăng cường sự hợp tác của các thành viên trong nhóm và 
-  do đó giao tiếp tốt hợn giữa các team với nhau
-- Vòng tuần hoàn làm việc nhanh hơn: Khi việc phát hành code trở nên thường xuyên, khoảng cách giữa code trong sản xuất và code trong phát triển trở nên nhỏ hơn nhiều. Ngay cả
-  một thay đổi nhỏ cũng có thể được đẩy vào sản xuất trong thời gian ngắn và do đó việc lặp lại code nhanh hơn
-- Giảm các quá trình thủ công : Vì toàn bộ quá trình được tự động hóa bởi CI/CD, nổ lực thủ công để  tích hợp các công cụ và kiểm tra sẽ giảm và do đó cung cấp một dòng code 
-  trơn tru cho các môi trường khác nhau
-- Phản hồi nhanh hơn: Việc thiết lập CI/CD không chỉ giúp các developer mà còn giúp ban quản lý quyết định và hành động các thay đổi trong sản xuất. Khi quá trình phát hành trở
-  nên nhanh hơn nhiều, người quản lý sẽ dễ dàng nhìn thấy những thay đổi và đưa ra quyết định kinh doanh nhanh chóng
+- Giảm rủi ro : Khi bạn phát triển mã của mình thường xuyên hơn nó sẽ giảm rủi ro cho dự án bạn đang thực hiện vì bạn có thể dễ dàng phát hiện lỗi. Thậm chí bạn có 
+  thể sửa lỗi dễ dàng hơn. Điều này giúp tăng tốc độ làm việc cũng như sản xuất các thiệt bị trong doanh nghiệp
+- Thân thiện với người dùng: Khi bạn có CI được tích hợp với CD, việc chia sẻ code trở nên dễ dàng và dễ thấy hơn. Nó tăng cường sự hợp tác của các thành viên trong 
+  nhóm và do đó giao tiếp tốt hợn giữa các team với nhau
+- Vòng tuần hoàn làm việc nhanh hơn: Khi việc phát hành code trở nên thường xuyên, khoảng cách giữa code trong sản xuất và code trong phát triển trở nên nhỏ hơn nhiều. 
+  Ngay cả một thay đổi nhỏ cũng có thể được đẩy vào sản xuất trong thời gian ngắn và do đó việc lặp lại code nhanh hơn
+- Giảm các quá trình thủ công : Vì toàn bộ quá trình được tự động hóa bởi CI/CD, nổ lực thủ công để  tích hợp các công cụ và kiểm tra sẽ giảm và do đó cung cấp một 
+  dòng code trơn tru cho các môi trường khác nhau
+- Phản hồi nhanh hơn: Việc thiết lập CI/CD không chỉ giúp các developer mà còn giúp ban quản lý quyết định và hành động các thay đổi trong sản xuất. Khi quá trình 
+  phát hành trở nên nhanh hơn nhiều, người quản lý sẽ dễ dàng nhìn thấy những thay đổi và đưa ra quyết định kinh doanh nhanh chóng
 
 * Ưu điểm của CI/CD
 
-- Fast feedback loop(Vòng lặp phản hồi nhanh) rất cần cho việc thực hiện vòng đời phát triển nhanh chóng. Để nhận được feedback kịp thời, cần có software tiếp cận end user một cách
-  nhanh chóng. Khi được phát triển đúng cách, CI/CD cung cấp platform để đạt được mục tiêu này bằng cách đơn giản hóa việc cập nhật các production deployment. Bằng cách yêu cầu mỗi 
-  thay đổi phải trải qua quá trình kiểm tra nghiêm ngặt, CI giúp giảm thiểu rủi ro liên quan đến từng bản dựng và cho phép các teams phát hành những tính năng có giá trị cho khách 
-  hàng nhanh chóng và dễ dàng
-- Tăng khả năng hiện thị CI/CD thường được khai triển như pipeline gồm các bước tuần tự, hiện thị cho toàn bộ team. Do đó, mỗi member trong team có thể theo dõi trạng thái của bảng
-  dựng trong hệ thống và xác định bảng dựng nào chịu trách nhiệm cho lỗi thử nghiệm nào. Bằng cách cung cấp thông tin về trạng thái hiện tại của codebase, việc lập kế hoạch cho giải 
-  pháp tốt nhất sẽ dễ dàng hơn. Độ minh bạch này trả lời rõ ràng cho câu hỏi,” liệu commit đã phá vỡ bản dựng chưa?”
-- Xử lý sự cố đơn giản vì mục tiêu của CI là tích hợp và kiểm tra mọi thay đổi được thực hiện với codebase, nên an toàn hơn khi thực hiên các commit nhỏ và sớm hợp nhất chúng vào code
-  repository được chia sẻ. Kết quả là, khi tìm thấy một bug, việc xác định thay đổi nào gây ra vấn đề đó sẽ dễ dàng hơn. Sau đó, tùy thuộc vào mức độ nghiêm trọng của vấn đề, team có thể 
-  xóa thay đổi hoặc viết và cam kết sửa lỗi, giảm thời gian giải quyết vấn đề trong production
-- Chất lượng software cao tự động hóa quá trình dựng và triển khai không chỉ rút ngắn vòng đời phát triển mà còn giúp các team sản xuất software chất lượng cao hơn. Bằng cách đảm bảo rằng
-  mỗi thay đổi được thực hiện tốt và triển khai cho ít nhất mỗi 1 môi trường pre-production các team có thể tự tin đẩy thay đổi vào production. Điều này chỉ có thể khi có phạm vi thử nghiệm
-  tốt của tất cả các cấp của codebase, từ kiểm tra unit đến kiểm tra hệ thống phức tạp hơn.
-- Vấn đề tích hợp ít hơn vì bộ kiểm tra tự động chạy trên các bảng dựng được tự động với mọi commit, nên có thể sớm nắm bắt và khắc phục hầu hết các sự cố tích hợp. Điều này giúp developers
-  biết sớm về các công việc khác hiện đang được thực hiện có thể ảnh hưởng đến code. Nó đảm bảo code được viết bởi những contributors khác nhau kết hợp tốt với nhau ngay từ đầu thay vì để đến
-  khi có tác dụng phụ nào 
-- Thêm thời gian tập trung vào development CI/CD system dựa vào tự động hóa để tạo ra các bảng dựng và di chuyển các thay đổi mới thông qua pipeline. Vì không cần cam thiệp thủ công, nên việc 
-  xây dựng và thực nghiệm khong cầm nhiều thời gian riêng của deployment team. Thay vào đó, developers có thể tập trung vào việc thực hiện thay đổi hiểu qua cho codebase, có thể tự tin rằng các 
-  automated systems sẽ thông báo cho họ về bất kỳ vấn đề nào.
+- Fast feedback loop(Vòng lặp phản hồi nhanh) rất cần cho việc thực hiện vòng đời phát triển nhanh chóng. Để nhận được feedback kịp thời, cần có software tiếp cận 
+  end user một cách nhanh chóng. Khi được phát triển đúng cách, CI/CD cung cấp platform để đạt được mục tiêu này bằng cách đơn giản hóa việc cập nhật các production 
+  deployment. Bằng cách yêu cầu mỗi thay đổi phải trải qua quá trình kiểm tra nghiêm ngặt, CI giúp giảm thiểu rủi ro liên quan đến từng bản dựng và cho phép các teams 
+  phát hành những tính năng có giá trị cho khách hàng nhanh chóng và dễ dàng
+- Tăng khả năng hiện thị CI/CD thường được khai triển như pipeline gồm các bước tuần tự, hiện thị cho toàn bộ team. Do đó, mỗi member trong team có thể theo dõi trạng 
+  thái của bảng dựng trong hệ thống và xác định bảng dựng nào chịu trách nhiệm cho lỗi thử nghiệm nào. Bằng cách cung cấp thông tin về trạng thái hiện tại của 
+  codebase, việc lập kế hoạch cho giải pháp tốt nhất sẽ dễ dàng hơn. Độ minh bạch này trả lời rõ ràng cho câu hỏi,” liệu commit đã phá vỡ bản dựng chưa?”
+- Xử lý sự cố đơn giản vì mục tiêu của CI là tích hợp và kiểm tra mọi thay đổi được thực hiện với codebase, nên an toàn hơn khi thực hiên các commit nhỏ và sớm hợp 
+  nhất chúng vào code repository được chia sẻ. Kết quả là, khi tìm thấy một bug, việc xác định thay đổi nào gây ra vấn đề đó sẽ dễ dàng hơn. Sau đó, tùy thuộc vào 
+  mức độ nghiêm trọng của vấn đề, team có thể xóa thay đổi hoặc viết và cam kết sửa lỗi, giảm thời gian giải quyết vấn đề trong production
+- Chất lượng software cao tự động hóa quá trình dựng và triển khai không chỉ rút ngắn vòng đời phát triển mà còn giúp các team sản xuất software chất lượng cao hơn. 
+  Bằng cách đảm bảo rằng mỗi thay đổi được thực hiện tốt và triển khai cho ít nhất mỗi 1 môi trường pre-production các team có thể tự tin đẩy thay đổi vào production. 
+  Điều này chỉ có thể khi có phạm vi thử nghiệm tốt của tất cả các cấp của codebase, từ kiểm tra unit đến kiểm tra hệ thống phức tạp hơn.
+- Vấn đề tích hợp ít hơn vì bộ kiểm tra tự động chạy trên các bảng dựng được tự động với mọi commit, nên có thể sớm nắm bắt và khắc phục hầu hết các sự cố tích hợp. 
+  Điều này giúp developers biết sớm về các công việc khác hiện đang được thực hiện có thể ảnh hưởng đến code. Nó đảm bảo code được viết bởi những contributors khác
+  nhau kết hợp tốt với nhau ngay từ đầu thay vì để đến khi có tác dụng phụ nào 
+- Thêm thời gian tập trung vào development CI/CD system dựa vào tự động hóa để tạo ra các bảng dựng và di chuyển các thay đổi mới thông qua pipeline. Vì không cần 
+  cam thiệp thủ công, nên việc xây dựng và thực nghiệm khong cầm nhiều thời gian riêng của deployment team. Thay vào đó, developers có thể tập trung vào việc thực 
+  hiện thay đổi hiểu qua cho codebase, có thể tự tin rằng các automated systems sẽ thông báo cho họ về bất kỳ vấn đề nào.
 
 
 
