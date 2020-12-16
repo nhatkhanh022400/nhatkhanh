@@ -1046,7 +1046,7 @@ jobs:
 
 
 
-********************************Ngày 22 + 23 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
+********************************Ngày 22 + 23 + 24 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
  
 
 
@@ -1072,6 +1072,48 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Các giai đoạn của CI/CD gồm : Những yêu cầu được đề ra => xây dựng => kiểm tra => khai triển 
 - Ngoài ra giai đoạn CI/CD còn chạy liên tục vì vậy khi các developer có thể cập nhật liên tục trong khi lưu trữ ban đầu còn các bước tiếp theo sẽ được thực hiện tự 
   động hóa. Nhờ sự tự động hóa, chu trình chuyển từ giai đoạn này sang giai đoạn khác được cập nhật liên tục
+
+* Quá trình CI/CD, cần có các thành phần:
+
+- Nơi chứa source code của developer có thể là các phần mềm như: github,gitlab,bỉbucket,....
+- Tiến hành testing phần mềm: chạy các unit test cũng như các thông số quét mã nguồn để tìm các lỗi bảo mật lỗi code lặp lại,....
+- Môi trường build sản phẩm: là môi trường khi ra đời một sản phẩm phần mềm,sanr phẩm đó chạy trên môi trường đó, ví dụ như Window, MacOS, Linux,...
+- Môi trường triển khai sản phẩm
+        + Môi trường develop: môi trường dành cho nhà phát triển
+        + Môi trường qc: Môi trường dành cho bộ phận kiểm thử phần mềm 
+        + Môi trường staging: Môi trường dành cho khách hàng, người thuê viết phần mềm
+        + Môi trường production: Môi trường dành cho cộng đồng người dùng
+
+* Lợi ích của CI/CD:
+- Sự thay đổi code nhỏ:
+        + Một lợi ích vô cùng lớn của CI/CD là nó cho phép bạn tích hợp các đoạn code nhỏ cùng một lúc. Những thay đổi code này đơn giản và dễ sử dụng hơn so với những 
+          đoạn code khổng lồ. Do đó, có ít vấn đề cân sửa chữa, thay đổi sau này 
+        + Những sự thay đổi nhỏ này có thể được kiểm tra ngay khi chúng được tích hợp vào kho code. Từ đó cho phép các developers nhận ra một vấn đê trước khi có quá 
+          nhiều việc được hoàn thành sau đó. Điều này thực sự hiểu quả đối với các nhóm phát triển, những người làm việc từ xã cũng như những người làm việc nội bộ vì 
+          giao tiếp giữa các thành viên trong nhóm có thể khó khăn.
+- Cô lập lỗi hiệu quar:
+        + Cô lập lỗi đề cập đến việc thiết kê hệ thống sao cho khi lỗi xảy ra, các kết quả tiêu cực bị giới hạn trong một phạm vi nhất định. Việc hạn chế phạm vi của các
+          vấn đề làm giảm khả năng hư hỏng và giúp hệ thống dễ bảo trì hơn 
+        + Thiết kế hệ thống của bạn với CI/CD đảm bảo rằng việc cách ly lỗi được phát hiện nhanh hơn và dễ thực hiện hơn. Do đó, hậu quả của lỗi xuất hiện trong ứng dụng
+          được giới hạn phạm vi
+- Kiểm tra có độ tin cậy cao: Sử dụng CI/CD giúp độ tin cậy của quá trình kiểm tra được cải thiện. Từ đó cho phép tiến hành các kiểm tra chính xác hơn. Độ tin cây kiểm
+  tra trong CI/CD được coi là liên turpis
+- Khả năng tự giải quyết các lỗi nhor:
+        + Việc kết hợp liên tục tích hợp, liên tục triển khai, liên tục phân phối vào quy trình phát triển tổ chức của bạn làm giảm số lượng các khuyết điểm nhỏ trong 
+          công việc tồn đọng của bạn. Những lỗi nhỏ này được phát hiện trước khi sản xuất và chỉnh sửa trước khi đưa ra thị trường cho người dùng cuối
+        + Lợi ích của việc giải quyết các lỗi trước thời hạn là rất nhiều. Ví dụ : các developers sẽ có nhiều thời gian hơn để tập trung vào các vấn đề lớn. Có nhiều thời
+          gian để cải thiện hệ thống, có thể tìm ra các vấn đề lớn hơn trước khi phát hành. Một lợi ích khác là giữ cho khách hàng của bạn hài lòng bằng cách ngăn họ phát 
+          hiện ra lỗi trong sản phẩm của bạn
+- Tăng tính minh bạch và trách nhiệm của nhóm :
+        + CI/CD là một cách tuyệt vời để nhận được phản hồi liên tục không chỉ từ khách hàng mà còn từ nhóm của bạn. Điều này làm tăng tính minh bạch của mọi vấn đề
+          trong nhóm và khuyến khích trách nhiệm giải trình có trách nhiệm
+        + Cả CI và CD đều cung cấp phản hồi nhanh chóng, cho phép bạn cải thiện đều đặn và liên tục sản phẩm của mình
+- Giảm chi phí : Tự động hóa trong đường dẫn CI/CD làm giảm số lượng lỗi có thể xảy ra trong nhiều bước lặp đi lặp lại của CI và CD. Việc này cũng giải phóng thời gian 
+                 của developer có thể dành cho việc phát triển sản phẩm. Từ đó giẩm chi phí sửa lỗi 
+- Bảo trì và cập nhật dễ  dàng :
+        + Bảo trì và cập nhật là một phần quan trọng để tạo ra sản phẩm tuyệt vời. Điểm đặc biệt trong quá trình CI/CD là thực hiện bảo trì trong khoảng thời gian ngừng
+          hoạt động. Chúng ta còn có thể hiểu đó là thời gian không quan trọng. Điều này sẽ không ảnh hưởng tới hoạt động của hệ thống trong giờ cao điểm
+        +                  
 
 * CI/CD được áp dụng vào thực tế ở đây là ở doanh nghiệp
 
@@ -1194,6 +1236,8 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Thêm thời gian tập trung vào development CI/CD system dựa vào tự động hóa để tạo ra các bảng dựng và di chuyển các thay đổi mới thông qua pipeline. Vì không cần 
   cam thiệp thủ công, nên việc xây dựng và thực nghiệm khong cầm nhiều thời gian riêng của deployment team. Thay vào đó, developers có thể tập trung vào việc thực 
   hiện thay đổi hiểu qua cho codebase, có thể tự tin rằng các automated systems sẽ thông báo cho họ về bất kỳ vấn đề nào.
+
+ 
 
 
 
