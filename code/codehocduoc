@@ -1054,7 +1054,25 @@ jobs:
 _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI THỰC TẾ _____________________________________________________
 
 
-* Đầu tiên là về khái niệm CI/CD 
+
+
+* Nguồn gốc CI/CD :
+        
+        Ngày xửa ngày xưa,ở thung lũng độn silicon valley, có 2 anh em cùng cha khác bố. Người anh tên Developer, làm ngồi coding. Người em tên IT Operation, làm nghề
+        quản trị hệ thống CNTT. Cả 2 anh em đều phục vụ 1 cô bé tên User. Hằng ngày nàng sử dụng những application do anh Developer tạo ra, được deploy và vận hành bởi
+        chàng IT Operation
+        Rồi thời gian cứ thế trôi qua, nàng User từ cô bé ngây thơ ngày nào đã trở thành thiếu nữ căng đầy sức sống. Càng lớn ham muốn của nàng càng cao, nàng muốn 
+        application phải nhiều tính năng hơn nữa. Trước đây, một tuần nàng chỉ đòi hỏi change requirement một lần, giờ thì ngày nào cũng muốn. Đôi khi ngày muốn đến 2,3
+        lần, thậm chí sáng đòi thêm feature này, chiều lại đòi bỏ đi. Làm 2 chàng Developer và IT Operation làm việc không biết ngày đêm nhưng release vẫn bị trễ. Nên 
+        rồi 2 chàng phải cầu cứu lấy bụt khi bụt nghe xong ông giải thích. Trong phát triển phần mềm, anh Developer thì chỉ tập trung ngồi viết code. Nhưng để ứng dụng 
+        chạy được cần phải có môi trường, server, infrastructure.Cho nên cần có IT Operation để deploy vận hành ứng dụng. Anh Developer chỉ biết code, anh IT Operaton chỉ 
+        biết vận hành nên giữa 2 con luôn có 1 bức tường ngăn cách gọi là Wall of Confusion, làm delay quá trình release sản phẩm. Chưa kể mỗi lần Developer thêm tính năng 
+        mới lại phải deploy lại 
+        Cho nên nếu 2 người có thể hợp lại thành một, thì dù có yếu khi kết hợp sẽ trở nên mạnh như hổ. Hai con mỗi người có 1 skill riêng, nếu làm việc đơn lẻ sẽ không 
+        phục vụ nổi nàng User, nhưng nếu 2 con kết hợp lại với nhau thì những nhu cầu của nàng User đều có thể đáp ứng được. Khi kết hợp với nhau, các con sẽ tạo nên mô
+        hình gọi là CI/CD, khiến việc deploy ứng dụng nhanh chóng, liên tục, đảm bảo thỏa mãn nàng User
+
+* Khái niệm CI/CD : 
 
 - CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần. 
   Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể. Cả team nhận thấy rằng cách tiếp cận này giảm thiểu vấn đề tích hợp và cho 
@@ -1067,13 +1085,13 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Vậy khi kết hợp 2 khái niệm này lại ta được 1 khái niệm CI/CD là là quá trình tích hợp (integration) thường xuyên, nhanh chóng hơn khi code cũng như thường xuyên 
  cập nhật phiên bản mới (delivery).
 
-* Các giai đoạn của CI/CD
+* Các giai đoạn của CI/CD :
 
 - Các giai đoạn của CI/CD gồm : Những yêu cầu được đề ra => xây dựng => kiểm tra => khai triển 
 - Ngoài ra giai đoạn CI/CD còn chạy liên tục vì vậy khi các developer có thể cập nhật liên tục trong khi lưu trữ ban đầu còn các bước tiếp theo sẽ được thực hiện tự 
   động hóa. Nhờ sự tự động hóa, chu trình chuyển từ giai đoạn này sang giai đoạn khác được cập nhật liên tục
 
-* Quá trình CI/CD, cần có các thành phần:
+* Quá trình CI/CD, cần có các thành phần :
 
 - Nơi chứa source code của developer có thể là các phần mềm như: github,gitlab,bỉbucket,....
 - Tiến hành testing phần mềm: chạy các unit test cũng như các thông số quét mã nguồn để tìm các lỗi bảo mật lỗi code lặp lại,....
@@ -1091,14 +1109,15 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + Những sự thay đổi nhỏ này có thể được kiểm tra ngay khi chúng được tích hợp vào kho code. Từ đó cho phép các developers nhận ra một vấn đê trước khi có quá 
           nhiều việc được hoàn thành sau đó. Điều này thực sự hiểu quả đối với các nhóm phát triển, những người làm việc từ xã cũng như những người làm việc nội bộ vì 
           giao tiếp giữa các thành viên trong nhóm có thể khó khăn.
-- Cô lập lỗi hiệu quar:
+- Cô lập lỗi hiệu quả:
         + Cô lập lỗi đề cập đến việc thiết kê hệ thống sao cho khi lỗi xảy ra, các kết quả tiêu cực bị giới hạn trong một phạm vi nhất định. Việc hạn chế phạm vi của các
           vấn đề làm giảm khả năng hư hỏng và giúp hệ thống dễ bảo trì hơn 
         + Thiết kế hệ thống của bạn với CI/CD đảm bảo rằng việc cách ly lỗi được phát hiện nhanh hơn và dễ thực hiện hơn. Do đó, hậu quả của lỗi xuất hiện trong ứng dụng
           được giới hạn phạm vi
-- Kiểm tra có độ tin cậy cao: Sử dụng CI/CD giúp độ tin cậy của quá trình kiểm tra được cải thiện. Từ đó cho phép tiến hành các kiểm tra chính xác hơn. Độ tin cây kiểm
-  tra trong CI/CD được coi là liên turpis
-- Khả năng tự giải quyết các lỗi nhor:
+- Kiểm tra có độ tin cậy cao: 
+        + Sử dụng CI/CD giúp độ tin cậy của quá trình kiểm tra được cải thiện. Từ đó cho phép tiến hành các kiểm tra chính xác hơn. Độ tin cây kiểm tra trong CI/CD được 
+          coi là liên turpis
+- Khả năng tự giải quyết các lỗi nhỏ:
         + Việc kết hợp liên tục tích hợp, liên tục triển khai, liên tục phân phối vào quy trình phát triển tổ chức của bạn làm giảm số lượng các khuyết điểm nhỏ trong 
           công việc tồn đọng của bạn. Những lỗi nhỏ này được phát hiện trước khi sản xuất và chỉnh sửa trước khi đưa ra thị trường cho người dùng cuối
         + Lợi ích của việc giải quyết các lỗi trước thời hạn là rất nhiều. Ví dụ : các developers sẽ có nhiều thời gian hơn để tập trung vào các vấn đề lớn. Có nhiều thời
@@ -1115,7 +1134,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
           hoạt động. Chúng ta còn có thể hiểu đó là thời gian không quan trọng. Điều này sẽ không ảnh hưởng tới hoạt động của hệ thống trong giờ cao điểm
         +                  
 
-* CI/CD được áp dụng vào thực tế ở đây là ở doanh nghiệp
+* CI/CD được áp dụng vào thực tế ở đây là ở doanh nghiệp :
 
 
 - Như những gì bữa giờ được thực hành làm ta cos thể tạo được 1 githubpage trên server nhưng trong thực tế việc áp dụng CI/CD vào doanh nghiệp nó rất khác biệt
@@ -1129,33 +1148,34 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Ngoài 6 bước này ta vẫn có thể thêm các bước khác vào do trong quá trình làm có nhiều phát sinh        
 - Đầu tiên là về Lint code ta hiểu đơn giản đây là quá trình mà thành viên trong dự án có thể làm code của mình sau đó add code và commit nó lên branch của 
   repositories team(ở đây có thể đưa lên github,gitlab,bitbucket.....)
-- Sau khi commit lên repository rồi ta sẽ đóng gói các source code của từng thành viên để tiến hành unit test quá trình này gọi là build images
+- Sau khi commit lên repository rồi ta sẽ đóng gói các source code của từng thành viên để tiến hành test code quá trình này gọi là build images
 - Tiếp theo là Test code đúng với tên gọi của mình đây là 1 quá trình kiểm tra thử coi những source code được commit lên có vấn đề gì không
         + Những vẫn đề có thể phát sinh trong lúc các thành viên commit lên git repo như
         ~ Vấn đề đầu tiên team gặp phải là conflict code. Team dành nhiều thời gian để giải quyết các conflict giữa việc đẩy code của các thành viên làm như thế nào 
           cho code chạy đủ
         ~ Thứ hai, sự khác biệt giữa các môi trường từ production, staging, test, dev khác nhau một trời một vực.  Người thì dùng hệ điều hành Linux, Ubuntu, người 
           thì lại dùng Window với Mac khi đưa code lên thì rất loạn.
-        + Ngoài ra ta cũng kiểm tra thử code chạy có được như ý muốn không có nhiều trường hợp unit test kiêm tra không thấy lỗi những khi chạy lại cho 1 kết quả 
+        + Ngoài ra ta cũng kiểm tra thử code chạy có được như ý muốn không có nhiều trường hợp test code kiểm tra không thấy lỗi những khi chạy lại cho 1 kết quả 
           không như mong muốn
-        + Nêu ta input vào source code 1 phép tính đơn giản như 1 + 1 thì chắc chắn kết quả output trả ra bằng 2 thì mới được coi là quá trình unit test thành công
-        + Trong quá trình unit test CI server sẽ gửi các feedback lại cho các developer để họ có thể biết được những gì đang diễn ra
-        + Nếu trong quas trình test xảy ra lỗi thì developer phải build lại để fix lỗi 
-- Đầu tiên unit test. Đây là phần test được chạy đầu tiên, thường là bởi các lập trình viên, dùng để test các function hoặc class. Khi những function hoặc class này
-  cần truy cập đến các tài nguyên bên ngoài, thì những tài nguyên đó thường được fake như là các “mock” hay “stub”.
-- Tiếp theo là Integration testsl à bước tiếp theo từ unit tests. Integration tests đảm bảo các module tạo nên ứng dụng hoạt động mượt mà với nhau. Lý tưởng nhất 
-  là integration tests được chạy trong môi trường tương tự với môi trường production. 
-- Sau cùng là System tests. Test toàn bộ hệ thống trong một môi trường càng giống với môi trường production càng tốt. 
+        + Nêu ta input vào source code 1 phép tính đơn giản như 1 + 1 thì chắc chắn kết quả output trả ra bằng 2 thì mới được coi là quá trình test code thành công
+        + Trong quá trình test code CI server sẽ gửi các feedback lại cho các developer để họ có thể biết được những gì đang diễn ra
+        + Nếu trong quá trình test xảy ra lỗi thì developer phải fix lỗi 
+- Test code gồm có 3 quá trình:        
+        + Đầu tiên unit test. Đây là phần test được chạy đầu tiên, thường là bởi các lập trình viên, dùng để test các function hoặc class. Khi những function hoặc 
+          class này cần truy cập đến các tài nguyên bên ngoài, thì những tài nguyên đó thường được fake như là các “mock” hay “stub”.
+        + Tiếp theo là Integration testsl à bước tiếp theo từ unit tests. Integration tests đảm bảo các module tạo nên ứng dụng hoạt động mượt mà với nhau. Lý tưởng
+          nhất là integration tests được chạy trong môi trường tương tự với môi trường production. 
+        + Sau cùng là System tests. Test toàn bộ hệ thống trong một môi trường càng giống với môi trường production càng tốt. 
 - Ngoài việc có một bộ tests chất lượng, thì môi trường chúng chạy trên đó cũng quan trọng không kém. Những yếu tố sau đây là rất cần thiết:
         + Môi trường sạch sẽ. Sạch sẽ ở đây nghĩa là môi trường được reset trước mỗi lần chạy test để đảm bảo các lần test không ảnh hưởng lẫn nhau. Các công nghệ như
           virtual machine hay snapshot có thể giúp thực hiện điều này.
         + Môi trường tương đồng. Môi trường chạy test phải gần giống với môi trường production.
         + Trường hợp lý tưởng thì môi trường có thể được tạo lập và huỷ bỏ nhanh chóng theo yêu cầu. Đưa những môi trường chạy code lên Cloud là một ý tưởng hay trong 
           trường hợp này.      
-- Sau khi đóng gói và unit test tất cả những source code cần thêm vào ta sẽ đẩy những source đó lên git repository bước này được gọi là push image
+- Sau khi đóng gói và test code tất cả những source code cần thêm vào ta sẽ đẩy những source đó lên môi trường production bước này được gọi là push image
 - Sau khi đã đưa lên việc tiếp theo sẽ là deploy những source code vừa đưa lên đó
 - Để deploy được ta thực 2 bước là Continuous Delivery và Continuous Deployment, hai bước này chính là CD
-        + Đầu tiên là về Continuous Delivery tập quán của việc đảm bảo mã lệnh của từng lập trình viên tham gia vào dự án có thể deploy ở bất cứ thời điểm nào. Tuy 
+        + Đầu tiên là về Continuous Delivery tập quán của việc đảm bảo code của từng lập trình viên tham gia vào dự án có thể deploy ở bất cứ thời điểm nào. Tuy 
           nhiên điều này không có nghĩa là nó có thể đảm bảo ứng dụng có thể được deploy một cách an toàn trên môi trường production vì thông thường sẽ có sự khác 
           biệt trong cách cấu hình ứng dụng giữa môi trường production và test
         + Ở đây có thể  hiểu là Coutinuous Delivery là tích hợp tất cả những gì thay đổi vào production và luôn ở tình trạng sẵn sàng để deploy
@@ -1168,7 +1188,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Để đảm bảo sản phẩm hoạt động ổn định và thu thập thông tin hữu ích để cải tiến, chúng tôi tiếp tục theo dõi, gửi phản hồi vào DevOps pipeline.
 - Chính vòng lặp vô hạn này đã mang đến cho DevOps sự trực quan vô hạn
 
-* Các công cụ CI/CD
+* Các công cụ CI/CD thông dụng :
         
         + Jenkins
                 ~ Nhắc tới DevOps chắc chắn sẽ luôn đề cập đến Jenkins. Là một phần mềm tự động hóa, Jenkins cung cấp cho người dùng một công cụ mạnh mẽ để xây dựng,
@@ -1202,11 +1222,11 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
                 ~ Với Docker, thật dễ dàng để làm cho hình ảnh mới, nhẹ hoặc chạy chúng để thử nghiệm. Nếu bạn sử dụng Docker, thì công cụ Kubernetes – mã nguồn mở Google 
                   là rất cần thiết để quản lý container của bạn.
 
-* Lợi ích của CI/CD cho doanh nghiệp 
+* Lợi ích của CI/CD cho doanh nghiệp :
 
 - Giảm rủi ro : Khi bạn phát triển mã của mình thường xuyên hơn nó sẽ giảm rủi ro cho dự án bạn đang thực hiện vì bạn có thể dễ dàng phát hiện lỗi. Thậm chí bạn có 
   thể sửa lỗi dễ dàng hơn. Điều này giúp tăng tốc độ làm việc cũng như sản xuất các thiệt bị trong doanh nghiệp
-- Thân thiện với người dùng: Khi bạn có CI được tích hợp với CD, việc chia sẻ code trở nên dễ dàng và dễ thấy hơn. Nó tăng cường sự hợp tác của các thành viên trong 
+- Thân thiện với team: Khi bạn có CI được tích hợp với CD, việc chia sẻ code trở nên dễ dàng và dễ thấy hơn. Nó tăng cường sự hợp tác của các thành viên trong 
   nhóm và do đó giao tiếp tốt hợn giữa các team với nhau
 - Vòng tuần hoàn làm việc nhanh hơn: Khi việc phát hành code trở nên thường xuyên, khoảng cách giữa code trong sản xuất và code trong phát triển trở nên nhỏ hơn nhiều. 
   Ngay cả một thay đổi nhỏ cũng có thể được đẩy vào sản xuất trong thời gian ngắn và do đó việc lặp lại code nhanh hơn
@@ -1215,25 +1235,25 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Phản hồi nhanh hơn: Việc thiết lập CI/CD không chỉ giúp các developer mà còn giúp ban quản lý quyết định và hành động các thay đổi trong sản xuất. Khi quá trình 
   phát hành trở nên nhanh hơn nhiều, người quản lý sẽ dễ dàng nhìn thấy những thay đổi và đưa ra quyết định kinh doanh nhanh chóng
 
-* Ưu điểm của CI/CD
+* Ưu điểm của CI/CD :
 
-- Fast feedback loop(Vòng lặp phản hồi nhanh) rất cần cho việc thực hiện vòng đời phát triển nhanh chóng. Để nhận được feedback kịp thời, cần có software tiếp cận 
+- Fast feedback loop(Vòng lặp phản hồi nhanh): Rất cần cho việc thực hiện vòng đời phát triển nhanh chóng. Để nhận được feedback kịp thời, cần có software tiếp cận 
   end user một cách nhanh chóng. Khi được phát triển đúng cách, CI/CD cung cấp platform để đạt được mục tiêu này bằng cách đơn giản hóa việc cập nhật các production 
   deployment. Bằng cách yêu cầu mỗi thay đổi phải trải qua quá trình kiểm tra nghiêm ngặt, CI giúp giảm thiểu rủi ro liên quan đến từng bản dựng và cho phép các teams 
   phát hành những tính năng có giá trị cho khách hàng nhanh chóng và dễ dàng
-- Tăng khả năng hiện thị CI/CD thường được khai triển như pipeline gồm các bước tuần tự, hiện thị cho toàn bộ team. Do đó, mỗi member trong team có thể theo dõi trạng 
+- Tăng khả năng hiện thị: CI/CD thường được khai triển như pipeline gồm các bước tuần tự, hiện thị cho toàn bộ team. Do đó, mỗi member trong team có thể theo dõi trạng 
   thái của bảng dựng trong hệ thống và xác định bảng dựng nào chịu trách nhiệm cho lỗi thử nghiệm nào. Bằng cách cung cấp thông tin về trạng thái hiện tại của 
   codebase, việc lập kế hoạch cho giải pháp tốt nhất sẽ dễ dàng hơn. Độ minh bạch này trả lời rõ ràng cho câu hỏi,” liệu commit đã phá vỡ bản dựng chưa?”
-- Xử lý sự cố đơn giản vì mục tiêu của CI là tích hợp và kiểm tra mọi thay đổi được thực hiện với codebase, nên an toàn hơn khi thực hiên các commit nhỏ và sớm hợp 
+- Xử lý sự cố đơn giản: Vì mục tiêu của CI là tích hợp và kiểm tra mọi thay đổi được thực hiện với codebase, nên an toàn hơn khi thực hiên các commit nhỏ và sớm hợp 
   nhất chúng vào code repository được chia sẻ. Kết quả là, khi tìm thấy một bug, việc xác định thay đổi nào gây ra vấn đề đó sẽ dễ dàng hơn. Sau đó, tùy thuộc vào 
   mức độ nghiêm trọng của vấn đề, team có thể xóa thay đổi hoặc viết và cam kết sửa lỗi, giảm thời gian giải quyết vấn đề trong production
-- Chất lượng software cao tự động hóa quá trình dựng và triển khai không chỉ rút ngắn vòng đời phát triển mà còn giúp các team sản xuất software chất lượng cao hơn. 
+- Chất lượng software cao: Tự động hóa quá trình dựng và triển khai không chỉ rút ngắn vòng đời phát triển mà còn giúp các team sản xuất software chất lượng cao hơn. 
   Bằng cách đảm bảo rằng mỗi thay đổi được thực hiện tốt và triển khai cho ít nhất mỗi 1 môi trường pre-production các team có thể tự tin đẩy thay đổi vào production. 
   Điều này chỉ có thể khi có phạm vi thử nghiệm tốt của tất cả các cấp của codebase, từ kiểm tra unit đến kiểm tra hệ thống phức tạp hơn.
-- Vấn đề tích hợp ít hơn vì bộ kiểm tra tự động chạy trên các bảng dựng được tự động với mọi commit, nên có thể sớm nắm bắt và khắc phục hầu hết các sự cố tích hợp. 
+- Vấn đề tích hợp ít hơn: Vì bộ kiểm tra tự động chạy trên các bảng dựng được tự động với mọi commit, nên có thể sớm nắm bắt và khắc phục hầu hết các sự cố tích hợp. 
   Điều này giúp developers biết sớm về các công việc khác hiện đang được thực hiện có thể ảnh hưởng đến code. Nó đảm bảo code được viết bởi những contributors khác
   nhau kết hợp tốt với nhau ngay từ đầu thay vì để đến khi có tác dụng phụ nào 
-- Thêm thời gian tập trung vào development CI/CD system dựa vào tự động hóa để tạo ra các bảng dựng và di chuyển các thay đổi mới thông qua pipeline. Vì không cần 
+- Thêm thời gian tập trung vào development: CI/CD system dựa vào tự động hóa để tạo ra các bảng dựng và di chuyển các thay đổi mới thông qua pipeline. Vì không cần 
   cam thiệp thủ công, nên việc xây dựng và thực nghiệm khong cầm nhiều thời gian riêng của deployment team. Thay vào đó, developers có thể tập trung vào việc thực 
   hiện thay đổi hiểu qua cho codebase, có thể tự tin rằng các automated systems sẽ thông báo cho họ về bất kỳ vấn đề nào.
 
