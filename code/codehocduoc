@@ -1140,15 +1140,15 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Như những gì bữa giờ được thực hành làm ta cos thể tạo được 1 githubpage trên server nhưng trong thực tế việc áp dụng CI/CD vào doanh nghiệp nó rất khác biệt
 - Thông thường khi 1 doanh nghiệp áp dụng CI/CD vào 1 dự áp của họ ta thường thấy có 6 bước 
         + Lint code
-        + Build image
+        + Build phase
         + Test code
-        + Push image
+        + Push phase
         + Continuous Delivery
         + Continuous Deployment
 - Ngoài 6 bước này ta vẫn có thể thêm các bước khác vào do trong quá trình làm có nhiều phát sinh        
 - Đầu tiên là về Lint code ta hiểu đơn giản đây là quá trình mà thành viên trong dự án có thể làm code của mình sau đó add code và commit nó lên branch của 
   repositories team(ở đây có thể đưa lên github,gitlab,bitbucket.....)
-- Sau khi commit lên repository rồi ta sẽ đóng gói các source code của từng thành viên để tiến hành test code quá trình này gọi là build images
+- Sau khi commit lên repository rồi ta sẽ đóng gói các source code của từng thành viên để tiến hành test code quá trình này gọi là build phase
 - Tiếp theo là Test code đúng với tên gọi của mình đây là 1 quá trình kiểm tra thử coi những source code được commit lên có vấn đề gì không
         + Những vẫn đề có thể phát sinh trong lúc các thành viên commit lên git repo như
         ~ Vấn đề đầu tiên team gặp phải là conflict code. Team dành nhiều thời gian để giải quyết các conflict giữa việc đẩy code của các thành viên làm như thế nào 
