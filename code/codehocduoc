@@ -1159,7 +1159,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
           không như mong muốn
         + Nêu ta input vào source code 1 phép tính đơn giản như 1 + 1 thì chắc chắn kết quả output trả ra bằng 2 thì mới được coi là quá trình test code thành công
         + Trong quá trình test code CI server sẽ gửi các feedback lại cho các developer để họ có thể biết được những gì đang diễn ra
-        + Nếu trong quá trình test xảy ra lỗi thì developer phải fix lỗi 
+        + Nếu trong quá trình test xảy ra lỗi thì developer phải fix lỗi và đẩy lên repository lại 
 - Test code gồm có 3 quá trình:        
         + Đầu tiên unit test. Đây là phần test được chạy đầu tiên, thường là bởi các lập trình viên, dùng để test các function hoặc class. Khi những function hoặc 
           class này cần truy cập đến các tài nguyên bên ngoài, thì những tài nguyên đó thường được fake như là các “mock” hay “stub”.
