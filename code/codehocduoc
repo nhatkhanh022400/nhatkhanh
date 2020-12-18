@@ -1046,7 +1046,7 @@ jobs:
 
 
 
-********************************Ngày 22 + 23 + 24 + 25 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
+********************************Ngày 22 + 23 + 24 + 25 + 26thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
  
 
 
@@ -1085,6 +1085,21 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Vậy khi kết hợp 2 khái niệm này lại ta được 1 khái niệm CI/CD là là quá trình tích hợp (integration) thường xuyên, nhanh chóng hơn khi code cũng như thường xuyên 
  cập nhật phiên bản mới (delivery).
 
+* Khái niệm về CI Server :
+
+- Continuous integration server(còn được gọi là build server, CI server) là một phần mềm tập trung hóa tất cả các hoạt động CI của bạn và cung cấp một môi trường ổn 
+  định và đáng tin cậy cho bạn để xây dựng dự án trên đó. CI server có khả năng tùy chỉnh cao và sẵn sàng để build nhiều dự án trên nhiều nền tảng khác nhau. Chạy 
+  build và test là các tính năng cơ bản của mọi build server
+- Những điều quan trọng cần xem xét khi sử dụng CI server là phải có một máy không lỗi được chuẩn bị để cài đặt. Có môi trường trung tính, không bị ảnh hưởng bởi các 
+  công cụ không cần thiết, các biến môi trường và các môi trường khác, là rất quan trọng trong việc cho việc sử dụng thành công CI server và CI tổng thể. Nếu không 
+  cài đặt máy vật lý cho CI server, bạn có thể thiết lập môi trường ảo và sử dụng nó như phương pháp cuối cùng
+- Việc sử dụng các máy phát triển mà không thiết lập môi trường ảo có thể khiến bạn có các giả định và kết quả sai. Khi bạn phát triển ứng dụng cho một máy khác, bạn 
+  có khả năng có thể gặp sự cố mới
+- Thông thường CI server sử dụng một version control system như Subversion hoặc Git hoặc bất kỳ hệ thống nào khác để pull file từ project của bạn. Nó giám sát 
+  repository của dụ án của bạn và dựa tren commit đã được gửi, nó pull các thay đổi và thực hiện các tác vụ mà bạn đã xác định trước đó cho project. Sau khi hoàn thành
+  các task, máy chủ sẽ gửi phản hồi cho các thành viên dự án có liên quan với các chi tiết của bản build. Kiểm tra bản cập nhật mới nhất của dự án của bạn, chạy build 
+  script, chạy test và gửi thông báo là các chức năng cơ bản nhất của CI server
+
 * Các giai đoạn của CI/CD :
 
 - Các giai đoạn của CI/CD gồm : Những yêu cầu được đề ra => xây dựng => kiểm tra => khai triển 
@@ -1098,7 +1113,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Môi trường build sản phẩm: là môi trường khi ra đời một sản phẩm phần mềm,sanr phẩm đó chạy trên môi trường đó, ví dụ như Window, MacOS, Linux,...
 - Môi trường triển khai sản phẩm
         + Môi trường develop: môi trường dành cho nhà phát triển
-        + Môi trường qc: Môi trường dành cho bộ phận kiểm thử phần mềm 
+        + Môi trường quality control: Môi trường dành cho bộ phận kiểm thử phần mềm 
         + Môi trường staging: Môi trường dành cho khách hàng, người thuê viết phần mềm
         + Môi trường production: Môi trường dành cho cộng đồng người dùng
 
@@ -1132,7 +1147,25 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Bảo trì và cập nhật dễ  dàng :
         + Bảo trì và cập nhật là một phần quan trọng để tạo ra sản phẩm tuyệt vời. Điểm đặc biệt trong quá trình CI/CD là thực hiện bảo trì trong khoảng thời gian ngừng
           hoạt động. Chúng ta còn có thể hiểu đó là thời gian không quan trọng. Điều này sẽ không ảnh hưởng tới hoạt động của hệ thống trong giờ cao điểm
-        +                  
+
+* Những trường hợp nên sử dụng CI/CD :
+
+- Cài đặt các hệ thống kiểm tra coding standards(kiểm tra lint, style, khi làm việc nhóm)
+- Thực thi automation test(unit test, configuration,...) mỗi khi source code có sự thay đổi
+- Đóng gói phần mềm(build file apk, file cài đặt,...)
+
+* Những yêu cầu cần có để cài CI :
+
+- Yêu cầu đầu tiên là bạn cần có Version Control System(VCS). Điều này là bắt buộc. VCS cung cấp một phương pháp đáng tin cậy để tập trung hóa và bảo tồn những thay đổi
+  mà bạn tạo ra trong dự án theo thời gian 
+- Nếu bạn sử dụng giải pháp tại chỗ , một yêu cầu khác là bạn phải có 1 server bổ sung hoặc workstation hoặc ít nhất là một máy ảo. Có một chiếc máy không bị lỗi để cài 
+  đặt hệ thống là một trong những điều quan trọng thiết yếu 
+- Nếu ạn không muốn gặp rắc rối với server hoặc máy ảo, co nhiều giải pháp hosted CI tool giúp đảm bảo sự bảo trì của toàn bộ quá trình và cho phép mở rộng dễ dàng. Điểm 
+  yếu của các hệ thống hosted đó là thường bị thiếu các tùy chọn thiết lập trong kho các tool self-hosted có đầy đủ
+- Nếu bạn muốn sử dụng self-hosted, bạn cần cài đặt một trong nhiều CI tool có sẵn   
+- Về mặt kĩ thuật, CI tool không bắt buộc được dùng, cũng giống như IDE không nhất thiết phải có cho việc phát triển phần mềm, nhưng việc implement sẽ khó hơn đáng kể nếu 
+  không có một tool như thế 
+- Những CI tool được biết rộng rãi nhất gồm : Jenkins, TeamCity, BamBoo, Go,...
 
 * CI/CD được áp dụng vào thực tế ở đây là ở doanh nghiệp :
 
@@ -1237,26 +1270,25 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 
 * Ưu điểm của CI/CD :
 
-- Fast feedback loop(Vòng lặp phản hồi nhanh): Rất cần cho việc thực hiện vòng đời phát triển nhanh chóng. Để nhận được feedback kịp thời, cần có software tiếp cận 
-  end user một cách nhanh chóng. Khi được phát triển đúng cách, CI/CD cung cấp platform để đạt được mục tiêu này bằng cách đơn giản hóa việc cập nhật các production 
-  deployment. Bằng cách yêu cầu mỗi thay đổi phải trải qua quá trình kiểm tra nghiêm ngặt, CI giúp giảm thiểu rủi ro liên quan đến từng bản dựng và cho phép các teams 
-  phát hành những tính năng có giá trị cho khách hàng nhanh chóng và dễ dàng
-- Tăng khả năng hiện thị: CI/CD thường được khai triển như pipeline gồm các bước tuần tự, hiện thị cho toàn bộ team. Do đó, mỗi member trong team có thể theo dõi trạng 
-  thái của bảng dựng trong hệ thống và xác định bảng dựng nào chịu trách nhiệm cho lỗi thử nghiệm nào. Bằng cách cung cấp thông tin về trạng thái hiện tại của 
-  codebase, việc lập kế hoạch cho giải pháp tốt nhất sẽ dễ dàng hơn. Độ minh bạch này trả lời rõ ràng cho câu hỏi,” liệu commit đã phá vỡ bản dựng chưa?”
-- Xử lý sự cố đơn giản: Vì mục tiêu của CI là tích hợp và kiểm tra mọi thay đổi được thực hiện với codebase, nên an toàn hơn khi thực hiên các commit nhỏ và sớm hợp 
-  nhất chúng vào code repository được chia sẻ. Kết quả là, khi tìm thấy một bug, việc xác định thay đổi nào gây ra vấn đề đó sẽ dễ dàng hơn. Sau đó, tùy thuộc vào 
-  mức độ nghiêm trọng của vấn đề, team có thể xóa thay đổi hoặc viết và cam kết sửa lỗi, giảm thời gian giải quyết vấn đề trong production
-- Chất lượng software cao: Tự động hóa quá trình dựng và triển khai không chỉ rút ngắn vòng đời phát triển mà còn giúp các team sản xuất software chất lượng cao hơn. 
-  Bằng cách đảm bảo rằng mỗi thay đổi được thực hiện tốt và triển khai cho ít nhất mỗi 1 môi trường pre-production các team có thể tự tin đẩy thay đổi vào production. 
-  Điều này chỉ có thể khi có phạm vi thử nghiệm tốt của tất cả các cấp của codebase, từ kiểm tra unit đến kiểm tra hệ thống phức tạp hơn.
-- Vấn đề tích hợp ít hơn: Vì bộ kiểm tra tự động chạy trên các bảng dựng được tự động với mọi commit, nên có thể sớm nắm bắt và khắc phục hầu hết các sự cố tích hợp. 
-  Điều này giúp developers biết sớm về các công việc khác hiện đang được thực hiện có thể ảnh hưởng đến code. Nó đảm bảo code được viết bởi những contributors khác
-  nhau kết hợp tốt với nhau ngay từ đầu thay vì để đến khi có tác dụng phụ nào 
-- Thêm thời gian tập trung vào development: CI/CD system dựa vào tự động hóa để tạo ra các bảng dựng và di chuyển các thay đổi mới thông qua pipeline. Vì không cần 
-  cam thiệp thủ công, nên việc xây dựng và thực nghiệm khong cầm nhiều thời gian riêng của deployment team. Thay vào đó, developers có thể tập trung vào việc thực 
-  hiện thay đổi hiểu qua cho codebase, có thể tự tin rằng các automated systems sẽ thông báo cho họ về bất kỳ vấn đề nào.
+- Tốc độ triển khai nhanh hơn 
+- Kiểm tra và phân tích nhanh hơn
+- Thay đổi code nhỏ hơn
+- Cách ly lỗi tốt hơn và nhanh hơn 
+- Tăng độ bao phủ code
+- Tự động triển khai để sản xuất 
+- Không bao giờ gửi code bị hỏng
+- Quá trình được lặp lại
+- Thời gian giải quyết nhanh hơn
+- Backlog nhỏ hơn 
+- Cải thiện sự hài lòng của khách hàng
+- Rất nhiều công cụ nguồn mở có sẵn
 
+* Nhược điểm của CI/CD :
+
+- Bộ kỹ năng mới nên yêu cầu các developer phải học hỏi liên tục
+- Quá trình tự động hóa không dễ một chút nào 
+- Các hệ thống kế thừa hiêms khi hộ trợ CI/CD
+- Mức độ đòi hỏi yêu cầu cao trong quá trình đảm bảo chất lượng
  
 
 
