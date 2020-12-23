@@ -1,5 +1,5 @@
 
-*Ngày 3 đi thực tập : Cài đặt docker và mysql trên docker
+*Ngày 3 đi thực tập (12/11/2020) : Cài đặt docker và mysql trên docker
 
 
 // Cài docker
@@ -28,7 +28,7 @@
 
 
 
-*Ngày 4 đi thực tập : Import database vào mysql
+*Ngày 4 đi thực tập : Import database vào mysql (13/11/2020)
 
 
 #Chạy mysql
@@ -80,7 +80,7 @@ owners.
 ------------------Tuần 2 thực tập-------------------
 
 
-*******Ngày 5 đi thực tập: Học về dockerfile********
+*******Ngày 5 đi thực tập: Học về dockerfile (16/11/2020)********
 
 
 *Bước 1: Thiết lập 
@@ -179,7 +179,7 @@ owners.
 -Ngoài ra ta còn có thể gõ lệnh $docker image ls để kiểm tra các image đã cài trong docker
 
 
-********Ngày 6 thực tập: Học về Docker symfony*********
+********Ngày 6 thực tập: Học về Docker symfony (18/11/2020)*********
 
 
 
@@ -356,7 +356,7 @@ owners.
 
 
 
-************Ngày 7 đi thực tập: Cài symfony**************
+************Ngày 7 đi thực tập: Cài symfony (19/11/2020)**************
 
 - Khởi chạy docker symfony php bằng lệnh docker exec -it  symfony-docker_php_1 bash
 - Cài các source của symfony trong php container
@@ -372,14 +372,14 @@ owners.
 
 
 
-*************Ngày 8 đi thực tập: Ngồi ôn lại các kiến thức đã học ngoài ra còn tham khảo thêm các kiến thức về symfony ****************
+*************Ngày 8 đi thực tập: Ngồi ôn lại các kiến thức đã học ngoài ra còn tham khảo thêm các kiến thức về symfony (20/11/2020) ****************
         
 
 
 ----------------------------Tuần 3 thực tập-----------------------------
 
 
-******************Ngày 9 đi thực tập: Tạo 1 docker symfony trong thư mục symfony*********************
+******************Ngày 9 đi thực tập: Tạo 1 docker symfony trong thư mục symfony (23/11/2020)*********************
 
 - Tạo 1 repositories mới trên Github
 - Cài đặt git trên window 
@@ -477,7 +477,7 @@ owners.
 
 
 
-***************Ngày 10 đi thực tập: ****************
+***************Ngày 10 đi thực tập: (24/11/2020)****************
 
 - Tạo 1 account trên bitbucket.org 
 - Lấy source được cung cấp bỏ vào account bitbucket mới tạo 
@@ -585,7 +585,7 @@ owners.
 
 
 
-*************************Ngày 11 đi thực tập: Tiếp tục công việc ngày hôm qua**************************
+*************************Ngày 11 đi thực tập: Tiếp tục công việc ngày hôm qua (25/11/2020)**************************
 
 
 - Trong thư mục hd-crmv2 ta vào thư mục app/config/ và thêm vào 2 file mới do công ty cung cấp là local.php và parameters_local.php
@@ -611,14 +611,14 @@ owners.
 
 
 
-**********************Ngày 12 đi thực tập: Tìm hiểu về Mautic Developer Documentation*************************
+**********************Ngày 12 đi thực tập: Tìm hiểu về Mautic Developer Documentation (26/11/2020)*************************
 
 - Link tham khảo: https://developer.mautic.org/#introduction
 
 
 
 
-*******************Ngày 13 đi thực tập: Chọn chủ đề đồ án**********************
+*******************Ngày 13 đi thực tập: Chọn chủ đề đồ án (27/11/2020)**********************
 
 - Quyết định chọn chủ đề: Ứng dụng Docker, Kubernetes và các nền tảng công nghệ của chiến lược Cloud Native
 - Tham khảo 1 số tài liệu về chủ đề và làm đề cương đồ án
@@ -639,7 +639,7 @@ owners.
 
 
 
-******************Ngày 14 đi thực tập:Tìm hiểu Dockerfile, Docker image, Docker container có mối quan hệ thế nào************************
+******************Ngày 14 đi thực tập:Tìm hiểu Dockerfile, Docker image, Docker container có mối quan hệ thế  (30/11/2020)************************
 
 - Để tạo ra 1 docker container hoàn chỉnh ta cần làm các như sau
         + Tạo 1 thư mục chứ project đang làm
@@ -655,7 +655,7 @@ owners.
         https://www.youtube.com/watch?v=9Gf4vRYSkK8&t=929s
         https://www.youtube.com/watch?v=xtnyU3tg4Nk   
 
-***********Ngày 15 thực tập: Tạo 1 Dockerfile và docker image**************
+***********Ngày 15 thực tập: Tạo 1 Dockerfile và docker image (1/12/2020)**************
 
 - Tạo 1 thư mục để chứa project cần làm
 - Trong thư mục vừa tạo ta tạo 1 file tên Dockerfile
@@ -672,7 +672,7 @@ owners.
         https://www.youtube.com/watch?v=tjyiUPvDFKY&t=126s
         
 
-***************Ngày 16 thực tập: Tìm hiểu CI CD*****************
+***************Ngày 16 thực tập: Tìm hiểu CI CD (2/12/2020)*****************
 
 - CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất 
   một lần.Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể.   
@@ -765,7 +765,7 @@ owners.
 
 
 >>>>>>> baibaocao
-****************************Ngày 17 thực tập: Tạo 1 Github Pages bằng CI/CD***************************
+****************************Ngày 17 thực tập: Tạo 1 Github Pages bằng CI/CD (3/12/2020)***************************
 
 - Tạo 1 githubpage bằng github
 - Đầu tiên ta tạo thêm 1 repository trong github để chứa mã nguồn
@@ -804,7 +804,7 @@ owners.
 
 
 
- **************************Ngày 18 đi thực tập: Tạo 1 website bằng hugo ********************************
+ **************************Ngày 18 đi thực tập: Tạo 1 website bằng hugo (7/12/2020) ********************************
 
  - Cài hugo bằng lệnh apt-get install hugo
  - Sau đó di chuyển đến thư mục cần làm ở đây mình làm trong thư mục staticweb với đường dẫn /githubpage/staticweb
@@ -847,7 +847,7 @@ owners.
 
 
 
-*************************Ngày 19 đi thực tập: Import Hugo vừa tạo vào Github Pages****************************
+*************************Ngày 19 đi thực tập: Import Hugo vừa tạo vào Github Pages (8/12/2020)****************************
 
 - Tạo 1 repo trên github tên là nhatkhanh022400.github.io
 - Vào thư mục vừa tạo hugo
@@ -871,7 +871,7 @@ owners.
 
 <<<<<<< HEAD
 =======
-********************Ngày 20 đi thực tập: Từ Github build thành 1 Github Pages********************************
+********************Ngày 20 đi thực tập: Từ Github build thành 1 Github Pages (9/12/2020)********************************
 
 - Trong hugo.yml ta thêm các option sau:
 
@@ -918,7 +918,7 @@ jobs:
 
 
 
-***************************Ngày 21 đi thực tập : Làm github pages trên local***************************
+***************************Ngày 21 đi thực tập : Làm github pages trên local (10/12/2020)***************************
 
 
 
@@ -1046,7 +1046,7 @@ jobs:
 
 
 
-********************************Ngày 22 + 23 + 24 + 25 + 26 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
+********************************Ngày 22 + 23 + 24 + 25 + 26 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế (14-18/12/2020)****************************************
  
 
 
@@ -1307,7 +1307,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 
 
 
-******************************************* Ngày 27 thực tập ************************************************
+******************************************* Ngày 27 thực tập (23/12/2020) ************************************************
 
 - Tiếp tục sửa đổi mà bổ sung lần cuối cho bài báo cáo 
 - Link tài liệu tham khaỏ :
@@ -1337,7 +1337,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + https://blog.vietnamlab.vn/ci-cd-voi-travisci-va-aws-elastic-beanstalk/
         + https://developer.cisco.com/docs/network-automation-delivery-model/#!cicd
         + https://itzone.com.vn/vi/article/nhap-mon-cicd-voi-gitlab/
-        
+
  
 
 

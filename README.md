@@ -1,7 +1,7 @@
 **********Tuần 1 : Thực tập**********
 
 
--------Ngày 1 đi thực tập: Học về các lệnh git.--------
+-------Ngày 1 đi thực tập: Học về các lệnh git.(9/11/2020)--------
 
 
 
@@ -27,7 +27,7 @@
 
 
 
------------Ngày 2 đi thực tập: Tiếp tục học về git--------------
+-----------Ngày 2 đi thực tập: Tiếp tục học về git (11/11/2020)--------------
 
 
 
