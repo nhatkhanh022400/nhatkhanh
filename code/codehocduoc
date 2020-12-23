@@ -1046,7 +1046,7 @@ jobs:
 
 
 
-********************************Ngày 22 + 23 + 24 + 25 + 26thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
+********************************Ngày 22 + 23 + 24 + 25 + 26 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế****************************************
  
 
 
@@ -1074,9 +1074,15 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 
 * Khái niệm CI/CD : 
 
-- CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần. 
-  Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể. Cả team nhận thấy rằng cách tiếp cận này giảm thiểu vấn đề tích hợp và cho 
-  phép phát triển phần mềm nhanh hơn.
+- Continuous Integration - CI được hiểu là tích hợp liên tục là quá trình cho phép các developer tích hợp các mã mới vào kho lưu trữ ban đầu. Đồng thời chia sẻ chúng suốt
+  quá trình làm việc. Cùng với đó, CI tự động hóa cũng cho phép phát hiện lỗi ở bất kỳ giai đoạn nào và cam kết các vấn đề được giải quyết ngay lập tức khi nó xảy ra. Khi
+  mã mới được hợp nhất với kho lưu trữ hiện có, một bản dựng mới được kích hoạt. Khi quá trình xây dựng hòan thành, các lần chạy thử sẽ tử động được thực hiện đối với 
+  các bản dựng để đảm bảo không có gì bị hỏng. Sự tích hợp mã này xảy ra liên tục. Bản dựng này tự động xác minh mã mỗi khi developer kiểm tra các thay đổi của họ vào kho
+  lưu trữ kiểm soát phiên bản. Do đó, các nhóm developer có thể phát hiện sớm các vấn đề
+- Tích hợp liên tục là phần đầu tiên của CI/CD, một thực tiễn cho phép các nhóm developer phát triển ứng dụng phát hành các thay đổi mã gia tăng để sản xuất nhanh chóng 
+  và thường xuyên. Tích hợp liên tục (CI) giúp các developer hợp nhất các thay đổi mã của họ lại trở thành một nhánh chung được chia sẻ hoặc bổ sung thường xuyên hơn, đôi
+  khi là bổ sung hằng ngày. CI giúp đảm bảo rằng mỗi khi thực hiện tích hợp, các trường hợp kiểm tra thực nghiệm được xác minh trước sẽ được thực thi để đảm bảo mã không 
+  phá vỡ hệ thống hoặc môi trường hiện có   
 - CD ở đây ta có 2 khái niệm là Continuous Delivery và Continuous Deployment
         + Continuous Delivery bằng cách triển khai tất cả thay đổi về code (đã được build và test) đến môi trường testing hoặc staging. Continuous Delivery cho phép 
           developer tự động hóa phần testing bên cạnh việc sử dụng unit test, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai cho khách hàng (production)
@@ -1289,6 +1295,49 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Quá trình tự động hóa không dễ một chút nào 
 - Các hệ thống kế thừa hiêms khi hộ trợ CI/CD
 - Mức độ đòi hỏi yêu cầu cao trong quá trình đảm bảo chất lượng
+
+
+
+
+
+----------------------------------------Tuần 7 thực tập-----------------------------------------
+
+
+
+
+
+
+******************************************* Ngày 27 thực tập ************************************************
+
+- Tiếp tục sửa đổi mà bổ sung lần cuối cho bài báo cáo 
+- Link tài liệu tham khaỏ :
+        + https://timviec365.vn/blog/ci-cd-la-gi-new8173.html
+        + https://vnpro.vn/thu-vien/tien-trinh-cicd-trong-phan-mem-va-thuc-te-ap-dung-cho-nganh-network-3588.html
+        + https://kipalog.com/posts/Nhung-dieu-ban-can-biet-ve-mo-hinh-CI-CD-va-trien-khai-co-ban-voi-CircleCI
+        + https://cloudfun.vn/threads/ci-cd-la-gi.240/
+        + https://viblo.asia/p/ci-cd-va-devops-07LKXYXDZV4
+        + https://cafedev.vn/gioi-thieu-chi-tiet-ve-ci-cd-va-nhung-dieu-can-thiet-trong-phat-trien-ung-dung-trong-mobile/
+        + https://topdev.vn/blog/trien-khai-ci-cd-voi-gitlab/
+        + http://gocit.vn/bai-viet/ci-cd-va-devops-la-gi/
+        + https://www.redhat.com/en/topics/devops/what-is-ci-cd
+        + https://docs.gitlab.com/ee/ci/introduction/
+        + https://codelearn.io/sharing/cicd-voi-github-action-phan-1
+        + https://medium.com/devops-l%C3%A0-d%E1%BB%85/tri%E1%BB%83n-khai-ci-cd-v%E1%BB%9Bi-gitlab-6c6522b99ea2
+        + https://cloud.google.com/docs/ci-cd
+        + https://cloudfun.vn/threads/tim-hieu-cach-thiet-lap-ci-cd-pipeline-tu-dau.234/
+        + https://www.synopsys.com/glossary/what-is-cicd.html
+        + https://techinsight.com.vn/cicdcqm-giai-phap-toan-dien-nang-cao-chat-luong-du/
+        + https://insights.magestore.com/posts/kinh-nghiem-trien-khai-ci-cd-tai-magestore
+        + https://www.forum.vnpro.org/forum/ccna%C2%AE/devnet-associate/421395-t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-ci-cd
+        + https://www.vitop.vn/news/kien-thuc-chuyen-nganh/jenkins-va-cicd
+        + https://news.cloud365.vn/ci-cd-phan-3-huong-dan-tich-hop-jenkins-va-gitlab/
+        + https://aws.amazon.com/vi/getting-started/projects/set-up-ci-cd-pipeline/
+        + https://cafedev.vn/gioi-thieu-chi-tiet-ve-ci-cd-va-nhung-dieu-can-thiet-trong-phat-trien-ung-dung-trong-mobile/
+        + https://tedu.com.vn/khoa-hoc/trien-khai-cicd-voi-azure-devops-37.html
+        + https://blog.vietnamlab.vn/ci-cd-voi-travisci-va-aws-elastic-beanstalk/
+        + https://developer.cisco.com/docs/network-automation-delivery-model/#!cicd
+        + https://itzone.com.vn/vi/article/nhap-mon-cicd-voi-gitlab/
+        
  
 
 
