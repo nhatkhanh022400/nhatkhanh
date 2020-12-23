@@ -1072,6 +1072,15 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         phục vụ nổi nàng User, nhưng nếu 2 con kết hợp lại với nhau thì những nhu cầu của nàng User đều có thể đáp ứng được. Khi kết hợp với nhau, các con sẽ tạo nên mô
         hình gọi là CI/CD, khiến việc deploy ứng dụng nhanh chóng, liên tục, đảm bảo thỏa mãn nàng User
 
+* Nhu cầu của doanh nghiệp về CI/CD :
+
+- Một giám đốc dự án cần đánh giá được tiến độ, chất lượng để có điều chỉnh kịp thời, developer cần một hệ thống để hổ trợ coding, danh mục kiểm tra tự động, bộ phận 
+  kiểm định chất lượng cần một hẹ thống theo dõi đủ sâu và dễ tiếp cận nhất có thể .... Tất cả những vấn đề này đều được giari quyết triệt để với CI/CD
+- Hiện nay, để đảm bảo độ ổn định nhất quán, kiểm soats tình hình kịp thời thì việc tích hợp liên tục các source code của các members trong team lại nhanh chóng, đảm 
+  bảo source được kiểm thử lại một cách tỉ mỉ trước khi deploy lên môi trường production thì CI/CD diễn ra vô cùng phổ biến
+- Song, thách thức kiến mọi developer đau đầu laf làm sao để cải tiến liên tục về cả độ mượt và chất lượng sản phẩm của họ làm ra. Trong khi đó CI/CD được thiết lập 
+  trên nền tảng docker được xem là một trong những giải pháp hiểu quả nhất   
+
 * Khái niệm CI/CD : 
 
 - Continuous Integration - CI được hiểu là tích hợp liên tục là quá trình cho phép các developer tích hợp các mã mới vào kho lưu trữ ban đầu. Đồng thời chia sẻ chúng suốt
@@ -1217,7 +1226,9 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + Đầu tiên là về Continuous Delivery tập quán của việc đảm bảo code của từng lập trình viên tham gia vào dự án có thể deploy ở bất cứ thời điểm nào. Tuy 
           nhiên điều này không có nghĩa là nó có thể đảm bảo ứng dụng có thể được deploy một cách an toàn trên môi trường production vì thông thường sẽ có sự khác 
           biệt trong cách cấu hình ứng dụng giữa môi trường production và test
-        + Ở đây có thể  hiểu là Coutinuous Delivery là tích hợp tất cả những gì thay đổi vào production và luôn ở tình trạng sẵn sàng để deploy
+        + Ở đây có thể  hiểu là Coutinuous Delivery là bất kỳ thay đổi về code nào vượt qua quá trình'Continuous Integration' đều được xuất bản sang môi trường sát
+          với môi trường production nhất. Triển khai vào môi trường production có thể yêu câu phê duyệt thủ công nhưng hoàn toàn có thể tự động hóa được. Mục tiêu của
+          quy trình này là code của bạn phải luôn sẵn sàng để triên khai vào môi trường production
         + Tiếp theo là Continuous Deployment là  giúp việc deploy ứng dụng có thể được diễn ra trong bất cứ thời điểm nào và sau đó thậm chí là tự động release một
           phiên bản mới trên môi trường test hoặc production nếu như bản build (gồm các mã lệnh được bạn gửi lên server) của bạn vượt qua được tất cả các test case.
         + Ở đây có thể hiểu là bước tiếp theo của Continuous Delivery là deploy luôn vào production
@@ -1337,6 +1348,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + https://blog.vietnamlab.vn/ci-cd-voi-travisci-va-aws-elastic-beanstalk/
         + https://developer.cisco.com/docs/network-automation-delivery-model/#!cicd
         + https://itzone.com.vn/vi/article/nhap-mon-cicd-voi-gitlab/
+        + https://topdev.vn/blog/workshop-trien-khai-ci-cd-cho-mot-du-an-phan-mem-lon/
 
  
 
