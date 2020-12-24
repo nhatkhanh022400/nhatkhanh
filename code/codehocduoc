@@ -1,5 +1,7 @@
 
-*Ngày 3 đi thực tập (12/11/2020) : Cài đặt docker và mysql trên docker
+----------------Ngày 3 đi thực tập (12/11/2020) : Cài đặt docker và mysql trên docker------------------
+
+
 
 
 // Cài docker
@@ -28,7 +30,11 @@
 
 
 
-*Ngày 4 đi thực tập : Import database vào mysql (13/11/2020)
+
+
+----------------Ngày 4 đi thực tập : Import database vào mysql (13/11/2020)-----------------
+
+
 
 
 #Chạy mysql
@@ -77,10 +83,20 @@ owners.
 
 
 
-------------------Tuần 2 thực tập-------------------
 
 
-*******Ngày 5 đi thực tập: Học về dockerfile (16/11/2020)********
+
+***************************************TUẦN 2 THỰC TẬP (16-20/11/2020)*******************************************
+
+
+
+
+
+
+
+----------------Ngày 5 đi thực tập: Học về dockerfile (16/11/2020)-------------------
+
+
 
 
 *Bước 1: Thiết lập 
@@ -179,7 +195,10 @@ owners.
 -Ngoài ra ta còn có thể gõ lệnh $docker image ls để kiểm tra các image đã cài trong docker
 
 
-********Ngày 6 thực tập: Học về Docker symfony (18/11/2020)*********
+
+
+---------------Ngày 6 thực tập: Học về Docker symfony (18/11/2020)-----------------
+
 
 
 
@@ -356,7 +375,11 @@ owners.
 
 
 
-************Ngày 7 đi thực tập: Cài symfony (19/11/2020)**************
+
+----------------Ngày 7 đi thực tập: Cài symfony (19/11/2020)-----------------
+
+
+
 
 - Khởi chạy docker symfony php bằng lệnh docker exec -it  symfony-docker_php_1 bash
 - Cài các source của symfony trong php container
@@ -372,14 +395,27 @@ owners.
 
 
 
-*************Ngày 8 đi thực tập: Ngồi ôn lại các kiến thức đã học ngoài ra còn tham khảo thêm các kiến thức về symfony (20/11/2020) ****************
+------------------Ngày 8 đi thực tập: Ngồi ôn lại các kiến thức đã học ngoài ra còn tham khảo thêm các kiến thức về symfony (20/11/2020)----------------
         
 
 
-----------------------------Tuần 3 thực tập-----------------------------
 
 
-******************Ngày 9 đi thực tập: Tạo 1 docker symfony trong thư mục symfony (23/11/2020)*********************
+
+
+******************************************TUẦN 3 THỰC TẬP (23-27/11/2020)****************************************************
+
+
+
+
+
+
+
+-------------------Ngày 9 đi thực tập: Tạo 1 docker symfony trong thư mục symfony (23/11/2020)------------------
+
+
+
+
 
 - Tạo 1 repositories mới trên Github
 - Cài đặt git trên window 
@@ -477,7 +513,12 @@ owners.
 
 
 
-***************Ngày 10 đi thực tập: (24/11/2020)****************
+
+
+-----------------Ngày 10 đi thực tập: (24/11/2020)-------------------
+
+
+
 
 - Tạo 1 account trên bitbucket.org 
 - Lấy source được cung cấp bỏ vào account bitbucket mới tạo 
@@ -585,7 +626,10 @@ owners.
 
 
 
-*************************Ngày 11 đi thực tập: Tiếp tục công việc ngày hôm qua (25/11/2020)**************************
+--------------------Ngày 11 đi thực tập: Tiếp tục công việc ngày hôm qua (25/11/2020)-------------------
+
+
+
 
 
 - Trong thư mục hd-crmv2 ta vào thư mục app/config/ và thêm vào 2 file mới do công ty cung cấp là local.php và parameters_local.php
@@ -610,15 +654,20 @@ owners.
 
 
 
+------------------Ngày 12 đi thực tập: Tìm hiểu về Mautic Developer Documentation (26/11/2020)----------------------
 
-**********************Ngày 12 đi thực tập: Tìm hiểu về Mautic Developer Documentation (26/11/2020)*************************
+
+
 
 - Link tham khảo: https://developer.mautic.org/#introduction
 
 
 
 
-*******************Ngày 13 đi thực tập: Chọn chủ đề đồ án (27/11/2020)**********************
+------------------Ngày 13 đi thực tập: Chọn chủ đề đồ án (27/11/2020)--------------------
+
+
+
 
 - Quyết định chọn chủ đề: Ứng dụng Docker, Kubernetes và các nền tảng công nghệ của chiến lược Cloud Native
 - Tham khảo 1 số tài liệu về chủ đề và làm đề cương đồ án
@@ -634,12 +683,27 @@ owners.
 
 
 
--------------------------------Tuần 4 thực tập---------------------------------
+-
 
 
 
 
-******************Ngày 14 đi thực tập:Tìm hiểu Dockerfile, Docker image, Docker container có mối quan hệ thế  (30/11/2020)************************
+
+*********************************************TUẦN 4 THỰC TẬP (30/11-3/12/2020)**************************************************
+
+
+
+
+
+
+
+
+
+
+------------------Ngày 14 đi thực tập:Tìm hiểu Dockerfile, Docker image, Docker container có mối quan hệ thế  (30/11/2020)-----------------
+
+
+
 
 - Để tạo ra 1 docker container hoàn chỉnh ta cần làm các như sau
         + Tạo 1 thư mục chứ project đang làm
@@ -655,7 +719,14 @@ owners.
         https://www.youtube.com/watch?v=9Gf4vRYSkK8&t=929s
         https://www.youtube.com/watch?v=xtnyU3tg4Nk   
 
-***********Ngày 15 thực tập: Tạo 1 Dockerfile và docker image (1/12/2020)**************
+
+
+
+
+----------------Ngày 15 thực tập: Tạo 1 Dockerfile và docker image (1/12/2020)-----------------
+
+
+
 
 - Tạo 1 thư mục để chứa project cần làm
 - Trong thư mục vừa tạo ta tạo 1 file tên Dockerfile
@@ -672,7 +743,13 @@ owners.
         https://www.youtube.com/watch?v=tjyiUPvDFKY&t=126s
         
 
-***************Ngày 16 thực tập: Tìm hiểu CI CD (2/12/2020)*****************
+
+
+
+-----------------Ngày 16 thực tập: Tìm hiểu CI CD (2/12/2020)-----------------
+
+
+
 
 - CI là Continuous Integration. Nó là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất 
   một lần.Mỗi tích hợp được "build" tự động (bao gồm cả test) nhằm phát hiện lỗi nhanh nhất có thể.   
@@ -765,7 +842,14 @@ owners.
 
 
 >>>>>>> baibaocao
-****************************Ngày 17 thực tập: Tạo 1 Github Pages bằng CI/CD (3/12/2020)***************************
+
+
+
+
+-----------------Ngày 17 thực tập: Tạo 1 Github Pages bằng CI/CD (3/12/2020)-------------------
+
+
+
 
 - Tạo 1 githubpage bằng github
 - Đầu tiên ta tạo thêm 1 repository trong github để chứa mã nguồn
@@ -790,7 +874,7 @@ owners.
 
  
 
- ------------------------------------Tuần 5 thực tập---------------------------------------------
+*************************************************TUẦN 5 THỰC TẬP (7-10/12/2020)***************************************************
 
 
 
@@ -801,22 +885,22 @@ owners.
 
 
 
+--------------------Ngày 18 đi thực tập: Tạo 1 website bằng hugo (7/12/2020)--------------------
 
 
 
- **************************Ngày 18 đi thực tập: Tạo 1 website bằng hugo (7/12/2020) ********************************
 
- - Cài hugo bằng lệnh apt-get install hugo
- - Sau đó di chuyển đến thư mục cần làm ở đây mình làm trong thư mục staticweb với đường dẫn /githubpage/staticweb
- - Sau khi đã vào thư mục ta khởi chạy hugo bằng lệnh hugo new site quickstart 
- - Sau khi khởi chạy xong ta thấy hugo tạo ra thư mục quickstart bên trong thư mục staticweb
- - Vào thư mục quickstart bằng lệnh cd quickstart
- - Gõ lệnh git init để khởi tạo kho lưu trữ Git trong /root/githubpage/staticweb/quickstart/.git/
- - Tiếp theo gõ lệnh  git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke để clone source github vào
- - Gõ lệnh  echo 'theme = "ananke"' >> config.toml để  đưa các tài liểu vào file config.toml
- - Trong thư mục quickstart ta có 7 thư mục gồm : archetypes,content,data,layouts,resources,static,themes và 1 file config.toml
- - Gõ lệnh hugo new posts/my-first-post.md sẽ hiện đường dẫn /root/githubpage/staticweb/quickstart/content/posts/my-first-post.md created
- - Theo đường dẫn ta đến file my-first-post.md và bên trong file này ta gõ 
+- Cài hugo bằng lệnh apt-get install hugo
+- Sau đó di chuyển đến thư mục cần làm ở đây mình làm trong thư mục staticweb với đường dẫn /githubpage/staticweb
+- Sau khi đã vào thư mục ta khởi chạy hugo bằng lệnh hugo new site quickstart 
+- Sau khi khởi chạy xong ta thấy hugo tạo ra thư mục quickstart bên trong thư mục staticweb
+- Vào thư mục quickstart bằng lệnh cd quickstart
+- Gõ lệnh git init để khởi tạo kho lưu trữ Git trong /root/githubpage/staticweb/quickstart/.git/
+- Tiếp theo gõ lệnh  git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke để clone source github vào
+- Gõ lệnh  echo 'theme = "ananke"' >> config.toml để  đưa các tài liểu vào file config.toml
+- Trong thư mục quickstart ta có 7 thư mục gồm : archetypes,content,data,layouts,resources,static,themes và 1 file config.toml
+- Gõ lệnh hugo new posts/my-first-post.md sẽ hiện đường dẫn /root/githubpage/staticweb/quickstart/content/posts/my-first-post.md created
+- Theo đường dẫn ta đến file my-first-post.md và bên trong file này ta gõ 
         title: "My Hugo"
         date: 2020-12-08T14:59:25+07:00
         draft: true
@@ -847,7 +931,10 @@ owners.
 
 
 
-*************************Ngày 19 đi thực tập: Import Hugo vừa tạo vào Github Pages (8/12/2020)****************************
+-------------------Ngày 19 đi thực tập: Import Hugo vừa tạo vào Github Pages (8/12/2020)----------------------
+
+
+
 
 - Tạo 1 repo trên github tên là nhatkhanh022400.github.io
 - Vào thư mục vừa tạo hugo
@@ -871,7 +958,13 @@ owners.
 
 <<<<<<< HEAD
 =======
-********************Ngày 20 đi thực tập: Từ Github build thành 1 Github Pages (9/12/2020)********************************
+
+
+
+-----------------Ngày 20 đi thực tập: Từ Github build thành 1 Github Pages (9/12/2020)-------------------
+
+
+
 
 - Trong hugo.yml ta thêm các option sau:
 
@@ -918,7 +1011,8 @@ jobs:
 
 
 
-***************************Ngày 21 đi thực tập : Làm github pages trên local (10/12/2020)***************************
+------------------Ngày 21 đi thực tập : Làm github pages trên local (10/12/2020)--------------------
+
 
 
 
@@ -1037,7 +1131,10 @@ jobs:
 
 
 
------------------------------------------ Tuần 6 thực tập ---------------------------------------------
+
+
+
+***************************************************TUẦN 6 THỰC TẬP (14-18/12/2020)*****************************************************
 
 
 
@@ -1046,12 +1143,13 @@ jobs:
 
 
 
-********************************Ngày 22 + 23 + 24 + 25 + 26 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế (14-18/12/2020)****************************************
+------------------Ngày 22 + 23 + 24 + 25 + 26 thực tập : Viết báo cáo về quá trình CI/CD ngoài thực tế (14-18/12/2020)---------------------
  
 
 
 
 _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI THỰC TẾ _____________________________________________________
+
 
 
 
@@ -1075,10 +1173,10 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 * Nhu cầu của doanh nghiệp về CI/CD :
 
 - Một giám đốc dự án cần đánh giá được tiến độ, chất lượng để có điều chỉnh kịp thời, developer cần một hệ thống để hổ trợ coding, danh mục kiểm tra tự động, bộ phận 
-  kiểm định chất lượng cần một hẹ thống theo dõi đủ sâu và dễ tiếp cận nhất có thể .... Tất cả những vấn đề này đều được giari quyết triệt để với CI/CD
-- Hiện nay, để đảm bảo độ ổn định nhất quán, kiểm soats tình hình kịp thời thì việc tích hợp liên tục các source code của các members trong team lại nhanh chóng, đảm 
+  kiểm định chất lượng cần một hẹ thống theo dõi đủ sâu và dễ tiếp cận nhất có thể .... Tất cả những vấn đề này đều được giải quyết triệt để với CI/CD
+- Hiện nay, để đảm bảo độ ổn định nhất quán, kiểm soát tình hình kịp thời thì việc tích hợp liên tục các source code của các members trong team lại nhanh chóng, đảm 
   bảo source được kiểm thử lại một cách tỉ mỉ trước khi deploy lên môi trường production thì CI/CD diễn ra vô cùng phổ biến
-- Song, thách thức kiến mọi developer đau đầu laf làm sao để cải tiến liên tục về cả độ mượt và chất lượng sản phẩm của họ làm ra. Trong khi đó CI/CD được thiết lập 
+- Song, thách thức kiến mọi developer đau đầu là làm sao để cải tiến liên tục về cả độ mượt và chất lượng sản phẩm của họ làm ra. Trong khi đó CI/CD được thiết lập 
   trên nền tảng docker được xem là một trong những giải pháp hiểu quả nhất   
 
 * Khái niệm CI/CD : 
@@ -1102,7 +1200,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 
 * Khái niệm về CI Server :
 
-- Continuous integration server(còn được gọi là build server, CI server) là một phần mềm tập trung hóa tất cả các hoạt động CI của bạn và cung cấp một môi trường ổn 
+- Continuous Integration Server(còn được gọi là build server, CI server) là một phần mềm tập trung hóa tất cả các hoạt động CI của bạn và cung cấp một môi trường ổn 
   định và đáng tin cậy cho bạn để xây dựng dự án trên đó. CI server có khả năng tùy chỉnh cao và sẵn sàng để build nhiều dự án trên nhiều nền tảng khác nhau. Chạy 
   build và test là các tính năng cơ bản của mọi build server
 - Những điều quan trọng cần xem xét khi sử dụng CI server là phải có một máy không lỗi được chuẩn bị để cài đặt. Có môi trường trung tính, không bị ảnh hưởng bởi các 
@@ -1111,7 +1209,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Việc sử dụng các máy phát triển mà không thiết lập môi trường ảo có thể khiến bạn có các giả định và kết quả sai. Khi bạn phát triển ứng dụng cho một máy khác, bạn 
   có khả năng có thể gặp sự cố mới
 - Thông thường CI server sử dụng một version control system như Subversion hoặc Git hoặc bất kỳ hệ thống nào khác để pull file từ project của bạn. Nó giám sát 
-  repository của dụ án của bạn và dựa tren commit đã được gửi, nó pull các thay đổi và thực hiện các tác vụ mà bạn đã xác định trước đó cho project. Sau khi hoàn thành
+  repository của dự án của bạn và dựa trên commit đã được gửi, nó pull các thay đổi và thực hiện các tác vụ mà bạn đã xác định trước đó cho project. Sau khi hoàn thành
   các task, máy chủ sẽ gửi phản hồi cho các thành viên dự án có liên quan với các chi tiết của bản build. Kiểm tra bản cập nhật mới nhất của dự án của bạn, chạy build 
   script, chạy test và gửi thông báo là các chức năng cơ bản nhất của CI server
 
@@ -1175,7 +1273,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
   mà bạn tạo ra trong dự án theo thời gian 
 - Nếu bạn sử dụng giải pháp tại chỗ , một yêu cầu khác là bạn phải có 1 server bổ sung hoặc workstation hoặc ít nhất là một máy ảo. Có một chiếc máy không bị lỗi để cài 
   đặt hệ thống là một trong những điều quan trọng thiết yếu 
-- Nếu ạn không muốn gặp rắc rối với server hoặc máy ảo, co nhiều giải pháp hosted CI tool giúp đảm bảo sự bảo trì của toàn bộ quá trình và cho phép mở rộng dễ dàng. Điểm 
+- Nếu bạn không muốn gặp rắc rối với server hoặc máy ảo, có nhiều giải pháp hosted CI tool giúp đảm bảo sự bảo trì của toàn bộ quá trình và cho phép mở rộng dễ dàng. Điểm 
   yếu của các hệ thống hosted đó là thường bị thiếu các tùy chọn thiết lập trong kho các tool self-hosted có đầy đủ
 - Nếu bạn muốn sử dụng self-hosted, bạn cần cài đặt một trong nhiều CI tool có sẵn   
 - Về mặt kĩ thuật, CI tool không bắt buộc được dùng, cũng giống như IDE không nhất thiết phải có cho việc phát triển phần mềm, nhưng việc implement sẽ khó hơn đáng kể nếu 
@@ -1185,8 +1283,8 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 * CI/CD được áp dụng vào thực tế ở đây là ở doanh nghiệp :
 
 
-- Như những gì bữa giờ được thực hành làm ta cos thể tạo được 1 githubpage trên server nhưng trong thực tế việc áp dụng CI/CD vào doanh nghiệp nó rất khác biệt
-- Thông thường khi 1 doanh nghiệp áp dụng CI/CD vào 1 dự áp của họ ta thường thấy có 6 bước 
+- Như những gì bữa giờ được thực hành làm ta có thể tạo được 1 githubpage trên server nhưng trong thực tế việc áp dụng CI/CD vào doanh nghiệp nó rất khác biệt
+- Thông thường khi 1 doanh nghiệp áp dụng CI/CD vào 1 dự án của họ ta thường thấy có 6 bước 
         + Lint code
         + Build phase
         + Test code
@@ -1199,19 +1297,19 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 - Sau khi commit lên repository rồi ta sẽ đóng gói các source code của từng thành viên để tiến hành test code quá trình này gọi là build phase
 - Tiếp theo là Test code đúng với tên gọi của mình đây là 1 quá trình kiểm tra thử coi những source code được commit lên có vấn đề gì không
         + Những vẫn đề có thể phát sinh trong lúc các thành viên commit lên git repo như
-        ~ Vấn đề đầu tiên team gặp phải là conflict code. Team dành nhiều thời gian để giải quyết các conflict giữa việc đẩy code của các thành viên làm như thế nào 
-          cho code chạy đủ
-        ~ Thứ hai, sự khác biệt giữa các môi trường từ production, staging, test, dev khác nhau một trời một vực.  Người thì dùng hệ điều hành Linux, Ubuntu, người 
-          thì lại dùng Window với Mac khi đưa code lên thì rất loạn.
+                ~ Vấn đề đầu tiên team gặp phải là conflict code. Team dành nhiều thời gian để giải quyết các conflict giữa việc đẩy code của các thành viên làm 
+                  như thế nào cho code chạy đủ
+                ~ Thứ hai, sự khác biệt giữa các môi trường từ production, staging, test, dev khác nhau một trời một vực.  Người thì dùng hệ điều hành Linux, Ubuntu, 
+                  người thì lại dùng Window với Mac khi đưa code lên thì rất loạn.
         + Ngoài ra ta cũng kiểm tra thử code chạy có được như ý muốn không có nhiều trường hợp test code kiểm tra không thấy lỗi những khi chạy lại cho 1 kết quả 
           không như mong muốn
-        + Nêu ta input vào source code 1 phép tính đơn giản như 1 + 1 thì chắc chắn kết quả output trả ra bằng 2 thì mới được coi là quá trình test code thành công
+        + Nếu ta input vào source code 1 phép tính đơn giản như 1 + 1 thì chắc chắn kết quả output trả ra bằng 2 thì mới được coi là quá trình test code thành công
         + Trong quá trình test code CI server sẽ gửi các feedback lại cho các developer để họ có thể biết được những gì đang diễn ra
         + Nếu trong quá trình test xảy ra lỗi thì developer phải fix lỗi và đẩy lên repository lại 
 - Test code gồm có 3 quá trình:        
         + Đầu tiên unit test. Đây là phần test được chạy đầu tiên, thường là bởi các lập trình viên, dùng để test các function hoặc class. Khi những function hoặc 
           class này cần truy cập đến các tài nguyên bên ngoài, thì những tài nguyên đó thường được fake như là các “mock” hay “stub”.
-        + Tiếp theo là Integration testsl à bước tiếp theo từ unit tests. Integration tests đảm bảo các module tạo nên ứng dụng hoạt động mượt mà với nhau. Lý tưởng
+        + Tiếp theo là Integration tests là bước tiếp theo từ unit tests. Integration tests đảm bảo các module tạo nên ứng dụng hoạt động mượt mà với nhau. Lý tưởng
           nhất là integration tests được chạy trong môi trường tương tự với môi trường production. 
         + Sau cùng là System tests. Test toàn bộ hệ thống trong một môi trường càng giống với môi trường production càng tốt. 
 - Ngoài việc có một bộ tests chất lượng, thì môi trường chúng chạy trên đó cũng quan trọng không kém. Những yếu tố sau đây là rất cần thiết:
@@ -1220,7 +1318,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + Môi trường tương đồng. Môi trường chạy test phải gần giống với môi trường production.
         + Trường hợp lý tưởng thì môi trường có thể được tạo lập và huỷ bỏ nhanh chóng theo yêu cầu. Đưa những môi trường chạy code lên Cloud là một ý tưởng hay trong 
           trường hợp này.      
-- Sau khi đóng gói và test code tất cả những source code cần thêm vào ta sẽ đẩy những source đó lên môi trường production bước này được gọi là push image
+- Sau khi đóng gói và test code tất cả những source code cần thêm vào ta sẽ đẩy những source đó lên môi trường production bước này được gọi là push phase
 - Sau khi đã đưa lên việc tiếp theo sẽ là deploy những source code vừa đưa lên đó
 - Để deploy được ta thực 2 bước là Continuous Delivery và Continuous Deployment, hai bước này chính là CD
         + Đầu tiên là về Continuous Delivery tập quán của việc đảm bảo code của từng lập trình viên tham gia vào dự án có thể deploy ở bất cứ thời điểm nào. Tuy 
@@ -1275,7 +1373,7 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 * Lợi ích của CI/CD cho doanh nghiệp :
 
 - Giảm rủi ro : Khi bạn phát triển mã của mình thường xuyên hơn nó sẽ giảm rủi ro cho dự án bạn đang thực hiện vì bạn có thể dễ dàng phát hiện lỗi. Thậm chí bạn có 
-  thể sửa lỗi dễ dàng hơn. Điều này giúp tăng tốc độ làm việc cũng như sản xuất các thiệt bị trong doanh nghiệp
+  thể sửa lỗi dễ dàng hơn. Điều này giúp tăng tốc độ làm việc cũng như sản xuất các thiết bị trong doanh nghiệp
 - Thân thiện với team: Khi bạn có CI được tích hợp với CD, việc chia sẻ code trở nên dễ dàng và dễ thấy hơn. Nó tăng cường sự hợp tác của các thành viên trong 
   nhóm và do đó giao tiếp tốt hợn giữa các team với nhau
 - Vòng tuần hoàn làm việc nhanh hơn: Khi việc phát hành code trở nên thường xuyên, khoảng cách giữa code trong sản xuất và code trong phát triển trở nên nhỏ hơn nhiều. 
@@ -1304,21 +1402,29 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
 
 - Bộ kỹ năng mới nên yêu cầu các developer phải học hỏi liên tục
 - Quá trình tự động hóa không dễ một chút nào 
-- Các hệ thống kế thừa hiêms khi hộ trợ CI/CD
+- Các hệ thống kế thừa hiếm khi hộ trợ CI/CD
 - Mức độ đòi hỏi yêu cầu cao trong quá trình đảm bảo chất lượng
 
 
 
 
 
-----------------------------------------Tuần 7 thực tập-----------------------------------------
+
+
+
+*********************************************************TUẦN 7 THỰC TẬP (********************************************************
 
 
 
 
 
 
-******************************************* Ngày 27 thực tập (23/12/2020) ************************************************
+
+
+-------------------Ngày 27 thực tập (23/12/2020)--------------------
+
+
+
 
 - Tiếp tục sửa đổi mà bổ sung lần cuối cho bài báo cáo 
 - Link tài liệu tham khaỏ :
@@ -1349,6 +1455,12 @@ _____________________________________________BÀI BÁO CÁO VỀ CI/CD NGOÀI TH
         + https://developer.cisco.com/docs/network-automation-delivery-model/#!cicd
         + https://itzone.com.vn/vi/article/nhap-mon-cicd-voi-gitlab/
         + https://topdev.vn/blog/workshop-trien-khai-ci-cd-cho-mot-du-an-phan-mem-lon/
+
+
+
+
+-----------------Ngày 28 thực tập (24/12/2020)------------------
+
 
  
 
